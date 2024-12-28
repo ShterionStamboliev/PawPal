@@ -14,7 +14,7 @@ export class PetController {
     }
 
     @Post('api/create')
-    async createPet(@Body() createPetDto: Pet): Promise<Pet> {
+    async createPet(@Body() createPetDto: CreatePetDto): Promise<Pet> {
         return this.petService.create(createPetDto);
     }
 }
