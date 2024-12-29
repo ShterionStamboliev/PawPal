@@ -31,6 +31,10 @@ export class CreateUserDto {
     @IsNotEmpty({ message: 'Email is required' })
     readonly email: string;
 
+    @IsString()
+    @IsNotEmpty({ message: 'Password is required' })
+    readonly password: string;
+
     @IsArray()
     readonly pets: string[];
 
