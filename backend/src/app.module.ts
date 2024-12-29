@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PetModule } from './pet/pet.module';
 import { UserModule } from './user/user.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
     imports: [
@@ -12,11 +14,29 @@ import { UserModule } from './user/user.module';
             envFilePath: '.env',
             isGlobal: true,
         }),
+        ThrottlerModule.forRoot([
+            {
+                name: 'short',
+                ttl: 1000,
+                limit: 1,
+            },
+            {
+                name: 'long',
+                ttl: 60000,
+                limit: 50,
+            },
+        ]),
         MongooseModule.forRoot(process.env.DB_URI),
         UserModule,
         PetModule,
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [
+        AppService,
+        {
+            provide: APP_GUARD,
+            useClass: ThrottlerGuard,
+        },
+    ],
 })
 export class AppModule {}

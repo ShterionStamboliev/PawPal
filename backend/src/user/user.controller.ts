@@ -13,26 +13,26 @@ import { User } from './schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller()
+@Controller('users')
 export class UserController {
     constructor(private userService: UserService) {}
 
-    @Get('/api/users')
+    @Get()
     async getAllUsers(): Promise<User[]> {
         return await this.userService.getAllUsers();
     }
 
-    @Get('/api/users/:id')
+    @Get(':id')
     async getUserById(@Param('id') id: string): Promise<User> {
         return await this.userService.getUserById(id);
     }
 
-    @Post('/api/users/create')
+    @Post('create')
     async createUser(@Body(ValidationPipe) createUserDto: CreateUserDto) {
         return await this.userService.createUser(createUserDto);
     }
 
-    @Put('/api/user/:id')
+    @Put(':id')
     async updateUser(
         @Param('id') id: string,
         @Body(ValidationPipe) updateUserDto: UpdateUserDto,
