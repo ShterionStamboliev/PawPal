@@ -10,7 +10,7 @@ export class User {
     @Prop({ required: true, unique: true })
     firstName: string;
 
-    @Prop({ required: true, unique: true })
+    @Prop({ required: true })
     lastName: string;
 
     @Prop({ required: true, unique: true })

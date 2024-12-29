@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
-import { UpdatePetDto } from './dto/update-pet.dto';
 
 @Controller('api/pets')
 export class PetController {
