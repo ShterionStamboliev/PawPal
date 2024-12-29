@@ -7,6 +7,7 @@ import { PetModule } from './pet/pet.module';
 import { UserModule } from './user/user.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     imports: [
@@ -29,6 +30,7 @@ import { APP_GUARD } from '@nestjs/core';
         MongooseModule.forRoot(process.env.DB_URI),
         UserModule,
         PetModule,
+        AuthModule,
     ],
     controllers: [AppController],
     providers: [
