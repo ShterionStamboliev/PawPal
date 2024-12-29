@@ -12,7 +12,7 @@ export class PetService {
     ) {}
 
     async create(createPetDto: CreatePetDto): Promise<Pet> {
-        const createdPet = await this.petModel.create(createPetDto);
+        const createdPet = new this.petModel(createPetDto);
         return createdPet.save();
     }
 

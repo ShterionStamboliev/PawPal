@@ -4,8 +4,6 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PetModule } from './pet/pet.module';
-import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -15,10 +13,10 @@ import { UserModule } from './user/user.module';
             isGlobal: true,
         }),
         MongooseModule.forRoot(process.env.DB_URI),
-        PetModule,
         UserModule,
+        PetModule,
     ],
-    controllers: [AppController, UserController],
-    providers: [AppService, UserService],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}
