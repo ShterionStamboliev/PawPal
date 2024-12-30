@@ -8,6 +8,7 @@ import {
     IsString,
     ValidateNested,
 } from 'class-validator';
+import { Pet } from 'src/pet/schemas/pet.schema';
 
 export class AddressDto {
     @IsString()
@@ -36,7 +37,7 @@ export class CreateUserDto {
     readonly password: string;
 
     @IsArray()
-    readonly pets: string[];
+    readonly pets: Pet[];
 
     @IsObject()
     @ValidateNested()

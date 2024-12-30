@@ -1,9 +1,18 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    Post,
+    Query,
+    Req,
+    UseGuards,
+} from '@nestjs/common';
 import { PetService } from './pet.service';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
+import { AuthGuard } from '@nestjs/passport';
 
-@Controller('api/pets')
+@Controller('pets')
 export class PetController {
     constructor(private petService: PetService) {}
 
@@ -12,8 +21,13 @@ export class PetController {
         return this.petService.findAll();
     }
 
-    @Post('api/create')
-    async createPet(@Body() createPetDto: CreatePetDto): Promise<Pet> {
-        return this.petService.create(createPetDto);
+    @Post('create')
+    @UseGuards(AuthGuard())
+    async createPet(
+        @Req() req,
+        @Body() createPetDto: CreatePetDto,
+    ): Promise<Pet> {
+        const owner = req.user.id;
+        return this.petService.create(owner, createPetDto);
     }
 }

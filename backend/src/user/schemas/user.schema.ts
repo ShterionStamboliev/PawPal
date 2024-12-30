@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument, Types } from 'mongoose';
+import { Pet } from 'src/pet/schemas/pet.schema';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -19,8 +20,8 @@ export class User {
     @Prop({ required: true })
     password: string;
 
-    @Prop()
-    pets: string[];
+    @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Pet' })
+    pets: Pet[];
 
     @Prop({ type: Object })
     address: {

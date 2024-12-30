@@ -23,8 +23,6 @@ export class AuthService {
             password,
         } = signUpDto;
 
-        console.log(firstName, lastName, email, city, phone, password);
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = await this.userModel.create({

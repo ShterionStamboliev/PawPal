@@ -1,5 +1,15 @@
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+
 export class CreatePetDto {
+    @IsString()
+    @IsNotEmpty()
     name: string;
-    age: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    age: string;
+
+    @IsString()
+    @IsNotEmpty()
     breed: string;
 }

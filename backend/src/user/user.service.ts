@@ -36,6 +36,7 @@ export class UserService {
             .find({ ...querySearch })
             .limit(resultsPerPage)
             .skip(skip)
+            .populate(['pets'])
             .exec();
 
         if (!users || users.length === 0) {
@@ -51,7 +52,7 @@ export class UserService {
             throw new BadRequestException('Id not found.');
         }
 
-        const user = await this.userModel.findById(id);
+        const user = await this.userModel.findById(id).populate(['pets']);
 
         if (!user) {
             throw new NotFoundException('User not found.');
