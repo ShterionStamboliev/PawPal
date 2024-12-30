@@ -24,7 +24,7 @@ export class PetService {
         const createPet = new this.petModel(createPetDto);
 
         const savedPet = await createPet.save();
-        console.log(savedPet);
+
         await owner.updateOne({
             $push: {
                 pets: savedPet._id,

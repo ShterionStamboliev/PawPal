@@ -1,12 +1,4 @@
-import {
-    Body,
-    Controller,
-    Get,
-    Post,
-    Query,
-    Req,
-    UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
