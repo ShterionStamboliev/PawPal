@@ -21,6 +21,7 @@ export class AuthService {
             email,
             address: { city, phone },
             password,
+            role,
         } = signUpDto;
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -34,6 +35,7 @@ export class AuthService {
                 city,
                 phone,
             },
+            role,
         });
 
         const token = this.jwtService.sign({ id: user._id });

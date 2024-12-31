@@ -3,6 +3,7 @@ import {
     IsEmail,
     IsNotEmpty,
     IsObject,
+    IsOptional,
     IsString,
     MinLength,
     ValidateNested,
@@ -31,4 +32,7 @@ export class SignUpDto {
     @ValidateNested()
     @Type(() => AddressDto)
     readonly address: AddressDto;
+
+    @IsOptional()
+    readonly role: string[];
 }
