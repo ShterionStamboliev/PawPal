@@ -2,12 +2,14 @@ import { Type } from 'class-transformer';
 import {
     IsArray,
     IsEmail,
+    IsEnum,
     IsNotEmpty,
     IsNumber,
     IsObject,
     IsString,
     ValidateNested,
 } from 'class-validator';
+import { Role } from 'src/auth/enums/role.enum';
 import { Pet } from 'src/pet/schemas/pet.schema';
 
 export class AddressDto {
@@ -38,6 +40,10 @@ export class CreateUserDto {
 
     @IsArray()
     readonly pets: Pet[];
+
+    @IsString()
+    @IsEnum(Role)
+    role: Role[];
 
     @IsObject()
     @ValidateNested()
