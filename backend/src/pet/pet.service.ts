@@ -1,6 +1,11 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import {
+    BadRequestException,
+    HttpException,
+    Injectable,
+    NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { User } from 'src/user/schemas/user.schema';
@@ -40,13 +45,19 @@ export class PetService {
     }
 
     async updatePetById(id: string, pet: Partial<UpdatePetDto>): Promise<Pet> {
+        const isValidId = mongoose.isValidObjectId(id);
+
+        if (!isValidId) {
+            throw new BadRequestException('Id not found.');
+        }
+
         const updatedPet = await this.petModel.findByIdAndUpdate(id, pet, {
             new: true,
             runValidators: true,
         });
 
         if (!updatedPet) {
-            throw new HttpException('Pet not found', 404);
+            throw new NotFoundException('Pet not found');
         }
 
         return updatedPet;
