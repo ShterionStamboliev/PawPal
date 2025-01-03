@@ -21,6 +21,7 @@ import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { UpdatePetDto } from './dto/update-pet.dto';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
 
 @Controller('pets')
 export class PetController {
@@ -30,10 +31,11 @@ export class PetController {
     ) {}
 
     @Get()
+    @SkipThrottle({ default: false })
     @Roles(Role.User, Role.Admin, Role.Moderator)
     @UseGuards(AuthGuard(), RolesGuard)
     async getAllPets(): Promise<Pet[]> {
-        return this.petService.findAll();
+        return this.petService.getAllPets();
     }
 
     @Post('create')
@@ -43,10 +45,11 @@ export class PetController {
         @Body() createPetDto: CreatePetDto,
     ): Promise<Pet> {
         const owner = req.user.id;
-        return this.petService.create(owner, createPetDto);
+        return this.petService.createPet(owner, createPetDto);
     }
 
     @Put(':id')
+    @Throttle({ short: { ttl: 1000, limit: 1 } })
     @Roles(Role.User)
     @UseGuards(AuthGuard(), RolesGuard)
     async updatePet(
@@ -63,6 +66,12 @@ export class PetController {
         @Param('id') id: string,
         @UploadedFile() file: Express.Multer.File,
     ) {
-        return this.cloudinaryService.uploadFile(id, file);
+        const uploadResult = await this.cloudinaryService.uploadFile(id, file);
+
+        const updatedPet = await this.petService.updatePetById(id, {
+            image: uploadResult.secure_url,
+        });
+
+        return updatedPet;
     }
 }

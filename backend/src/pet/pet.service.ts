@@ -20,11 +20,11 @@ export class PetService {
         private userModel: Model<User>,
     ) {}
 
-    async create(ownerId: string, createPetDto: CreatePetDto): Promise<Pet> {
+    async createPet(ownerId: string, createPetDto: CreatePetDto): Promise<Pet> {
         const owner = await this.userModel.findById(ownerId);
 
         if (!owner) {
-            throw new HttpException('User not found', 404);
+            throw new NotFoundException('User not found');
         }
 
         const createPet = new this.petModel(createPetDto);
@@ -40,7 +40,7 @@ export class PetService {
         return savedPet;
     }
 
-    async findAll(): Promise<Pet[]> {
+    async getAllPets(): Promise<Pet[]> {
         return await this.petModel.find().exec();
     }
 
@@ -61,5 +61,10 @@ export class PetService {
         }
 
         return updatedPet;
+    }
+
+    async deletePetById(id: string): Promise<Pet> {
+        const deletedPet = await this.petModel.findByIdAndDelete(id);
+        return deletedPet;
     }
 }
