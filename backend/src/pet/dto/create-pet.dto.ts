@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreatePetDto {
     @IsString()
@@ -12,4 +12,7 @@ export class CreatePetDto {
     @IsString()
     @IsNotEmpty()
     breed: string;
+
+    @IsOptional()
+    image: string;
 }

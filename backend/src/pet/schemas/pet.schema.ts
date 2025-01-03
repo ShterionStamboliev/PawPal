@@ -15,6 +15,9 @@ export class Pet {
 
     @Prop({ required: true })
     breed: string;
+
+    @Prop()
+    image: string;
 }
 
 export const PetSchema = SchemaFactory.createForClass(Pet);

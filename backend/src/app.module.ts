@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
     imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from './auth/auth.module';
         UserModule,
         PetModule,
         AuthModule,
+        CloudinaryModule,
     ],
     controllers: [AppController],
     providers: [

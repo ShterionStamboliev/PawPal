@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { User } from 'src/user/schemas/user.schema';
+import { UpdatePetDto } from './dto/update-pet.dto';
 
 @Injectable()
 export class PetService {
@@ -36,5 +37,18 @@ export class PetService {
 
     async findAll(): Promise<Pet[]> {
         return await this.petModel.find().exec();
+    }
+
+    async updatePetById(id: string, pet: Partial<UpdatePetDto>): Promise<Pet> {
+        const updatedPet = await this.petModel.findByIdAndUpdate(id, pet, {
+            new: true,
+            runValidators: true,
+        });
+
+        if (!updatedPet) {
+            throw new HttpException('Pet not found', 404);
+        }
+
+        return updatedPet;
     }
 }

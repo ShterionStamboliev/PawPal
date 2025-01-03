@@ -1,4 +1,16 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    Param,
+    Post,
+    Put,
+    Req,
+    UploadedFile,
+    UseGuards,
+    UseInterceptors,
+    ValidationPipe,
+} from '@nestjs/common';
 import { PetService } from './pet.service';
 import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
@@ -6,10 +18,16 @@ import { AuthGuard } from '@nestjs/passport';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/enums/role.enum';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { UpdatePetDto } from './dto/update-pet.dto';
 
 @Controller('pets')
 export class PetController {
-    constructor(private petService: PetService) {}
+    constructor(
+        private petService: PetService,
+        private cloudinaryService: CloudinaryService,
+    ) {}
 
     @Get()
     @Roles(Role.User, Role.Admin, Role.Moderator)
@@ -26,5 +44,25 @@ export class PetController {
     ): Promise<Pet> {
         const owner = req.user.id;
         return this.petService.create(owner, createPetDto);
+    }
+
+    @Put(':id')
+    @Roles(Role.User)
+    @UseGuards(AuthGuard(), RolesGuard)
+    async updatePet(
+        @Param('id') id: string,
+        @Body(ValidationPipe) updatePetDto: UpdatePetDto,
+    ): Promise<Pet> {
+        return await this.petService.updatePetById(id, updatePetDto);
+    }
+
+    @Put('upload/:id')
+    @UseGuards(AuthGuard())
+    @UseInterceptors(FileInterceptor('file'))
+    async uploadImage(
+        @Param('id') id: string,
+        @UploadedFile() file: Express.Multer.File,
+    ) {
+        return this.cloudinaryService.uploadFile(id, file);
     }
 }
