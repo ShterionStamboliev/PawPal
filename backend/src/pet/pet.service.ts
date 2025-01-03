@@ -64,7 +64,27 @@ export class PetService {
     }
 
     async deletePetById(id: string): Promise<Pet> {
+        const pet = await this.petModel.findById(id);
+        if (!pet) {
+            throw new NotFoundException('Pet not found');
+        }
+
+        await this.userModel.updateOne(
+            {
+                pets: id,
+            },
+            {
+                $pull: {
+                    pets: id,
+                },
+            },
+        );
+
         const deletedPet = await this.petModel.findByIdAndDelete(id);
+        if (!deletedPet) {
+            throw new HttpException('Failed to delete the pet', 500);
+        }
+
         return deletedPet;
     }
 }

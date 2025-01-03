@@ -1,6 +1,7 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     Param,
     Post,
@@ -73,5 +74,13 @@ export class PetController {
         });
 
         return updatedPet;
+    }
+
+    @Delete('delete/:id')
+    @Roles(Role.User)
+    @UseGuards(AuthGuard(), RolesGuard)
+    async deletePet(@Param('id') id: string): Promise<Pet> {
+        const deletedPet = await this.petService.deletePetById(id);
+        return deletedPet;
     }
 }
