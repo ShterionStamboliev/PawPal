@@ -10,6 +10,7 @@ import { Pet } from './schemas/pet.schema';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { User } from 'src/user/schemas/user.schema';
 import { UpdatePetDto } from './dto/update-pet.dto';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class PetService {
@@ -18,6 +19,7 @@ export class PetService {
         private petModel: Model<Pet>,
         @InjectModel(User.name)
         private userModel: Model<User>,
+        private cloudinaryService: CloudinaryService,
     ) {}
 
     async createPet(ownerId: string, createPetDto: CreatePetDto): Promise<Pet> {
@@ -44,6 +46,23 @@ export class PetService {
         return await this.petModel.find().exec();
     }
 
+    async getPetById(id: string): Promise<Pet> {
+        const isValid = mongoose.isValidObjectId(id);
+
+        if (!isValid) {
+            throw new BadRequestException('Id not found.');
+        }
+
+        const pet = await this.petModel.findById(id);
+
+        console.log(pet);
+        if (!pet) {
+            throw new NotFoundException('Pet not found.');
+        }
+
+        return pet;
+    }
+
     async updatePetById(id: string, pet: Partial<UpdatePetDto>): Promise<Pet> {
         const isValidId = mongoose.isValidObjectId(id);
 
@@ -65,6 +84,7 @@ export class PetService {
 
     async deletePetById(id: string): Promise<Pet> {
         const pet = await this.petModel.findById(id);
+
         if (!pet) {
             throw new NotFoundException('Pet not found');
         }
@@ -79,6 +99,14 @@ export class PetService {
                 },
             },
         );
+
+        if (pet.image) {
+            const publicId = pet.image.split('/').pop()?.split('.')[0];
+
+            if (publicId) {
+                await this.cloudinaryService.deleteFile(`pets/${publicId}`);
+            }
+        }
 
         const deletedPet = await this.petModel.findByIdAndDelete(id);
         if (!deletedPet) {

@@ -60,6 +60,14 @@ export class PetController {
         return await this.petService.updatePetById(id, updatePetDto);
     }
 
+    @Throttle({ short: { ttl: 1000, limit: 1 } })
+    @Get(':id')
+    @Roles(Role.User)
+    @UseGuards(AuthGuard(), RolesGuard)
+    async getPetById(@Param('id') id: string): Promise<Pet> {
+        return await this.petService.getPetById(id);
+    }
+
     @Put('upload/:id')
     @UseGuards(AuthGuard())
     @UseInterceptors(FileInterceptor('file'))
