@@ -53,7 +53,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      modak: ['Modak', 'serif']
+      modak: ['Modak', 'serif'],
+      chewy: ['Chewy', 'serif'],
     }
   },
 
