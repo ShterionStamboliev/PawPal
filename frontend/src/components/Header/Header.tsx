@@ -20,8 +20,8 @@ const Header = () => {
                         to='/'
                         className={({ isActive }) =>
                             isActive
-                                ? 'text-2xl font-chewy text-red-400 border-b-2 border-red-500'
-                                : 'text-2xl font-chewy text-red-400'
+                                ? 'text-2xl font-chewy text-red-400'
+                                : 'text-2xl font-chewy text-red-300 hover:text-red-400'
                         }
                     >
                         Home
@@ -31,7 +31,7 @@ const Header = () => {
                         className={({ isActive }) =>
                             isActive
                                 ? 'text-2xl font-chewy text-red-400'
-                                : 'text-2xl font-chewy text-red-400'
+                                : 'text-2xl font-chewy text-red-300 hover:text-red-400'
                         }
                     >
                         About
@@ -41,7 +41,7 @@ const Header = () => {
                         className={({ isActive }) =>
                             isActive
                                 ? 'text-2xl font-chewy text-red-400'
-                                : 'text-2xl font-chewy text-red-400'
+                                : 'text-2xl font-chewy text-red-300 hover:text-red-400'
                         }
                     >
                         Contacts
