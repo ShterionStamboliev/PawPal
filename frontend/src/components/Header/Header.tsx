@@ -4,9 +4,9 @@ import { Link, NavLink } from 'react-router';
 
 const Header = () => {
     return (
-        <header className='bg-orange-200 shadow-orange-200 shadow-sm'>
+        <header className='bg-orange-200 shadow-orange-200 shadow-sm fixed top-0 left-0 right-0 z-50'>
             <div className='container flex mx-auto p-4 justify-between items-center'>
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 flex-shrink-0'>
                     <img
                         src={paw}
                         alt='Cat Paw'
@@ -14,8 +14,7 @@ const Header = () => {
                     />
                     <h1 className='font-modak text-4xl text-red-400'>PawPal</h1>
                 </div>
-
-                <nav className='flex gap-4 items-center '>
+                <nav className='flex gap-4 items-center'>
                     <NavLink
                         to='/'
                         className={({ isActive }) =>
@@ -47,7 +46,6 @@ const Header = () => {
                         Contacts
                     </NavLink>
                 </nav>
-
                 <Button className='bg-red-400 font-semibold font-manrope hover:bg-red-300'>
                     <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                     <Link to='/login'>Sign Up</Link>
