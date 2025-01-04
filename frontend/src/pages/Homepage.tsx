@@ -5,7 +5,7 @@ const Homepage = () => {
     return (
         <>
             <Header />
-            <main className='mt-20 pt-2 flex flex-col items-center'>
+            <main className='mt-20 pt-2 flex flex-col items-center justify-center'>
                 <Hero />
             </main>
         </>
