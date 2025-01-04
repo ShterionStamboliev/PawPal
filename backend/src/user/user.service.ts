@@ -61,6 +61,11 @@ export class UserService {
     }
 
     async updateUserById(id: string, user: User): Promise<User> {
+        const isValidId = mongoose.isValidObjectId(id);
+
+        if (!isValidId) {
+            throw new BadRequestException('Id not found.');
+        }
         const updatedUser = await this.userModel.findByIdAndUpdate(id, user, {
             new: true,
             runValidators: true,
@@ -70,6 +75,11 @@ export class UserService {
 
     async deleteUserById(id: string): Promise<User> {
         const deletedUser = await this.userModel.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            throw new NotFoundException('User not found.');
+        }
+
         return deletedUser;
     }
 }
