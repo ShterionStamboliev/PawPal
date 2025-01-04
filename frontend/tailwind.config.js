@@ -51,7 +51,11 @@ module.exports = {
           '5': 'hsl(var(--chart-5))'
         }
       }
+    },
+    fontFamily: {
+      modak: ['Modak', 'serif']
     }
   },
+
   plugins: [require("tailwindcss-animate")],
 }

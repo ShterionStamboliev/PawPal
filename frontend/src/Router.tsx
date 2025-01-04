@@ -1,5 +1,12 @@
+import { Route, Routes } from 'react-router';
+import Header from './components/Header/Header';
+
 function App() {
-    return <main className='bg-slate-800 w-screen h-screen'>Hello</main>;
+    return (
+        <Routes>
+            <Route path='/' element={<Header />} />
+        </Routes>
+    );
 }
 
 export default App;
