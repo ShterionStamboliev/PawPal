@@ -48,7 +48,7 @@ const Header = () => {
                     </NavLink>
                 </nav>
 
-                <Button className='bg-red-400 font-semibold hover:bg-red-300'>
+                <Button className='bg-red-400 font-semibold font-manrope hover:bg-red-300'>
                     <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                     <Link to='/login'>Sign Up</Link>
                 </Button>

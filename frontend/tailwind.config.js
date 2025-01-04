@@ -55,6 +55,7 @@ module.exports = {
     fontFamily: {
       modak: ['Modak', 'serif'],
       chewy: ['Chewy', 'serif'],
+      manrope: ['Manrope', 'serif']
     }
   },
 
