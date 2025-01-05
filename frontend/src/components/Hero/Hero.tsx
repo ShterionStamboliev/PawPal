@@ -22,7 +22,7 @@ const Hero = () => {
                         We provide the best medical treatment, examination,
                         grooming and general health care of your pets.
                     </h2>
-                    <Button className='bg-red-400 mt-10 p-8 text-lg font-semibold font-manrope hover:bg-red-300'>
+                    <Button className='bg-red-400 mt-16 p-8 text-lg font-semibold font-manrope hover:bg-red-300'>
                         Try our best foods now
                     </Button>
                 </div>
