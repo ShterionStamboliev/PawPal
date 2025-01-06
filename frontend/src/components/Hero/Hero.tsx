@@ -1,6 +1,7 @@
 import dog from '@/assets/happy-dog.png';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
+import { MessagesSquare } from 'lucide-react';
 
 /**
  * 
@@ -14,7 +15,10 @@ import { Button } from '../ui/button';
 
 const Hero = () => {
     return (
-        <section
+        <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
             className='min-h-[550px] sm:min-h-[600px] flex justify-center items-center pt-4 bg-no-repeat bg-cover bg-center relative'
             style={{ backgroundImage: `url(${dog})` }}
         >
@@ -39,12 +43,16 @@ const Hero = () => {
                     </p>
                     <div>
                         <Button className='bg-red-400 p-8 text-lg font-semibold font-manrope hover:bg-red-400/80'>
-                            Try our best foods now
+                            Contact Us
+                            <MessagesSquare
+                                size={64}
+                                className='inline-block ml-2'
+                            />
                         </Button>
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
