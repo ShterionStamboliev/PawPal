@@ -18,7 +18,7 @@ const Hero = () => {
             className='min-h-[550px] sm:min-h-[600px] flex justify-center items-center pt-4 bg-no-repeat bg-cover bg-center relative'
             style={{ backgroundImage: `url(${dog})` }}
         >
-            <div className='absolute inset-0 bg-black/20 backdrop-blur-sm'></div>
+            <div className='absolute inset-0 bg-black/25 backdrop-blur-sm'></div>
             <div className='container relative z-10'>
                 {/* Text */}
                 <div className='flex flex-col xl:max-w-3xl justify-center text-center xl:text-left gap-10 p-10 text-white'>

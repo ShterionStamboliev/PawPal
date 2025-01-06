@@ -11,7 +11,7 @@ const navLinks = [
 const Header = () => {
     return (
         <header className='bg-orange-200/50 shadow-orange-200 shadow-sm fixed top-0 left-0 right-0 z-50'>
-            <div className='flex mx-auto px-8 md:px-12 py-4 justify-between items-center backdrop-blur-sm'>
+            <div className='flex mx-auto px-8 md:px-12 py-5 justify-between items-center backdrop-blur-sm'>
                 <div className='flex items-center gap-2 flex-shrink-0'>
                     <img
                         src={paw}

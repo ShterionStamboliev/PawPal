@@ -5,7 +5,7 @@ const Homepage = () => {
     return (
         <>
             <Header />
-            <main className='mt-20'>
+            <main className='mt-24'>
                 <Hero />
             </main>
         </>
