@@ -35,6 +35,7 @@ const Hero = () => {
                             PawPal.{' '}
                         </span>
                         Your pet's best friend
+                        <span className='font-chewy text-red-400'>.</span>
                     </h1>
                     <p className='text-2xl tracking-wide leading-tight font-manrope'>
                         We provide the best medical treatment, examination,

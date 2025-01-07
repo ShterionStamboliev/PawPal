@@ -6,12 +6,18 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '../ui/carousel';
+import { Separator } from '../ui/separator';
 
 const OurServices = () => {
     return (
         <section className='flex flex-col items-center justify-center bg-orange-200/50'>
-            <div className='my-8 font-manrope font-semibold text-2xl'>
-                <h2>Our services</h2>
+            <div className='my-8 flex items-center justify-center w-full max-w-6xl'>
+                <h2 className='font-chewy  capitalize text-red-300 font-semibold text-2xl whitespace-nowrap'>
+                    Our services
+                </h2>
+                <div className='w-[20rem] ml-4'>
+                    <Separator className='bg-red-200' />
+                </div>
             </div>
             <Carousel
                 opts={{
