@@ -24,7 +24,7 @@ const Hero = () => {
         >
             <div className='absolute inset-0 bg-black/25 backdrop-blur-sm'></div>
             <div className='container relative z-10'>
-                <div className='flex flex-col mx-6 mb-6 sm:m-0 xl:max-w-3xl justify-center text-center xl:text-left rounded-lg gap-10 p-10 text-white border-2 bg-gray-600/30 backdrop-blur-sm border-red-400'>
+                <div className='flex flex-col sm:m-6 lg:m-0 mx-6 mb-6 xl:max-w-3xl justify-center text-center xl:text-left rounded-lg gap-10 p-10 text-white border-2 bg-gray-600/30 backdrop-blur-sm border-red-400'>
                     <h1 className='text-5xl tracking-wide leading-tight font-bold font-manrope'>
                         For{' '}
                         <span className='font-chewy text-red-400'>
