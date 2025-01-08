@@ -6,7 +6,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from '../ui/card';
@@ -81,11 +80,9 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                                         />
                                     </CardDescription>
                                 </CardHeader>
-                                <CardContent className='flex space-y-4 shadow-md flex-col p-4 justify-center rounded-b-lg bg-gray-200/50'>
-                                    <p className='text-lg tracking-wide text-red-400 items-start font-manrope font-semibold'>
-                                        {service.description}
-                                    </p>
-                                    <p className='text-red-400/90'>
+                                <CardContent className='flex space-y-4 shadow-md flex-col px-4 pb-4 justify-center rounded-b-lg bg-gray-200/50'>
+                                    <p className='text-lg tracking-wide text-red-400 items-start font-manrope font-semibold'></p>
+                                    <p className='text-red-400/90 font-semibold'>
                                         {service.text}
                                     </p>
                                     <Button className='bg-red-400 hover:bg-red-400/70'>
