@@ -10,7 +10,7 @@ const navLinks = [
 
 const Header = () => {
     return (
-        <header className='bg-rose-200 shadow-orange-300 shadow-sm fixed top-0 left-0 right-0 z-50'>
+        <header className='bg-rose-200/90 shadow-rose-300 shadow-sm fixed top-0 left-0 right-0 z-50'>
             <div className='flex mx-auto px-8 md:px-12 py-5 justify-between items-center backdrop-blur-sm backdrop-brightness-90'>
                 <div className='flex items-center gap-2 flex-shrink-0'>
                     <img
@@ -37,7 +37,7 @@ const Header = () => {
                         </NavLink>
                     ))}
                 </nav>
-                <Button className='flex items-center gap-2 px-4 py-2 bg-rose-500 text-white rounded-lg font-semibold font-manrope hover:bg-rose-600 transition-all'>
+                <Button className='flex items-center gap-2 px-4 py-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 transition-all'>
                     <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                     <Link to='/login'>Sign Up</Link>
                 </Button>
