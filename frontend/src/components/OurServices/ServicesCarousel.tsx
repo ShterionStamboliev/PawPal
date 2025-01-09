@@ -29,19 +29,19 @@ const petServices: PetService[] = [
     {
         name: 'Dental Care',
         image: dogWithBone as string,
-        description: 'Dental care is important for your pet.',
+        description: 'Pet dental care',
         text: "Maintaining your pet's oral hygiene is crucial for their overall health. Our dental care services include teeth cleaning, polishing, and treatment for gum diseases to keep their smiles healthy and bright.",
     },
     {
         name: 'Nutrition',
         image: dogWithFood as string,
-        description: 'Proper nutrition is essential for your pet.',
+        description: 'Proper nutrition',
         text: "A balanced diet is the foundation of your pet's health and well-being. Our nutrition counseling helps you choose the right food and feeding plans tailored to your pet's age, breed, and lifestyle.",
     },
     {
         name: 'Grooming',
         image: dogGrooming as string,
-        description: 'Grooming is important for your pet.',
+        description: 'Grooming your pet',
         text: 'Regular grooming keeps your pet looking and feeling their best. Grooming also helps detect skin conditions early, ensuring a healthy coat and skin.',
     },
 ];
@@ -66,8 +66,9 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                         key={index}
                         className='sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/3'
                     >
-                        <div className='flex p-4 items-center justify-center'>
+                        <div className='flex p-4 items-start justify-center flex-wrap gap-4'>
                             <Card className='border-none sm:max-w-[22rem]'>
+                                {' '}
                                 <CardHeader className='p-0 space-y-0 relative shadow-md'>
                                     <CardTitle className='text-2xl text-white/90 absolute top-4 left-4'>
                                         {service.name}
@@ -80,12 +81,16 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                                         />
                                     </CardDescription>
                                 </CardHeader>
-                                <CardContent className='flex space-y-4 shadow-md flex-col px-4 pb-4 justify-center rounded-b-lg bg-gray-200/50'>
-                                    <p className='text-lg tracking-wide text-red-400 items-start font-manrope font-semibold'></p>
-                                    <p className='text-red-400/90 font-semibold'>
+                                <CardContent className='flex p-4 flex-col gap-4 justify-between rounded-b-lg bg-gray-200/50 h-[calc(100%-16rem)]'>
+                                    {' '}
+                                    <p className='text-lg tracking-wide  items-start font-manrope font-semibold'>
+                                        {service.description}
+                                    </p>
+                                    <p className='text-gray-500/90 font-semibold line-clamp-4'>
+                                        {' '}
                                         {service.text}
                                     </p>
-                                    <Button className='bg-red-400 hover:bg-red-400/70'>
+                                    <Button className='bg-red-400 hover:bg-red-400/70 mt-auto'>
                                         <p className='text-bold font-manrope text-white'>
                                             Learn more
                                         </p>
