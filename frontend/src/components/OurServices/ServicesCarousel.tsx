@@ -2,13 +2,7 @@ import dogWithBone from '@/assets/dog-with-bone.png';
 import dogWithFood from '@/assets/dog-with-food.png';
 import dogGrooming from '@/assets/dog-grooming.png';
 import { AutoplayType } from 'embla-carousel-autoplay';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '../ui/card';
+import { Card, CardContent } from '../ui/card';
 import {
     Carousel,
     CarouselContent,
