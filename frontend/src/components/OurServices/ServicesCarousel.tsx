@@ -70,7 +70,7 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                         key={index}
                         className='sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/3'
                     >
-                        <div className='flex p-4 items-start justify-center flex-wrap gap-4'>
+                        <div className='flex mx-4 items-start justify-center flex-wrap gap-4'>
                             <Card className='w-full max-w-md mx-auto overflow-hidden group border-none'>
                                 <CardContent className='p-0 relative aspect-square'>
                                     <img
