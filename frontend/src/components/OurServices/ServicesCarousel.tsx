@@ -29,20 +29,20 @@ const petServices: PetService[] = [
     {
         name: 'Dental Care',
         image: dogWithBone as string,
-        description: 'Pet dental care',
-        text: "Maintaining your pet's oral hygiene is crucial for their overall health. Our dental care services include teeth cleaning, polishing, and treatment for gum diseases to keep their smiles healthy and bright.",
+        description:
+            "Maintaining your pet's oral hygiene is crucial for their overall health. Our dental care services include teeth cleaning, polishing, and treatment for gum diseases to keep their smiles healthy and bright.",
     },
     {
         name: 'Nutrition',
         image: dogWithFood as string,
-        description: 'Proper nutrition',
-        text: "A balanced diet is the foundation of your pet's health and well-being. Our nutrition counseling helps you choose the right food and feeding plans tailored to your pet's age, breed, and lifestyle.",
+        description:
+            "A balanced diet is the foundation of your pet's health and well-being. Our nutrition counseling helps you choose the right food and feeding plans tailored to your pet's age, breed, and lifestyle.",
     },
     {
         name: 'Grooming',
         image: dogGrooming as string,
-        description: 'Grooming your pet',
-        text: 'Regular grooming keeps your pet looking and feeling their best. Grooming also helps detect skin conditions early, ensuring a healthy coat and skin.',
+        description:
+            'Regular grooming keeps your pet looking and feeling their best. Grooming also helps detect skin conditions early, ensuring a healthy coat and skin.',
     },
 ];
 
@@ -88,10 +88,10 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                                     <div className='absolute inset-0 flex flex-col justify-end text-white rounded-lg p-4'>
                                         <div className='bg-rose-700/80 p-2 rounded-lg mb-2'>
                                             <h2 className='text-xl sm:text-2xl line-clamp-2 font-bold mb-2 font-manrope'>
-                                                {service.description}
+                                                {service.name}
                                             </h2>
                                             <p className='text-md font-manrope line-clamp-3 sm:line-clamp-3 overflow-hidden'>
-                                                {service.text}
+                                                {service.description}
                                             </p>
                                         </div>
                                         <Button
