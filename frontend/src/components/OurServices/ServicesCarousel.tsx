@@ -48,6 +48,16 @@ const petServices: PetService[] = [
 
 type ServicesCarouselProps = { plugin: React.MutableRefObject<AutoplayType> };
 
+/**
+ * 
+    sm	640px	@media (min-width: 640px) { ... }
+    md	768px	@media (min-width: 768px) { ... }
+    lg	1024px	@media (min-width: 1024px) { ... }
+    xl	1280px	@media (min-width: 1280px) { ... }
+    2xl	1536px	@media (min-width: 1536px) { ... } 
+ * 
+ */
+
 const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
     return (
         <Carousel
@@ -67,34 +77,31 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                         className='sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/3'
                     >
                         <div className='flex p-4 items-start justify-center flex-wrap gap-4'>
-                            <Card className='border-none sm:max-w-[22rem]'>
-                                {' '}
-                                <CardHeader className='p-0 space-y-0 relative shadow-md'>
-                                    <CardTitle className='text-2xl text-white/90 absolute top-4 left-4'>
-                                        {service.name}
-                                    </CardTitle>
-                                    <CardDescription className='rounded-t-lg'>
-                                        <img
-                                            src={service.image}
-                                            alt='Service'
-                                            className='w-full h-64 rounded-t-md'
-                                        />
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent className='flex p-4 flex-col gap-4 justify-between rounded-b-lg bg-gray-200/50 h-[calc(100%-16rem)]'>
-                                    {' '}
-                                    <p className='text-lg tracking-wide  items-start font-manrope font-semibold'>
-                                        {service.description}
-                                    </p>
-                                    <p className='text-gray-500/90 font-semibold line-clamp-4'>
-                                        {' '}
-                                        {service.text}
-                                    </p>
-                                    <Button className='bg-red-400 hover:bg-red-400/70 mt-auto'>
-                                        <p className='text-bold font-manrope text-white'>
-                                            Learn more
-                                        </p>
-                                    </Button>
+                            <Card className='w-full max-w-md mx-auto overflow-hidden group border-none'>
+                                <CardContent className='p-0 relative aspect-square'>
+                                    <img
+                                        src={service.image}
+                                        alt=''
+                                        className='w-full h-full object-fill transition-transform duration-300 group-hover:scale-105'
+                                    />
+                                    <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent' />
+                                    <div className='absolute inset-0 flex flex-col justify-end text-white rounded-lg p-4'>
+                                        <div className='bg-rose-700/80 p-2 rounded-lg mb-2'>
+                                            <h2 className='text-xl sm:text-2xl line-clamp-2 font-bold mb-2 font-manrope'>
+                                                {service.description}
+                                            </h2>
+                                            <p className='text-md font-manrope line-clamp-3 sm:line-clamp-3 overflow-hidden'>
+                                                {service.text}
+                                            </p>
+                                        </div>
+                                        <Button
+                                            variant='ghost'
+                                            // onClick={onLearnMore}
+                                            className='w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white font-semibold hover:text-white'
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </div>
                                 </CardContent>
                             </Card>
                         </div>
