@@ -1,6 +1,6 @@
 import { Separator } from '../ui/separator';
 import vetImage from '@/assets/vet-image.png';
-import { delay, motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
