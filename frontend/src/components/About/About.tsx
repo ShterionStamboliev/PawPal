@@ -1,6 +1,6 @@
 import { Separator } from '../ui/separator';
 import vetImage from '@/assets/vet-image.png';
-import { motion, useAnimation } from 'framer-motion';
+import { delay, motion, useAnimation } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
@@ -20,7 +20,7 @@ const itemVariants = {
     visible: {
         x: 0,
         opacity: 1,
-        transition: { duration: 1, ease: 'easeOut' },
+        transition: { duration: 1, delay: 1, ease: 'easeOut' },
     },
 };
 
@@ -29,7 +29,7 @@ const imageVariants = {
     visible: {
         x: 0,
         opacity: 1,
-        transition: { duration: 1, ease: 'easeOut' },
+        transition: { duration: 1, delay: 1, ease: 'easeOut' },
     },
 };
 
@@ -46,7 +46,7 @@ const About = () => {
 
     return (
         <section
-            className='flex flex-col items-center justify-center mx-10 mb-8'
+            className='flex flex-col sm:min-h-[35rem] items-center justify-center mx-10 mb-8'
             ref={ref}
         >
             <motion.div
@@ -92,7 +92,7 @@ const About = () => {
                     </motion.p>
                 </motion.div>
                 <motion.div
-                    className='w-full md:w-auto lg:max-w-[40rem]'
+                    className='w-full md:w-auto lg:max-w-[35rem]'
                     initial='hidden'
                     animate={controls}
                     variants={imageVariants}

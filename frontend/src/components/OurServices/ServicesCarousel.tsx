@@ -11,6 +11,9 @@ import {
     CarouselPrevious,
 } from '../ui/carousel';
 import { Button } from '../ui/button';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 type PetService = {
     name: string;
@@ -42,69 +45,86 @@ const petServices: PetService[] = [
 
 type ServicesCarouselProps = { plugin: React.MutableRefObject<AutoplayType> };
 
-/**
- * 
-    sm	640px	@media (min-width: 640px) { ... }
-    md	768px	@media (min-width: 768px) { ... }
-    lg	1024px	@media (min-width: 1024px) { ... }
-    xl	1280px	@media (min-width: 1280px) { ... }
-    2xl	1536px	@media (min-width: 1536px) { ... } 
- * 
- */
-
 const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
+    const controls = useAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start('visible');
+        }
+    }, [isInView, controls]);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                delay: 1,
+            },
+        },
+    };
+
     return (
-        <Carousel
-            plugins={[plugin.current]}
-            onMouseEnter={() => plugin.current.stop()}
-            onMouseLeave={() => plugin.current.play()}
-            opts={{
-                align: 'center',
-            }}
-            orientation='horizontal'
-            className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl pb-8'
+        <motion.div
+            ref={ref}
+            initial='hidden'
+            animate={controls}
+            variants={containerVariants}
         >
-            <CarouselContent>
-                {petServices.map((service, index) => (
-                    <CarouselItem
-                        key={index}
-                        className='sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/3'
-                    >
-                        <div className='flex mx-4 items-start justify-center flex-wrap gap-4'>
-                            <Card className='w-full max-w-md mx-auto overflow-hidden group border-none'>
-                                <CardContent className='p-0 relative aspect-square'>
-                                    <img
-                                        src={service.image}
-                                        alt=''
-                                        className='w-full h-full object-fill transition-transform duration-300 group-hover:scale-105'
-                                    />
-                                    <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent' />
-                                    <div className='absolute inset-0 flex flex-col justify-end text-white rounded-lg p-4'>
-                                        <div className='bg-rose-700/80 p-2 rounded-lg mb-2'>
-                                            <h2 className='text-xl sm:text-2xl line-clamp-2 font-bold mb-2 font-manrope'>
-                                                {service.name}
-                                            </h2>
-                                            <p className='text-md font-manrope line-clamp-3 sm:line-clamp-3 overflow-hidden'>
-                                                {service.description}
-                                            </p>
+            <Carousel
+                plugins={[plugin.current]}
+                onMouseEnter={() => plugin.current.stop()}
+                onMouseLeave={() => plugin.current.play()}
+                opts={{
+                    align: 'center',
+                }}
+                orientation='horizontal'
+                className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl pb-8'
+            >
+                <CarouselContent>
+                    {petServices.map((service, index) => (
+                        <CarouselItem
+                            key={index}
+                            className='sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/3'
+                        >
+                            <div className='flex mx-4 items-start justify-center flex-wrap gap-4'>
+                                <Card className='w-full max-w-md mx-auto overflow-hidden group border-none'>
+                                    <CardContent className='p-0 relative aspect-square'>
+                                        <img
+                                            src={service.image}
+                                            alt=''
+                                            className='w-full h-full object-fill transition-transform duration-300 group-hover:scale-105'
+                                        />
+                                        <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent' />
+                                        <div className='absolute inset-0 flex flex-col justify-end text-white rounded-lg p-4'>
+                                            <div className='bg-rose-700/80 p-2 rounded-lg mb-2'>
+                                                <h2 className='text-xl sm:text-2xl line-clamp-2 font-bold mb-2 font-manrope'>
+                                                    {service.name}
+                                                </h2>
+                                                <p className='text-md font-manrope line-clamp-3 sm:line-clamp-3 overflow-hidden'>
+                                                    {service.description}
+                                                </p>
+                                            </div>
+                                            <Button
+                                                variant='ghost'
+                                                // onClick={onLearnMore}
+                                                className='w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white font-semibold hover:text-white'
+                                            >
+                                                Learn More
+                                            </Button>
                                         </div>
-                                        <Button
-                                            variant='ghost'
-                                            // onClick={onLearnMore}
-                                            className='w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white font-semibold hover:text-white'
-                                        >
-                                            Learn More
-                                        </Button>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext className='hidden md:inline-flex' />
-        </Carousel>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext className='hidden md:inline-flex' />
+            </Carousel>
+        </motion.div>
     );
 };
 

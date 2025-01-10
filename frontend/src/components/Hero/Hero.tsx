@@ -10,7 +10,7 @@ const Hero = () => {
             viewport={{ once: true }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className='min-h-[550px] sm:min-h-[600px] flex justify-center items-center pt-4 bg-no-repeat bg-cover bg-center relative'
+            className='min-h-[40rem] sm:min-h-[54rem] flex justify-center items-center pt-4 bg-no-repeat bg-cover bg-center relative'
             style={{ backgroundImage: `url(${dog})` }}
         >
             <div className='absolute inset-0 bg-black/25 backdrop-blur-sm'></div>
