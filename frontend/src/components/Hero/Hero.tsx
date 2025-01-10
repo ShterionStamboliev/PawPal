@@ -3,20 +3,11 @@ import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { MessagesSquare } from 'lucide-react';
 
-/**
- * 
-    sm	640px	@media (min-width: 640px) { ... }
-    md	768px	@media (min-width: 768px) { ... }
-    lg	1024px	@media (min-width: 1024px) { ... }
-    xl	1280px	@media (min-width: 1280px) { ... }
-    2xl	1536px	@media (min-width: 1536px) { ... } 
- * 
- */
-
 const Hero = () => {
     return (
         <motion.section
             initial={{ opacity: 0 }}
+            viewport={{ once: true }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className='min-h-[550px] sm:min-h-[600px] flex justify-center items-center pt-4 bg-no-repeat bg-cover bg-center relative'
