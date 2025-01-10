@@ -41,10 +41,10 @@ const OurServices = () => {
     return (
         <section
             ref={ref}
-            className='flex flex-col sm:min-h-[40rem] items-center justify-center bg-rose-200'
+            className='flex flex-col sm:min-h-[35rem] items-center justify-center bg-rose-200'
         >
             <motion.div
-                className='my-8 flex items-center justify-center w-full max-w-6xl'
+                className='my-8 flex items-center justify-center mt-0 w-full max-w-6xl'
                 initial='hidden'
                 animate={controls}
                 variants={containerVariants}

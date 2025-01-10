@@ -81,7 +81,7 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                     align: 'center',
                 }}
                 orientation='horizontal'
-                className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl pb-8'
+                className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl'
             >
                 <CarouselContent>
                     {petServices.map((service, index) => (
