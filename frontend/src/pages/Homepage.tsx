@@ -1,7 +1,7 @@
 import About from '@/components/About/About';
 import Header from '@/components/Header/Header';
 import Hero from '@/components/Hero/Hero';
-import OurServices from '@/components/OurServices/OurServices';
+import Services from '@/components/Services/Services';
 
 const Homepage = () => {
     return (
@@ -9,7 +9,7 @@ const Homepage = () => {
             <Header />
             <main className='mt-24'>
                 <Hero />
-                <OurServices />
+                <Services />
                 <About />
             </main>
         </>

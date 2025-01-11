@@ -6,7 +6,7 @@ import { containerVariants } from '@/constants/containerVariants';
 import { itemVariants } from '@/constants/itemVariants';
 import useAutoplayPlugin from '@/hooks/useAutoplayPlugin';
 
-const OurServices = () => {
+const Services = () => {
     const { ref, controls } = useInViewControls();
     const plugin = useAutoplayPlugin();
 
@@ -36,4 +36,4 @@ const OurServices = () => {
     );
 };
 
-export default OurServices;
+export default Services;
