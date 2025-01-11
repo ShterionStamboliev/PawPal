@@ -1,34 +1,14 @@
 import { Separator } from '../ui/separator';
-import Autoplay from 'embla-carousel-autoplay';
 import ServicesCarousel from './ServicesCarousel';
 import { motion } from 'framer-motion';
 import useInViewControls from '@/hooks/useInViewControls';
-import { useRef } from 'react';
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.6, ease: 'easeOut' },
-    },
-};
+import { containerVariants } from '@/constants/containerVariants';
+import { itemVariants } from '@/constants/itemVariants';
+import useAutoplayPlugin from '@/hooks/useAutoplayPlugin';
 
 const OurServices = () => {
     const { ref, controls } = useInViewControls();
-
-    const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+    const plugin = useAutoplayPlugin();
 
     return (
         <section
