@@ -11,28 +11,19 @@ import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
 import useInViewControls from '@/hooks/useInViewControls';
 import { petServices } from '@/constants/petServices';
+import { servicesContainerVariants } from '@/constants/containerVariants';
 
 type ServicesCarouselProps = { plugin: React.MutableRefObject<AutoplayType> };
 
 const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
     const { ref, controls } = useInViewControls();
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                delay: 1,
-            },
-        },
-    };
-
     return (
         <motion.div
             ref={ref}
             initial='hidden'
             animate={controls}
-            variants={containerVariants}
+            variants={servicesContainerVariants}
         >
             <Carousel
                 plugins={[plugin.current]}

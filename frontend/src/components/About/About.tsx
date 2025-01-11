@@ -1,48 +1,13 @@
+import useInViewControls from '@/hooks/useInViewControls';
 import { Separator } from '../ui/separator';
 import vetImage from '@/assets/vet-image.png';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 1, delay: 1, ease: 'easeOut' },
-    },
-};
-
-const imageVariants = {
-    hidden: { x: 80, opacity: 0 },
-    visible: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 1, delay: 1, ease: 'easeOut' },
-    },
-};
+import { motion } from 'framer-motion';
+import { containerVariants } from '@/constants/containerVariants';
+import { itemVariants } from '@/constants/itemVariants';
+import { imageVariants } from '@/constants/imageVariants';
 
 const About = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            controls.start('visible');
-        }
-    }, [isInView, controls]);
+    const { ref, controls } = useInViewControls();
 
     return (
         <section
