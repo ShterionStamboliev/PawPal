@@ -11,9 +11,7 @@ import {
     CarouselPrevious,
 } from '../ui/carousel';
 import { Button } from '../ui/button';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import useInViewControls from '@/hooks/useInViewControls';
 
 type PetService = {

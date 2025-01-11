@@ -1,9 +1,9 @@
 import { Separator } from '../ui/separator';
 import Autoplay from 'embla-carousel-autoplay';
 import ServicesCarousel from './ServicesCarousel';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import useInViewControls from '@/hooks/useInViewControls';
+import { useRef } from 'react';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,15 +26,7 @@ const itemVariants = {
 };
 
 const OurServices = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            controls.start('visible');
-        }
-    }, [isInView, controls]);
+    const { ref, controls } = useInViewControls();
 
     const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
 
