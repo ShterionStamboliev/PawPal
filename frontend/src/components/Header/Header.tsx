@@ -1,7 +1,7 @@
 import paw from '@/assets/cat-paw.png';
-import { Button } from '../ui/button';
-import { Link, NavLink } from 'react-router';
-import { navLinks } from '@/constants/navigationLinks';
+import { Link } from 'react-router';
+import HeaderNavigation from './HeaderNavigation';
+import PrimaryButton from '@/common/PrimaryButton';
 
 const Header = () => {
     return (
@@ -17,25 +17,11 @@ const Header = () => {
                         PawPal
                     </h1>
                 </div>
-                <nav className='flex gap-12 items-center'>
-                    {navLinks.map((link) => (
-                        <NavLink
-                            to={link.path}
-                            key={link.name}
-                            className={({ isActive }) =>
-                                isActive
-                                    ? 'text-2xl font-chewy text-rose-600'
-                                    : 'text-2xl font-chewy text-rose-900 hover:text-rose-600 transition ease-in-out duration-150'
-                            }
-                        >
-                            {link.name}
-                        </NavLink>
-                    ))}
-                </nav>
-                <Button className='flex items-center gap-2 px-4 py-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 transition-all'>
+                <HeaderNavigation />
+                <PrimaryButton>
                     <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                     <Link to='/login'>Sign Up</Link>
-                </Button>
+                </PrimaryButton>
             </div>
         </header>
     );
