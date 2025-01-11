@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 type PrimaryButtonProps = {
     children?: React.ReactNode;
@@ -11,13 +12,21 @@ type PrimaryButtonProps = {
         | 'link'
         | null
         | undefined;
+    className?: string;
 };
 
-const PrimaryButton = ({ children, variant }: PrimaryButtonProps) => {
+const PrimaryButton = ({
+    children,
+    variant,
+    className,
+}: PrimaryButtonProps) => {
     return (
         <Button
             variant={variant}
-            className='flex items-center gap-2 px-4 py-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 hover:text-white'
+            className={cn(
+                className,
+                'flex items-center gap-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 hover:text-white',
+            )}
         >
             {children}
         </Button>

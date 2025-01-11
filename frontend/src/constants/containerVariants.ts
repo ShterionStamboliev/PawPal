@@ -1,4 +1,6 @@
-export const containerVariants = {
+import { ContainerVariants } from '@/types/containerVariants';
+
+export const containerVariants: ContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -9,7 +11,7 @@ export const containerVariants = {
     },
 };
 
-export const servicesContainerVariants = {
+export const servicesContainerVariants: ContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
