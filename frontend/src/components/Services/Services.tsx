@@ -22,13 +22,13 @@ const Services = () => {
                 variants={containerVariants}
             >
                 <motion.h2
-                    className='font-chewy capitalize text-rose-800 font-semibold ml-10 text-3xl whitespace-nowrap'
+                    className='font-chewy capitalize text-rose-800 font-semibold ml-10 mt-10 lg:mt-0 text-3xl whitespace-nowrap'
                     variants={itemVariants}
                 >
                     Our services
                 </motion.h2>
                 <motion.div className='w-[20rem] ml-4' variants={itemVariants}>
-                    <Separator className='bg-rose-600/50' />
+                    <Separator className='bg-rose-600/50 mt-10' />
                 </motion.div>
             </motion.div>
             <ServicesCarousel plugin={plugin} />
