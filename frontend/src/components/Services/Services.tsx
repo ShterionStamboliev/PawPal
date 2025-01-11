@@ -16,7 +16,7 @@ const Services = () => {
             className='flex flex-col sm:min-h-[35rem] items-center justify-center bg-rose-200'
         >
             <motion.div
-                className='my-8 flex items-center justify-center mt-0 w-full max-w-6xl'
+                className='my-8 px-10 flex items-center justify-center mt-0 w-full max-w-6xl'
                 initial='hidden'
                 animate={controls}
                 variants={containerVariants}
@@ -28,7 +28,7 @@ const Services = () => {
                     Our services
                 </motion.h2>
                 <motion.div className='w-[20rem] ml-4' variants={itemVariants}>
-                    <Separator className='bg-rose-600/50 mt-10' />
+                    <Separator className='bg-rose-600/50 mt-10 lg:mt-0' />
                 </motion.div>
             </motion.div>
             <ServicesCarousel plugin={plugin} />

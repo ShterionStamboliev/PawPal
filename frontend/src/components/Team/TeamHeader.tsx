@@ -1,19 +1,19 @@
 import { ContainerVariants } from '@/types/containerVariants';
+import { ItemVariants } from '@/types/itemVariants';
 import { AnimationControls, motion } from 'framer-motion';
 import { Separator } from '../ui/separator';
-import { ItemVariants } from '@/types/itemVariants';
 
-type AboutHeaderProps = {
+type TeamHeaderProps = {
     controls: AnimationControls;
     containerVariants: ContainerVariants;
     itemVariants: ItemVariants;
 };
 
-const AboutHeader = ({
-    controls,
+const TeamHeader = ({
     containerVariants,
+    controls,
     itemVariants,
-}: AboutHeaderProps) => {
+}: TeamHeaderProps) => {
     return (
         <motion.div
             className='my-8 flex px-10 sm:items-center sm:justify-center w-full max-w-6xl'
@@ -25,7 +25,7 @@ const AboutHeader = ({
                 className='font-chewy capitalize text-rose-800 font-semibold text-3xl whitespace-nowrap'
                 variants={itemVariants}
             >
-                About Us
+                The Team
             </motion.h2>
             <motion.div
                 className='w-[20rem] ml-4 self-center'
@@ -37,4 +37,4 @@ const AboutHeader = ({
     );
 };
 
-export default AboutHeader;
+export default TeamHeader;

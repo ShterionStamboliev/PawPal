@@ -2,17 +2,17 @@ import { ContainerVariants } from '@/types/containerVariants';
 import { ItemVariants } from '@/types/itemVariants';
 import { AnimationControls, motion } from 'framer-motion';
 
-type AboutTextProps = {
+type TeamTextProps = {
     controls: AnimationControls;
     containerVariants: ContainerVariants;
     itemVariants: ItemVariants;
 };
 
-const AboutText = ({
-    controls,
+const TeamText = ({
     containerVariants,
+    controls,
     itemVariants,
-}: AboutTextProps) => {
+}: TeamTextProps) => {
     return (
         <motion.div
             className='flex flex-col space-y-4 px-10 md:space-y-6 max-w-2xl'
@@ -24,19 +24,18 @@ const AboutText = ({
                 className='font-manrope text-3xl md:text-4xl text-rose-600 font-semibold'
                 variants={itemVariants}
             >
-                About PawPal
+                Meet Our Heroes
             </motion.h3>
             <motion.p
                 className='text-base md:text-lg font-manrope text-rose-950'
                 variants={itemVariants}
             >
-                PawPal is a specialized medical facility that deals with the
-                prevention and treatment of animals of all types. We offer a
-                wide range of professional services to meet the needs of our
-                patients and be prepared for any emergency.
+                Our dedicated team is here to provide compassionate care for
+                your pets, ensuring they receive the attention and expertise
+                they need to live healthier and happier lives.
             </motion.p>
         </motion.div>
     );
 };
 
-export default AboutText;
+export default TeamText;

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { AutoplayType } from 'embla-carousel-autoplay';
 import {
     Carousel,
@@ -6,15 +7,16 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '../ui/carousel';
-import { motion } from 'framer-motion';
-import useInViewControls from '@/hooks/useInViewControls';
-import { petServices } from '@/constants/petServices';
 import { servicesContainerVariants } from '@/constants/containerVariants';
-import ServicesCarouselCard from './ServicesCarouselCard';
+import useInViewControls from '@/hooks/useInViewControls';
+import { veterinarians } from '@/constants/veterinarians';
+import TeamCarouselCard from './TeamCarouselCard';
 
-type ServicesCarouselProps = { plugin: React.MutableRefObject<AutoplayType> };
+type TeamCarouselProps = {
+    plugin: React.MutableRefObject<AutoplayType>;
+};
 
-const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
+const TeamCarousel = ({ plugin }: TeamCarouselProps) => {
     const { ref, controls } = useInViewControls();
 
     return (
@@ -35,20 +37,17 @@ const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
                 className='w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mb-10 lg:mb-0'
             >
                 <CarouselContent>
-                    {petServices.map((service, index) => (
-                        <CarouselItem
-                            key={index}
-                            className=' lg:basis-1/2 xl:basis-1/3'
-                        >
-                            <ServicesCarouselCard service={service} />
+                    {veterinarians.map((vet, index) => (
+                        <CarouselItem key={index} className=''>
+                            <TeamCarouselCard vet={vet} />
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className='hidden md:inline-flex md:left-10 lg:-left-10' />
-                <CarouselNext className='hidden md:inline-flex md:right-10 lg:-right-10' />
+                <CarouselPrevious className='hidden md:inline-flex md:left-10 lg:left-36 2xl:left-20' />
+                <CarouselNext className='hidden md:inline-flex md:right-10 lg:right-36 2xl:right-20' />
             </Carousel>
         </motion.div>
     );
 };
 
-export default ServicesCarousel;
+export default TeamCarousel;
