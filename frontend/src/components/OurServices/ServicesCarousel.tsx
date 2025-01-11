@@ -14,6 +14,7 @@ import { Button } from '../ui/button';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import useInViewControls from '@/hooks/useInViewControls';
 
 type PetService = {
     name: string;
@@ -46,15 +47,7 @@ const petServices: PetService[] = [
 type ServicesCarouselProps = { plugin: React.MutableRefObject<AutoplayType> };
 
 const ServicesCarousel = ({ plugin }: ServicesCarouselProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            controls.start('visible');
-        }
-    }, [isInView, controls]);
+    const { ref, controls } = useInViewControls();
 
     const containerVariants = {
         hidden: { opacity: 0 },
