@@ -1,12 +1,7 @@
 import paw from '@/assets/cat-paw.png';
 import { Button } from '../ui/button';
 import { Link, NavLink } from 'react-router';
-
-const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Contacts', path: '/contacts' },
-];
+import { navLinks } from '@/constants/navigationLinks';
 
 const Header = () => {
     return (
