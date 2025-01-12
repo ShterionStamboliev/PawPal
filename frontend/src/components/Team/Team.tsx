@@ -13,7 +13,7 @@ const Team = () => {
     return (
         <section
             ref={ref}
-            className='flex flex-col rounded-lg bg-rose-200 mx-10 sm:min-h-[35rem] items-center justify-center'
+            className='flex flex-col rounded-lg mb-10 bg-rose-200 mx-10 sm:min-h-[35rem] items-center justify-center'
         >
             <TeamHeader
                 controls={controls}
