@@ -1,8 +1,7 @@
 import paw from '@/assets/cat-paw.png';
-import { Link } from 'react-router';
 import HeaderNavigation from './HeaderNavigation';
-import PrimaryButton from '@/common/PrimaryButton';
 import HeaderMainTitle from './HeaderMainTitle';
+import UserSignUp from '../Forms/SignUp/UserSignUp';
 
 const Header = () => {
     return (
@@ -10,10 +9,7 @@ const Header = () => {
             <div className='flex mx-auto px-8 md:px-12 py-5 justify-between items-center backdrop-blur-sm backdrop-brightness-90'>
                 <HeaderMainTitle paw={paw} />
                 <HeaderNavigation />
-                <PrimaryButton>
-                    <img src={paw} alt='Cat Paw' className='h-6 w-6' />
-                    <Link to='/login'>Sign Up</Link>
-                </PrimaryButton>
+                <UserSignUp />
             </div>
         </header>
     );
