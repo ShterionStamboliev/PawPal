@@ -7,7 +7,7 @@ import FooterSocials from './FooterSocials';
 const Footer = () => {
     return (
         <>
-            <footer className='w-full bg-rose-400 text-white gap-10 py-16 px-10 flex flex-col md:items-center'>
+            <footer className='w-full bg-rose-400 text-white gap-10 py-8 px-10 flex flex-col md:items-center'>
                 <div className='flex flex-col sm:flex-row flex-wrap mx-auto gap-20 md:gap-28 justify-center'>
                     <FooterExplore />
                     <FooterServices />
