@@ -16,7 +16,7 @@ const Hero = () => {
         >
             <div className='absolute inset-0 bg-black/25 backdrop-blur-sm'></div>
             <div className='container relative z-10'>
-                <div className='flex flex-col sm:m-6 lg:m-0 mx-6 mb-6 xl:max-w-3xl justify-center text-center xl:text-left rounded-lg gap-10 p-10 text-white border-2 bg-rose-700/80 backdrop-blur-sm border-rose-600'>
+                <div className='flex flex-col sm:m-6 lg:mx-6 mx-6 mb-6 xl:max-w-3xl justify-center text-center xl:text-left rounded-lg gap-10 p-10 text-white border-2 bg-rose-700/80 backdrop-blur-sm border-rose-600'>
                     <HeroText />
                     <div>
                         <PrimaryButton className='p-8 text-lg font-semibold'>
