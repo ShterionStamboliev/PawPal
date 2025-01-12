@@ -1,7 +1,6 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -15,15 +14,13 @@ const UserSignUp = () => {
                 <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                 Sign Up
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className='bg-rose-300' aria-describedby={undefined}>
                 <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                    <DialogDescription>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
-                    </DialogDescription>
+                    <DialogTitle className='flex items-center justify-center'>
+                        Sign up to PawPal
+                    </DialogTitle>
                 </DialogHeader>
+                {/** FORM CONTENT HERE */}
             </DialogContent>
         </Dialog>
     );
