@@ -1,13 +1,13 @@
-import { navLinks } from '@/constants/navigationLinks';
+import { headerNavLinks } from '@/constants/navigationLinks';
 import { NavLink } from 'react-router';
 
 const HeaderNavigation = () => {
     return (
         <nav className='flex gap-12 items-center'>
-            {navLinks.map((link) => (
+            {headerNavLinks.map((link, idx) => (
                 <NavLink
                     to={link.path}
-                    key={link.name}
+                    key={idx}
                     className={({ isActive }) =>
                         isActive
                             ? 'text-2xl font-chewy text-rose-600'
