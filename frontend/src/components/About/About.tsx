@@ -11,7 +11,7 @@ const About = () => {
 
     return (
         <section
-            className='flex flex-col sm:min-h-[35rem] items-center justify-center mx-10 mb-8'
+            className='flex flex-col bg-rose-200/50 rounded-lg sm:min-h-[35rem] items-center justify-center mx-10 my-10'
             ref={ref}
         >
             <AboutHeader

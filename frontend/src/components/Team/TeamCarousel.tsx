@@ -27,7 +27,7 @@ const TeamCarousel = ({ plugin }: TeamCarouselProps) => {
             variants={servicesContainerVariants}
         >
             <Carousel
-                // plugins={[plugin.current]}
+                plugins={[plugin.current]}
                 onMouseEnter={() => plugin.current.stop()}
                 onMouseLeave={() => plugin.current.play()}
                 opts={{
