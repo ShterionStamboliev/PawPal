@@ -1,17 +1,16 @@
+import { Separator } from '../ui/separator';
+
 type FooterProps = {};
 
 const Footer = ({}: FooterProps) => {
     return (
-        <footer className='w-full bg-gray-800 text-white py-20'>
-            <div className='row'>
-                <div className='col-lg-6 col-md-6 col-sm-6'>
-                    <div className='footer-logo'>
-                        <a href='/'>
-                            <img src='/images/logo.png' alt='Logo' />
-                        </a>
-                    </div>
-                </div>
+        <footer className='w-full bg-gray-800 text-white gap-10 py-20 px-10 flex flex-col md:flex-row justify-between items-center'>
+            <div className='flex flex-wrap gap-20 md:gap-20 justify-center'>
+                <h2>Explore</h2>
+                <h2>Services</h2>
+                <h2>Contacts</h2>
             </div>
+            <Separator className='md:w-1/2' />
         </footer>
     );
 };

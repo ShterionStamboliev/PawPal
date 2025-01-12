@@ -7,16 +7,16 @@ import Team from '@/components/Team/Team';
 
 const Homepage = () => {
     return (
-        <>
+        <div className='min-h-screen flex flex-col overflow-x-hidden'>
             <Header />
-            <main className='mt-24'>
+            <main className='mt-24 flex-grow'>
                 <Hero />
                 <Services />
                 <About />
                 <Team />
-                <Footer />
             </main>
-        </>
+            <Footer />
+        </div>
     );
 };
 
