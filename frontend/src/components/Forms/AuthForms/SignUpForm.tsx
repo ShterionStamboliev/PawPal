@@ -18,7 +18,7 @@ const SignUpForm = ({ handleSubmit }: SignUpFormProps) => {
             password: '',
             address: {
                 city: '',
-                phone: '',
+                phone: undefined,
             },
         },
         mode: 'onSubmit',

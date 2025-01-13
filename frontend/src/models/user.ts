@@ -15,7 +15,7 @@ export const UserSchema = z.object({
         city: z.string().min(3, {
             message: 'City must be 3 or more characters long',
         }),
-        phone: z.string().min(10, {
+        phone: z.coerce.number().min(10, {
             message: 'Phone must be 10 or more characters long',
         }),
     }),
