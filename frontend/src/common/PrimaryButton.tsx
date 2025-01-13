@@ -13,12 +13,16 @@ type PrimaryButtonProps = {
         | null
         | undefined;
     className?: string;
+    type?: 'submit';
+    id?: string;
 };
 
 const PrimaryButton = ({
     children,
     variant,
     className,
+    type,
+    id,
 }: PrimaryButtonProps) => {
     return (
         <Button
@@ -27,6 +31,8 @@ const PrimaryButton = ({
                 className,
                 'flex items-center gap-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 hover:text-white',
             )}
+            type={type}
+            id={id}
         >
             {children}
         </Button>

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const User = z.object({
+export const UserSchema = z.object({
     firstName: z.string().min(3, {
         message: 'First name must be 3 or more characters long',
     }),
@@ -15,10 +15,10 @@ const User = z.object({
         city: z.string().min(3, {
             message: 'City must be 3 or more characters long',
         }),
-        phone: z.number().min(10, {
+        phone: z.string().min(10, {
             message: 'Phone must be 10 or more characters long',
         }),
     }),
 });
 
-export type User = z.infer<typeof User>;
+export type User = z.infer<typeof UserSchema>;
