@@ -21,4 +21,12 @@ export const UserSchema = z.object({
     }),
 });
 
+export const UserLoginSchema = z.object({
+    email: z.string().email({ message: 'Invalid email address' }),
+    password: z
+        .string()
+        .min(6, { message: 'Password must be 6 or more characters long' }),
+});
+
 export type User = z.infer<typeof UserSchema>;
+export type UserLogin = z.infer<typeof UserLoginSchema>;

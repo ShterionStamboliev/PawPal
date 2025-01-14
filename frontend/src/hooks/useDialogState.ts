@@ -8,3 +8,12 @@ export const useDialogState = () => {
         setIsOpen,
     };
 };
+
+export const useModalState = () => {
+    const [isSignUp, setIsSignUp] = useState<boolean>(true);
+
+    return {
+        isSignUp,
+        setIsSignUp,
+    };
+};

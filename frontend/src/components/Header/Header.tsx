@@ -1,7 +1,7 @@
 import paw from '@/assets/cat-paw.png';
 import HeaderNavigation from './HeaderNavigation';
 import HeaderMainTitle from './HeaderMainTitle';
-import UserSignUp from '../Forms/SignUp/UserSignUp';
+import UserAuthModal from '../Forms/UserAuthModal/UserAuthModal';
 
 const Header = () => {
     return (
@@ -9,7 +9,7 @@ const Header = () => {
             <div className='flex mx-auto px-8 md:px-12 py-5 justify-between items-center backdrop-blur-sm backdrop-brightness-90'>
                 <HeaderMainTitle paw={paw} />
                 <HeaderNavigation />
-                <UserSignUp />
+                <UserAuthModal />
             </div>
         </header>
     );
