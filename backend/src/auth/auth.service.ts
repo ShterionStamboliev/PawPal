@@ -97,4 +97,11 @@ export class AuthService {
             message: 'Login successful',
         };
     }
+
+    async signOut(res: Response): Promise<{ message: string }> {
+        res.clearCookie('token');
+        return {
+            message: 'Logout successful',
+        };
+    }
 }

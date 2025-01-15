@@ -14,7 +14,7 @@ export class AuthController {
         @Res() res: Response,
     ): Promise<void> {
         const message = await this.authService.signUp(signUpDto, res);
-        res.status(201).send(message);
+        res.status(201).json(message);
     }
 
     @Post('signin')
@@ -23,6 +23,11 @@ export class AuthController {
         @Res() res: Response,
     ): Promise<void> {
         const message = await this.authService.signIn(signInDto, res);
-        res.status(200).send(message);
+        res.status(200).json(message);
+    }
+
+    @Post('signout') async signOut(@Res() res: Response): Promise<void> {
+        const message = await this.authService.signOut(res);
+        res.status(200).json(message);
     }
 }

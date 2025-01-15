@@ -30,3 +30,7 @@ export const signIn = async (
 ): Promise<UserDataResponse> => {
     return await axiosApi.post('/auth/signin', userData);
 };
+
+export const signOut = async (): Promise<void> => {
+    return await axiosApi.post('/auth/signout');
+};

@@ -24,7 +24,7 @@ const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
     const { isOpen, setIsOpen } = useDialogState();
     const { isSignUp, switchModals } = useModalState();
 
-    const { useSignUp, useSignIn } = useMutations();
+    const { useSignUp, useSignIn, useSignOut } = useMutations();
 
     const { mutate: signUpMutate } = useSignUp({
         queryKey: ['user'],
@@ -36,12 +36,20 @@ const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
         setIsOpen,
     });
 
+    const { mutate: signOutMutate } = useSignOut({
+        queryKey: ['user'],
+    });
+
     const handleSignUpSubmit = (userData: User) => {
         signUpMutate(userData);
     };
 
     const handleSignInSubmit = (userData: UserLogin) => {
         signInMutate(userData);
+    };
+
+    const handleSignOutSubmit = () => {
+        signOutMutate();
     };
 
     return (
@@ -51,14 +59,14 @@ const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
             </span>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {isAuthenticated ? (
-                    <PrimaryButton>
+                    <PrimaryButton onClick={handleSignOutSubmit}>
                         <img src={paw} alt='Cat Paw' className='h-6 w-6' />
                         Logout
                     </PrimaryButton>
                 ) : (
                     <DialogTrigger className='flex gap-2 py-2 px-4 rounded-lg bg-rose-500 text-white font-semibold hover:bg-rose-600 hover:text-white transition-colors ease-in-out duration-150'>
                         <img src={paw} alt='Cat Paw' className='h-6 w-6' />
-                        Sign Up
+                        Sign In
                     </DialogTrigger>
                 )}
                 <DialogContent
@@ -69,7 +77,7 @@ const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
                         <DialogTitle className='flex flex-col items-center gap-1 justify-center text-3xl mb-6'>
                             <img src={paw} className='h-20 w-20 -rotate-12' />
                             <span className='font-normal'>
-                                {isSignUp ? 'Sign up to' : 'Sign in to'}
+                                {isSignUp ? 'Sign in to' : 'Sign up to'}
                                 <span className='font-modak ml-2 text-rose-800 tracking-wide text-4xl'>
                                     PawPal
                                 </span>
@@ -77,21 +85,18 @@ const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
                         </DialogTitle>
                     </DialogHeader>
                     {isSignUp ? (
-                        <SignUpForm handleSubmit={handleSignUpSubmit} />
-                    ) : (
                         <SignInForm handleSubmit={handleSignInSubmit} />
+                    ) : (
+                        <SignUpForm handleSubmit={handleSignUpSubmit} />
                     )}
                     <DialogFooter>
                         <span>
                             {isSignUp
-                                ? 'Already have an account?'
-                                : "Don't have an account?"}
+                                ? "Don't have an account?"
+                                : 'Already have an account?'}
                         </span>
-                        <Button
-                            onClick={switchModals}
-                            id={isSignUp ? 'signup' : 'signin'}
-                        >
-                            {isSignUp ? 'Sign In' : 'Sign Up'}
+                        <Button onClick={switchModals}>
+                            {isSignUp ? 'Sign Up' : 'Sign In'}
                         </Button>
                     </DialogFooter>
                 </DialogContent>

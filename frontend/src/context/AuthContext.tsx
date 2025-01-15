@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { signIn, signUp } from '@/api/api';
+import { signIn, signOut, signUp } from '@/api/api';
 import { User, UserLogin } from '@/models/user';
 import { jwtDecode } from 'jwt-decode';
 import { getCookie } from '@/helpers/cookieParser';
@@ -9,7 +9,7 @@ interface AuthContextType {
     token: string | null;
     login: (data: UserLogin) => Promise<void>;
     register: (data: User) => Promise<void>;
-    // logout: () => Promise<void>;
+    logout: () => Promise<void>;
 }
 
 type AuthProviderProps = {
@@ -52,14 +52,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
     };
 
-    // const logoutUser = async () => {
-    //     await logout();
-    //     setIsAuthenticated(false);
-    // };
+    const logout = async () => {
+        await signOut();
+        setIsAuthenticated(false);
+        sessionStorage.removeItem('user');
+    };
 
     return (
         <AuthContext.Provider
-            value={{ isAuthenticated, login, register, token, user }}
+            value={{ isAuthenticated, login, register, logout, token, user }}
         >
             {children}
         </AuthContext.Provider>

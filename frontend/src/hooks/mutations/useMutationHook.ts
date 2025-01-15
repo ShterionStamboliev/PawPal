@@ -1,3 +1,4 @@
+import { signOut } from '@/api/api';
 import { useAuth } from '@/context/AuthContext';
 import { User, UserLogin } from '@/models/user';
 import {
@@ -14,7 +15,7 @@ interface MutationActionState {
 
 export const useMutations = () => {
     const client = useQueryClient();
-    const { login, register } = useAuth();
+    const { login, register, logout } = useAuth();
 
     const useSignUp = ({
         queryKey,
@@ -57,8 +58,23 @@ export const useMutations = () => {
         });
     };
 
+    const useSignOut = ({ queryKey }: MutationActionState) => {
+        return useMutation({
+            mutationFn: logout,
+            onSuccess: () => {
+                client.invalidateQueries({
+                    queryKey,
+                });
+            },
+            onError: () => {
+                console.log('Something wrong happened');
+            },
+        });
+    };
+
     return {
         useSignUp,
         useSignIn,
+        useSignOut,
     };
 };
