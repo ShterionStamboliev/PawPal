@@ -32,19 +32,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
     }, []);
 
-    // const logoutUser = async () => {
-    //     await logout();
-    //     setIsAuthenticated(false);
-    // };
-
     const login = async (data: UserLogin) => {
         await signIn(data);
         const decodedUser: Partial<User> = jwtDecode(document.cookie);
-        setUser({
-            firstName: decodedUser.firstName,
-            lastName: decodedUser.lastName,
-            email: decodedUser.email,
-        });
+        setUser(decodedUser);
         setToken(getCookie());
         setIsAuthenticated(true);
         sessionStorage.setItem('user', JSON.stringify(decodedUser));
@@ -60,6 +51,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setIsAuthenticated(true);
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
     };
+
+    // const logoutUser = async () => {
+    //     await logout();
+    //     setIsAuthenticated(false);
+    // };
 
     return (
         <AuthContext.Provider
