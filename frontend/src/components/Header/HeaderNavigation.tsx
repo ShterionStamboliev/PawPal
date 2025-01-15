@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 
 const HeaderNavigation = () => {
     return (
-        <nav className='flex gap-12 items-center'>
+        <nav className='hidden md:flex gap-12 items-center'>
             {headerNavLinks.map((link, idx) => (
                 <NavLink
                     to={link.path}
