@@ -1,4 +1,3 @@
-import { signOut } from '@/api/api';
 import { useAuth } from '@/context/AuthContext';
 import { User, UserLogin } from '@/models/user';
 import {
@@ -15,6 +14,7 @@ interface MutationActionState {
 
 export const useMutations = () => {
     const client = useQueryClient();
+
     const { login, register, logout } = useAuth();
 
     const useSignUp = ({
