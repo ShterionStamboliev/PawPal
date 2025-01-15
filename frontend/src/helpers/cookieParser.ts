@@ -1,8 +1,8 @@
 export function getCookie() {
-    if (!document.cookie) {
+    const cookie = document.cookie;
+    if (!cookie) {
         return null;
     }
-    const cookie = document.cookie;
     const token = cookie.split('=')[1];
 
     return token;
