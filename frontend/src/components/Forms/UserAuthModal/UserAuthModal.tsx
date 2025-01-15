@@ -14,14 +14,13 @@ import SignUpForm from '../AuthForms/SignUpForm';
 import SignInForm from '../AuthForms/SignInForm';
 import { Button } from '@/components/ui/button';
 import PrimaryButton from '@/common/PrimaryButton';
+import { useAuth } from '@/context/AuthContext';
 
-type UserAuthProps = {
-    user: Partial<User> | null;
-    isAuthenticated: boolean;
-};
+const UserAuthModal = () => {
+    const { user, isAuthenticated } = useAuth();
 
-const UserAuthModal = ({ user, isAuthenticated }: UserAuthProps) => {
     const { isOpen, setIsOpen } = useDialogState();
+
     const { isSignUp, switchModals } = useModalState();
 
     const { useSignUp, useSignIn, useSignOut } = useMutations();
