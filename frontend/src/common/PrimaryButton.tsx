@@ -15,6 +15,7 @@ type PrimaryButtonProps = {
     className?: string;
     type?: 'submit';
     id?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const PrimaryButton = ({
@@ -23,6 +24,7 @@ const PrimaryButton = ({
     className,
     type,
     id,
+    onClick,
 }: PrimaryButtonProps) => {
     return (
         <Button
@@ -33,6 +35,7 @@ const PrimaryButton = ({
             )}
             type={type}
             id={id}
+            onClick={onClick}
         >
             {children}
         </Button>
