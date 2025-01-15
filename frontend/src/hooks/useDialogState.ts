@@ -12,8 +12,11 @@ export const useDialogState = () => {
 export const useModalState = () => {
     const [isSignUp, setIsSignUp] = useState<boolean>(true);
 
+    const switchModals = () => setIsSignUp((prev) => !prev);
+
     return {
         isSignUp,
         setIsSignUp,
+        switchModals,
     };
 };

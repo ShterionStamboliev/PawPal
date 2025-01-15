@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 
 const UserAuthModal = () => {
     const { isOpen, setIsOpen } = useDialogState();
-    const { isSignUp, setIsSignUp } = useModalState();
+    const { isSignUp, switchModals } = useModalState();
 
     const { useSignUp, useSignIn } = useMutations();
 
@@ -37,8 +37,6 @@ const UserAuthModal = () => {
     const handleSignInSubmit = (userData: UserLogin) => {
         signInMutate(userData);
     };
-
-    const switchModals = () => setIsSignUp((prev) => !prev);
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
