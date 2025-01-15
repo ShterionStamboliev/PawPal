@@ -54,7 +54,7 @@ const UserAuthModal = () => {
 
     return (
         <div className='flex items-center justify-center gap-4'>
-            <span className='text-rose-900 font-semibold'>
+            <span className='hidden lg:flex text-rose-900 font-semibold'>
                 {isAuthenticated ? `Welcome, ${user?.firstName}` : ''}
             </span>
             <div className='hidden md:flex'>
@@ -62,7 +62,7 @@ const UserAuthModal = () => {
                     {isAuthenticated ? (
                         <PrimaryButton onClick={handleSignOutSubmit}>
                             <img src={paw} alt='Cat Paw' className='h-6 w-6' />
-                            Logout
+                            Sign out
                         </PrimaryButton>
                     ) : (
                         <DialogTrigger className='flex gap-2 py-2 px-4 rounded-lg bg-rose-500 text-white font-semibold hover:bg-rose-600 hover:text-white transition-colors ease-in-out duration-150'>
@@ -106,7 +106,7 @@ const UserAuthModal = () => {
                     </DialogContent>
                 </Dialog>
             </div>
-            <HeaderMobileNavigation />
+            <HeaderMobileNavigation handleSignOut={handleSignOutSubmit} />
             {/**  MOBILE NAV HERE */}
         </div>
     );

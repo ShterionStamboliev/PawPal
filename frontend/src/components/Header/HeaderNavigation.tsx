@@ -1,9 +1,14 @@
 import { headerNavLinks } from '@/constants/navigationLinks';
+import { cn } from '@/lib/utils';
 import { NavLink } from 'react-router';
 
-const HeaderNavigation = () => {
+type HeaderNavigationProps = {
+    className?: string;
+};
+
+const HeaderNavigation = ({ className }: HeaderNavigationProps) => {
     return (
-        <nav className='hidden md:flex gap-12 items-center'>
+        <nav className={cn('hidden md:flex gap-12 items-center', className)}>
             {headerNavLinks.map((link, idx) => (
                 <NavLink
                     to={link.path}
