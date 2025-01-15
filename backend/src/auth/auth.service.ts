@@ -45,7 +45,7 @@ export class AuthService {
         const token = this.jwtService.sign({ id: user._id });
 
         res.cookie('token', token, {
-            httpOnly: true,
+            httpOnly: false,
             maxAge: 24 * 60 * 60 * 1000,
         });
 
@@ -84,10 +84,11 @@ export class AuthService {
             sub: user._id,
             firstName: user.firstName,
             lastName: user.lastName,
+            email: user.email,
         });
 
         res.cookie('token', token, {
-            httpOnly: true,
+            httpOnly: false,
             maxAge: 24 * 60 * 60 * 1000,
         });
 

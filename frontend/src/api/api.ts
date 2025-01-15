@@ -1,17 +1,6 @@
 import { User, UserLogin } from '@/models/user';
 import axios from 'axios';
 
-const API = import.meta.env.VITE_BACKEND_API;
-
-const axiosApi = axios.create({
-    baseURL: API,
-    withCredentials: true,
-});
-
-export const signUp = async (userData: User): Promise<void> => {
-    return axiosApi.post('/auth/signup', userData);
-};
-
 type UserData = {
     user: {
         firstName: string;
@@ -25,8 +14,19 @@ type UserDataResponse = {
     data: UserData;
 };
 
+const API = import.meta.env.VITE_BACKEND_API;
+
+const axiosApi = axios.create({
+    baseURL: API,
+    withCredentials: true,
+});
+
+export const signUp = async (userData: User): Promise<UserDataResponse> => {
+    return await axiosApi.post('/auth/signup', userData);
+};
+
 export const signIn = async (
     userData: UserLogin,
 ): Promise<UserDataResponse> => {
-    return axiosApi.post('/auth/signin', userData);
+    return await axiosApi.post('/auth/signin', userData);
 };

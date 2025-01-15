@@ -23,10 +23,7 @@ const SignInForm = ({ handleSubmit }: SignInFormProps) => {
             <form
                 id='signin'
                 className='space-y-6'
-                onSubmit={form.handleSubmit((data) => {
-                    console.log('Submitting login data:', data);
-                    handleSubmit(data);
-                })}
+                onSubmit={form.handleSubmit(handleSubmit)}
             >
                 <FormInput
                     fieldName='email'

@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { signIn, signUp } from '@/api/api';
 import { User, UserLogin } from '@/models/user';
-
+import { jwtDecode } from 'jwt-decode';
+import { getCookie } from '@/helpers/cookieParser';
 interface AuthContextType {
     isAuthenticated: boolean;
     user: Partial<User> | null;
@@ -22,16 +23,35 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [user, setUser] = useState<Partial<User> | null>(null);
     const [token, setToken] = useState<string | null>(null);
 
-    // const handleToken = (token: string) => {
-    //     setToken(token);
-    //     const decodedToken = jwtDecode(token);
-    //     const data = decodedToken;
-    //     console.log(data);
-    //     sessionStorage.setItem('token', token);
+    useEffect(() => {
+        const storedUser = sessionStorage.getItem('user');
+        if (storedUser) {
+            const userData = JSON.parse(storedUser);
+            setUser(userData);
+            setIsAuthenticated(true);
+        }
+    }, []);
+
+    // const logoutUser = async () => {
+    //     await logout();
+    //     setIsAuthenticated(false);
     // };
 
     const login = async (data: UserLogin) => {
-        const response = await signIn(data);
+        await signIn(data);
+        const decodedUser: Partial<User> = jwtDecode(document.cookie);
+        setUser({
+            firstName: decodedUser.firstName,
+            lastName: decodedUser.lastName,
+            email: decodedUser.email,
+        });
+        setToken(getCookie());
+        setIsAuthenticated(true);
+        sessionStorage.setItem('user', JSON.stringify(decodedUser));
+    };
+
+    const register = async (data: User) => {
+        const response = await signUp(data);
         setUser({
             firstName: response.data.user.firstName,
             lastName: response.data.user.lastName,
@@ -40,16 +60,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setIsAuthenticated(true);
         sessionStorage.setItem('user', JSON.stringify(response.data.user));
     };
-
-    const register = async (data: User) => {
-        await signUp(data);
-        setIsAuthenticated(true);
-    };
-
-    // const logoutUser = async () => {
-    //     await logout();
-    //     setIsAuthenticated(false);
-    // };
 
     return (
         <AuthContext.Provider

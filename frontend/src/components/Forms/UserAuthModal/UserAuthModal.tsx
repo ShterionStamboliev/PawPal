@@ -35,7 +35,6 @@ const UserAuthModal = () => {
     };
 
     const handleSignInSubmit = (userData: UserLogin) => {
-        console.log(userData);
         signInMutate(userData);
     };
 
