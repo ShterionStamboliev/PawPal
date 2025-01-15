@@ -21,7 +21,7 @@ const axiosApi = axios.create({
     withCredentials: true,
 });
 
-export const signUp = async (userData: User): Promise<UserDataResponse> => {
+export const signUp = async (userData: User): Promise<void> => {
     return await axiosApi.post('/auth/signup', userData);
 };
 

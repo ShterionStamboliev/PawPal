@@ -42,14 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     const register = async (data: User) => {
-        const response = await signUp(data);
-        setUser({
-            firstName: response.data.user.firstName,
-            lastName: response.data.user.lastName,
-        });
-        setToken(response.data.user.token);
-        setIsAuthenticated(true);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user));
+        await signUp(data);
     };
 
     const logout = async () => {
