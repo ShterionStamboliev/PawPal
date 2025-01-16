@@ -24,6 +24,7 @@ import SignUpForm from '../Forms/AuthForms/SignUpForm';
 import { User, UserLogin } from '@/models/user';
 import { Button } from '../ui/button';
 import { useState } from 'react';
+import HeaderUserAvatar from './HeaderUserAvatar';
 
 type HeaderMobileNavigationProps = {
     handleSignOut: () => void;
@@ -36,7 +37,7 @@ const HeaderMobileNavigation = ({
     handleSignIn,
     handleSignUp,
 }: HeaderMobileNavigationProps) => {
-    const { user, isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
     const { isOpen, setIsOpen } = useDialogState();
     const { isSignUp, switchModals } = useModalState();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -59,21 +60,7 @@ const HeaderMobileNavigation = ({
                 >
                     <SheetHeader>
                         <SheetTitle className='flex flex-col gap-4'>
-                            {isAuthenticated && (
-                                <div className='relative w-10 h-10 bg-red-300 rounded-full'>
-                                    <span className='absolute top-1 left-1 right-1 sm:left-3.5 text-rose-600'>
-                                        {
-                                            user?.firstName?.slice(
-                                                0,
-                                                user.firstName.length,
-                                            )[0]
-                                        }
-                                    </span>
-                                    <span className='text-sm absolute left-12 top-2 text-rose-600'>
-                                        {user?.email}
-                                    </span>
-                                </div>
-                            )}
+                            <HeaderUserAvatar />
                         </SheetTitle>
                     </SheetHeader>
                     <Separator />

@@ -1,8 +1,6 @@
 import { useAuth } from '@/context/AuthContext';
 
-type HeaderUserAvatarProps = {};
-
-const HeaderUserAvatar = ({}: HeaderUserAvatarProps) => {
+const HeaderUserAvatar = () => {
     const { user, isAuthenticated } = useAuth();
 
     return (
