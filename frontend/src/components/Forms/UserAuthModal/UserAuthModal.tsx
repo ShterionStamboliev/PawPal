@@ -4,7 +4,6 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from '@/components/ui/dialog';
 import { useMutations } from '@/hooks/mutations/useMutationHook';
 import { useDialogState, useModalState } from '@/hooks/useDialogState';
@@ -13,14 +12,11 @@ import paw from '@/assets/cat-paw.png';
 import SignUpForm from '../AuthForms/SignUpForm';
 import SignInForm from '../AuthForms/SignInForm';
 import { Button } from '@/components/ui/button';
-import PrimaryButton from '@/common/PrimaryButton';
-import { useAuth } from '@/context/AuthContext';
 import HeaderMobileNavigation from '@/components/Header/HeaderMobileNavigation';
 import HeaderUserAvatar from '@/components/Header/HeaderUserAvatar';
+import HeaderAuthButtons from '@/components/Header/HeaderAuthButtons';
 
 const UserAuthModal = () => {
-    const { isAuthenticated } = useAuth();
-
     const { isOpen, setIsOpen } = useDialogState();
 
     const { isSignUp, switchModals } = useModalState();
@@ -58,17 +54,7 @@ const UserAuthModal = () => {
             <HeaderUserAvatar className='hidden' />
             <div className='hidden md:flex'>
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                    {isAuthenticated ? (
-                        <PrimaryButton onClick={handleSignOutSubmit}>
-                            <img src={paw} alt='Cat Paw' className='h-6 w-6' />
-                            Sign out
-                        </PrimaryButton>
-                    ) : (
-                        <DialogTrigger className='flex gap-2 py-2 px-4 rounded-lg bg-rose-500 text-white font-semibold hover:bg-rose-600 hover:text-white transition-colors ease-in-out duration-150'>
-                            <img src={paw} alt='Cat Paw' className='h-6 w-6' />
-                            Sign In
-                        </DialogTrigger>
-                    )}
+                    <HeaderAuthButtons handleSignOut={handleSignOutSubmit} />
                     <DialogContent
                         className='bg-rose-200'
                         aria-describedby={undefined}
