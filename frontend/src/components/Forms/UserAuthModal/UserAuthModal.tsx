@@ -106,8 +106,11 @@ const UserAuthModal = () => {
                     </DialogContent>
                 </Dialog>
             </div>
-            <HeaderMobileNavigation handleSignOut={handleSignOutSubmit} />
-            {/**  MOBILE NAV HERE */}
+            <HeaderMobileNavigation
+                handleSignOut={handleSignOutSubmit}
+                handleSignIn={handleSignInSubmit}
+                handleSignUp={handleSignUpSubmit}
+            />
         </div>
     );
 };
