@@ -1,4 +1,3 @@
-import PrimaryButton from '@/common/PrimaryButton';
 import {
     Sheet,
     SheetContent,
@@ -7,24 +6,24 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import { Separator } from '../ui/separator';
-import HeaderNavigation from './HeaderNavigation';
-import { useAuth } from '@/context/AuthContext';
+import { Separator } from '../../ui/separator';
+import HeaderNavigation from '../HeaderNavigation';
 import {
     Dialog,
     DialogContent,
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from '../ui/dialog';
+} from '../../ui/dialog';
 import { useDialogState, useModalState } from '@/hooks/useDialogState';
-import SignInForm from '../Forms/AuthForms/SignInForm';
-import SignUpForm from '../Forms/AuthForms/SignUpForm';
+import SignInForm from '../../Forms/AuthForms/SignInForm';
+import SignUpForm from '../../Forms/AuthForms/SignUpForm';
 import { User, UserLogin } from '@/models/user';
 import { useState } from 'react';
-import HeaderUserAvatar from './HeaderUserAvatar';
+import HeaderUserAvatar from '../HeaderUserAvatar';
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
 import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
+import HeaderAuthToggle from './HeaderAuthToggle';
 
 type HeaderMobileNavigationProps = {
     handleSignOut: () => void;
@@ -37,7 +36,6 @@ const HeaderMobileNavigation = ({
     handleSignIn,
     handleSignUp,
 }: HeaderMobileNavigationProps) => {
-    const { isAuthenticated } = useAuth();
     const { isOpen, setIsOpen } = useDialogState();
     const { isSignUp, switchModals } = useModalState();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -65,25 +63,11 @@ const HeaderMobileNavigation = ({
                     </SheetHeader>
                     <Separator />
                     <HeaderNavigation className='flex flex-col items-start gap-6 md:hidden' />
-                    {isAuthenticated ? (
-                        <PrimaryButton
-                            className='sm:flex sm:flex-1'
-                            type='submit'
-                            onClick={handleSignOut}
-                        >
-                            Sign Out
-                        </PrimaryButton>
-                    ) : (
-                        <PrimaryButton
-                            onClick={() => {
-                                setIsOpen(true);
-                                setIsSheetOpen(false);
-                            }}
-                            className='flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-rose-500 text-white font-semibold hover:bg-rose-600 hover:text-white transition-colors ease-in-out duration-150'
-                        >
-                            Sign In
-                        </PrimaryButton>
-                    )}
+                    <HeaderAuthToggle
+                        handleSignOut={handleSignOut}
+                        setIsOpen={setIsOpen}
+                        setIsSheetOpen={setIsSheetOpen}
+                    />
                 </SheetContent>
             </Sheet>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>

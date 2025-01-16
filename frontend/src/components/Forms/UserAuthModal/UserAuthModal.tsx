@@ -10,7 +10,7 @@ import { useDialogState, useModalState } from '@/hooks/useDialogState';
 import { User, UserLogin } from '@/models/user';
 import SignUpForm from '../AuthForms/SignUpForm';
 import SignInForm from '../AuthForms/SignInForm';
-import HeaderMobileNavigation from '@/components/Header/HeaderMobileNavigation';
+import HeaderMobileNavigation from '@/components/Header/HeaderMobile/HeaderMobileNavigation';
 import HeaderUserAvatar from '@/components/Header/HeaderUserAvatar';
 import HeaderAuthButtons from '@/components/Header/HeaderAuthButtons';
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
