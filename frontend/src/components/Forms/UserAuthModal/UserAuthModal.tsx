@@ -16,9 +16,10 @@ import { Button } from '@/components/ui/button';
 import PrimaryButton from '@/common/PrimaryButton';
 import { useAuth } from '@/context/AuthContext';
 import HeaderMobileNavigation from '@/components/Header/HeaderMobileNavigation';
+import HeaderUserAvatar from '@/components/Header/HeaderUserAvatar';
 
 const UserAuthModal = () => {
-    const { user, isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
 
     const { isOpen, setIsOpen } = useDialogState();
 
@@ -54,9 +55,7 @@ const UserAuthModal = () => {
 
     return (
         <div className='flex items-center justify-center gap-4'>
-            <span className='hidden lg:flex text-rose-900 font-semibold'>
-                {isAuthenticated ? `Welcome, ${user?.firstName}` : ''}
-            </span>
+            <HeaderUserAvatar className='hidden' />
             <div className='hidden md:flex'>
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
                     {isAuthenticated ? (
