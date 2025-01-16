@@ -18,13 +18,13 @@ import {
     DialogTitle,
 } from '../ui/dialog';
 import { useDialogState, useModalState } from '@/hooks/useDialogState';
-import paw from '@/assets/cat-paw.png';
 import SignInForm from '../Forms/AuthForms/SignInForm';
 import SignUpForm from '../Forms/AuthForms/SignUpForm';
 import { User, UserLogin } from '@/models/user';
-import { Button } from '../ui/button';
 import { useState } from 'react';
 import HeaderUserAvatar from './HeaderUserAvatar';
+import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
+import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
 
 type HeaderMobileNavigationProps = {
     handleSignOut: () => void;
@@ -93,13 +93,7 @@ const HeaderMobileNavigation = ({
                 >
                     <DialogHeader>
                         <DialogTitle className='flex flex-col items-center gap-1 justify-center text-3xl mb-6'>
-                            <img src={paw} className='h-20 w-20 -rotate-12' />
-                            <span className='font-normal'>
-                                {isSignUp ? 'Sign in to' : 'Sign up to'}
-                                <span className='font-modak ml-2 text-rose-800 tracking-wide text-4xl'>
-                                    PawPal
-                                </span>
-                            </span>
+                            <DialogHeaderTitle isSignUp={isSignUp} />
                         </DialogTitle>
                     </DialogHeader>
                     {isSignUp ? (
@@ -108,20 +102,10 @@ const HeaderMobileNavigation = ({
                         <SignUpForm handleSubmit={handleSignUp} />
                     )}
                     <DialogFooter>
-                        <div className='flex items-center justify-center mt-4 gap-2'>
-                            <span className=''>
-                                {isSignUp
-                                    ? "Don't have an account?"
-                                    : 'Already have an account?'}
-                            </span>
-                            <Button
-                                onClick={switchModals}
-                                className='font-manrope bg-rose-200 font-semibold text-rose-600 hover:bg-rose-300 hover:text-rose-500'
-                                variant='outline'
-                            >
-                                {isSignUp ? 'Sign Up' : 'Sign In'}
-                            </Button>
-                        </div>
+                        <DialogAuthToggle
+                            isSignUp={isSignUp}
+                            switchModals={switchModals}
+                        />
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
