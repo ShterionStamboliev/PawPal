@@ -5,19 +5,20 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-type FormInputProps = {
-    fieldName: string;
+type FormInputProps<FData> = {
+    fieldName: keyof FData & string;
     inputPlaceholder: string;
     inputType: string;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const FormInput = ({
+const FormInput = <FData,>({
     fieldName,
     inputPlaceholder,
     inputType,
-}: FormInputProps) => {
+}: FormInputProps<FData>) => {
     const { control } = useFormContext();
 
     return (

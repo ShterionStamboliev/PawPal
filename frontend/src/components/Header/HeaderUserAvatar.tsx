@@ -21,7 +21,7 @@ const HeaderUserAvatar = ({ className }: HeaderUserAvatarProps) => {
                 >
                     <span
                         className={cn(
-                            'absolute top-1 left-1 right-1 font-semibold sm:left-3.5 text-rose-600',
+                            'absolute top-1 left-1 right-1 text-lg font-semibold sm:left-3.5 text-rose-600',
                             'md:inline-flex',
                             className,
                         )}

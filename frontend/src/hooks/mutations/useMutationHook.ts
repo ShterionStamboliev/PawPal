@@ -30,8 +30,8 @@ export const useMutations = () => {
                 });
                 setIsOpen && setIsOpen(false);
             },
-            onError: () => {
-                console.log('Something went wrong');
+            onError: (error: Error) => {
+                return error.message;
             },
         });
     };
@@ -53,13 +53,13 @@ export const useMutations = () => {
                 });
                 setIsOpen && setIsOpen(false);
                 toast({
-                    title: 'Login successful',
+                    title: 'Sign in successful',
                     description: `Welcome, ${user?.firstName}!`,
                     variant: 'success',
                 });
             },
-            onError: () => {
-                console.log('Something wrong happened');
+            onError: (error: Error) => {
+                return error.message;
             },
         });
     };
@@ -71,9 +71,13 @@ export const useMutations = () => {
                 client.invalidateQueries({
                     queryKey,
                 });
+                toast({
+                    title: 'Sign out successful',
+                    variant: 'success',
+                });
             },
-            onError: () => {
-                console.log('Something wrong happened');
+            onError: (error: Error) => {
+                return error.message;
             },
         });
     };

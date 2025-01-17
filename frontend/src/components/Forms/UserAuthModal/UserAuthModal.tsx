@@ -28,7 +28,7 @@ const UserAuthModal = () => {
         setIsOpen,
     });
 
-    const { mutate: signInMutate } = useSignIn({
+    const { mutate: signInMutate, isError } = useSignIn({
         queryKey: ['user'],
         setIsOpen,
     });
@@ -65,7 +65,10 @@ const UserAuthModal = () => {
                             </DialogTitle>
                         </DialogHeader>
                         {isSignUp ? (
-                            <SignInForm handleSubmit={handleSignInSubmit} />
+                            <SignInForm
+                                handleSubmit={handleSignInSubmit}
+                                isError={isError}
+                            />
                         ) : (
                             <SignUpForm handleSubmit={handleSignUpSubmit} />
                         )}

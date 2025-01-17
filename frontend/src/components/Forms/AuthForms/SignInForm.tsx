@@ -6,9 +6,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 type SignInFormProps = {
     handleSubmit: (userData: UserLogin) => void;
+    isError: boolean;
 };
 
-const SignInForm = ({ handleSubmit }: SignInFormProps) => {
+const SignInForm = ({ handleSubmit, isError }: SignInFormProps) => {
     const form = useForm<UserLogin>({
         resolver: zodResolver(UserLoginSchema),
         defaultValues: {
@@ -20,17 +21,22 @@ const SignInForm = ({ handleSubmit }: SignInFormProps) => {
 
     return (
         <FormProvider {...form}>
+            {isError && (
+                <span className='text-red-500 text-center'>
+                    Invalid email or password
+                </span>
+            )}
             <form
                 id='signin'
                 className='space-y-6'
                 onSubmit={form.handleSubmit(handleSubmit)}
             >
-                <FormInput
+                <FormInput<UserLogin>
                     fieldName='email'
                     inputPlaceholder='Email'
                     inputType='text'
                 />
-                <FormInput
+                <FormInput<UserLogin>
                     fieldName='password'
                     inputPlaceholder='Password'
                     inputType='password'
