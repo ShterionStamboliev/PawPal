@@ -29,12 +29,14 @@ type HeaderMobileNavigationProps = {
     handleSignOut: () => void;
     handleSignIn: (userData: UserLogin) => void;
     handleSignUp: (userData: User) => void;
+    isError: boolean;
 };
 
 const HeaderMobileNavigation = ({
     handleSignOut,
     handleSignIn,
     handleSignUp,
+    isError,
 }: HeaderMobileNavigationProps) => {
     const { isOpen, setIsOpen } = useDialogState();
     const { isSignUp, switchModals } = useModalState();
@@ -81,7 +83,10 @@ const HeaderMobileNavigation = ({
                         </DialogTitle>
                     </DialogHeader>
                     {isSignUp ? (
-                        <SignInForm handleSubmit={signInAndClose} />
+                        <SignInForm
+                            handleSubmit={signInAndClose}
+                            isError={isError}
+                        />
                     ) : (
                         <SignUpForm handleSubmit={handleSignUp} />
                     )}

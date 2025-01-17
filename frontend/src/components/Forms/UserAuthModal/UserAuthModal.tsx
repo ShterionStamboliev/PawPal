@@ -85,6 +85,7 @@ const UserAuthModal = () => {
                 handleSignOut={handleSignOutSubmit}
                 handleSignIn={handleSignInSubmit}
                 handleSignUp={handleSignUpSubmit}
+                isError={isError}
             />
         </div>
     );
