@@ -12,6 +12,7 @@ export const useCreateFormHooks = <T extends FieldValues>({
         return useFormSchema<T>({
             schema: schema!,
             defaultValues: defaultValues!,
+            mode: 'onSubmit',
         });
     };
 
@@ -20,6 +21,7 @@ export const useCreateFormHooks = <T extends FieldValues>({
             schema: schema!,
             defaultValues: { ...defaultValues! },
             ...formData,
+            mode: 'onSubmit',
         });
     };
 
