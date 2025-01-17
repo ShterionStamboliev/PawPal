@@ -28,5 +28,10 @@ export const UserLoginSchema = z.object({
         .min(6, { message: 'Password must be 6 or more characters long' }),
 });
 
+export const UserLoginDefaults: UserLogin = {
+    email: '',
+    password: '',
+};
+
 export type User = z.infer<typeof UserSchema>;
 export type UserLogin = z.infer<typeof UserLoginSchema>;

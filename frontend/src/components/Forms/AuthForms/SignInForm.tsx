@@ -1,8 +1,8 @@
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
-import { UserLogin, UserLoginSchema } from '@/models/user';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useSignInForm } from '@/hooks/forms/user/useSignInForm';
+import { UserLogin } from '@/models/user';
+import { FormProvider } from 'react-hook-form';
 
 type SignInFormProps = {
     handleSubmit: (userData: UserLogin) => void;
@@ -10,14 +10,8 @@ type SignInFormProps = {
 };
 
 const SignInForm = ({ handleSubmit, isError }: SignInFormProps) => {
-    const form = useForm<UserLogin>({
-        resolver: zodResolver(UserLoginSchema),
-        defaultValues: {
-            email: '',
-            password: '',
-        },
-        mode: 'onSubmit',
-    });
+    const { useSignInUser } = useSignInForm();
+    const form = useSignInUser();
 
     return (
         <FormProvider {...form}>
