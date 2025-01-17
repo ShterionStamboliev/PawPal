@@ -15,9 +15,12 @@ export const UserSchema = z.object({
         city: z.string().min(3, {
             message: 'City must be 3 or more characters long',
         }),
-        phone: z.coerce.number().min(10, {
-            message: 'Phone must be 10 or more characters long',
-        }),
+        phone: z.union([
+            z.coerce.number().min(10, {
+                message: 'Phone must be 10 or more characters long',
+            }),
+            z.literal(''),
+        ]),
     }),
 });
 
@@ -28,9 +31,20 @@ export const UserLoginSchema = z.object({
         .min(6, { message: 'Password must be 6 or more characters long' }),
 });
 
-export const UserLoginDefaults: UserLogin = {
+export const UserLoginDefaults: z.infer<typeof UserLoginSchema> = {
     email: '',
     password: '',
+};
+
+export const UserRegisterDefaults: z.infer<typeof UserSchema> = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    address: {
+        city: '',
+        phone: '',
+    },
 };
 
 export type User = z.infer<typeof UserSchema>;

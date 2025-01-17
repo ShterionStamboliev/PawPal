@@ -1,7 +1,7 @@
 import { UserLogin, UserLoginDefaults, UserLoginSchema } from '@/models/user';
 import { useCreateDynamicForms } from '../useCreateDynamicForms';
 
-export const useSignInForm = () => {
+export const useSignIn = () => {
     const { useCreateForm } = useCreateDynamicForms<UserLogin>({
         schema: UserLoginSchema,
         defaultValues: UserLoginDefaults,
