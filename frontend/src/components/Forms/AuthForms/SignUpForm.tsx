@@ -1,28 +1,16 @@
-import { User, UserSchema } from '@/models/user';
-import { FormProvider, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { User } from '@/models/user';
+import { FormProvider } from 'react-hook-form';
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
+import { useSignUp } from '@/hooks/forms/user/useAuth';
 
 type SignUpFormProps = {
     handleSubmit: (userData: User) => void;
 };
 
 const SignUpForm = ({ handleSubmit }: SignUpFormProps) => {
-    const form = useForm<User>({
-        resolver: zodResolver(UserSchema),
-        defaultValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            address: {
-                city: '',
-                phone: undefined,
-            },
-        },
-        mode: 'onSubmit',
-    });
+    const { useSignUpUser } = useSignUp();
+    const form = useSignUpUser();
 
     return (
         <FormProvider {...form}>
@@ -31,32 +19,32 @@ const SignUpForm = ({ handleSubmit }: SignUpFormProps) => {
                 className='space-y-6'
                 onSubmit={form.handleSubmit(handleSubmit)}
             >
-                <FormInput
+                <FormInput<User>
                     fieldName='firstName'
                     inputPlaceholder='First name'
                     inputType='text'
                 />
-                <FormInput
+                <FormInput<User>
                     fieldName='lastName'
                     inputPlaceholder='Last name'
                     inputType='text'
                 />
-                <FormInput
+                <FormInput<User>
                     fieldName='email'
                     inputPlaceholder='Email'
                     inputType='text'
                 />
-                <FormInput
+                <FormInput<User>
                     fieldName='password'
                     inputPlaceholder='Password'
                     inputType='password'
                 />
-                <FormInput
+                <FormInput<User>
                     fieldName='address.city'
                     inputPlaceholder='City'
                     inputType='text'
                 />
-                <FormInput
+                <FormInput<User>
                     fieldName='address.phone'
                     inputPlaceholder='Phone'
                     inputType='text'

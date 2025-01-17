@@ -8,8 +8,14 @@ import { Input } from '@/components/ui/input';
 import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
+type FormInputKeys<T> = {
+    [K in keyof T & string]: T[K] extends object
+        ? `${K}.${FormInputKeys<T[K]>}`
+        : K;
+}[keyof T & string];
+
 type FormInputProps<FData> = {
-    fieldName: keyof FData & string;
+    fieldName: FormInputKeys<FData>;
     inputPlaceholder: string;
     inputType: string;
 } & InputHTMLAttributes<HTMLInputElement>;
