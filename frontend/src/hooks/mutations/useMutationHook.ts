@@ -6,6 +6,7 @@ import {
     UseMutationResult,
     useQueryClient,
 } from '@tanstack/react-query';
+import { toast } from '../use-toast';
 
 interface MutationActionState {
     queryKey: QueryKey;
@@ -15,7 +16,7 @@ interface MutationActionState {
 export const useMutations = () => {
     const client = useQueryClient();
 
-    const { login, register, logout } = useAuth();
+    const { user, login, register, logout } = useAuth();
 
     const useSignUp = ({
         queryKey,
@@ -51,6 +52,11 @@ export const useMutations = () => {
                     queryKey,
                 });
                 setIsOpen && setIsOpen(false);
+                toast({
+                    title: 'Login successful',
+                    description: `Welcome, ${user?.firstName}!`,
+                    variant: 'success',
+                });
             },
             onError: () => {
                 console.log('Something wrong happened');
