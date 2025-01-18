@@ -17,7 +17,7 @@ const SignInForm = ({ handleSubmit, isError }: SignInFormProps) => {
         <FormProvider {...form}>
             {isError && (
                 <span className='text-red-500 text-center'>
-                    Invalid email or password
+                    Invalid email or password.
                 </span>
             )}
             <form
