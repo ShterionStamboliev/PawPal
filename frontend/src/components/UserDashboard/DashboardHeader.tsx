@@ -10,7 +10,7 @@ import {
 } from '../ui/navigation-menu';
 import HeaderUser from '../Header/HeaderUser';
 import HeaderUserNavigation from '../Header/HeaderUserNavigation';
-import { useAuthHandlers } from '@/hooks/fn-handlers/useAuthHandlers';
+import { useAuthHandlers } from '@/hooks/mutations/mutation-handlers/useAuthHandlers';
 
 type DashboardHeaderProps = {};
 

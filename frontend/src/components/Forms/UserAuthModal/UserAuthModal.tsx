@@ -14,7 +14,7 @@ import HeaderMobileNavigation from '@/components/Header/HeaderMobile/HeaderMobil
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
 import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
 import HeaderUserDropdown from '@/components/Header/HeaderUserDropdown';
-import { useAuthHandlers } from '@/hooks/fn-handlers/useAuthHandlers';
+import { useAuthHandlers } from '@/hooks/mutations/mutation-handlers/useAuthHandlers';
 
 const UserAuthModal = () => {
     const { isOpen, setIsOpen } = useDialogState();

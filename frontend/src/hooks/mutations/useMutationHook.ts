@@ -16,7 +16,7 @@ interface MutationActionState {
 export const useMutations = () => {
     const client = useQueryClient();
 
-    const { user, login, register, logout } = useAuth();
+    const { login, register, logout } = useAuth();
 
     const useSignUp = ({
         queryKey,
@@ -45,12 +45,17 @@ export const useMutations = () => {
         unknown
     > => {
         return useMutation({
-            mutationFn: (data: UserLogin) => login(data),
+            mutationFn: async (data: UserLogin) => {
+                await login(data);
+            },
             onSuccess: () => {
+                const user: User = JSON.parse(
+                    sessionStorage.getItem('user') || '{}',
+                );
                 setIsOpen && setIsOpen(false);
                 toast({
                     title: 'Sign in successful',
-                    description: `Welcome, ${user?.firstName}!`,
+                    description: `Welcome, ${user.firstName}!`,
                     variant: 'success',
                 });
             },
