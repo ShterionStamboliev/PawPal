@@ -72,10 +72,6 @@ export const useMutations = () => {
                 client.invalidateQueries({
                     queryKey,
                 });
-                toast({
-                    title: 'Sign out successful',
-                    variant: 'success',
-                });
             },
             onError: (error: Error) => {
                 return error.message;

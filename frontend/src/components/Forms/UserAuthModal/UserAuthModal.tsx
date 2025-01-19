@@ -5,9 +5,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
-import { useMutations } from '@/hooks/mutations/useMutationHook';
-import { useDialogState, useModalState } from '@/hooks/useDialogState';
-import { User, UserLogin } from '@/models/user';
+import { useModalState } from '@/hooks/useDialogState';
 import SignUpForm from '../AuthForms/SignUpForm';
 import SignInForm from '../AuthForms/SignInForm';
 import HeaderMobileNavigation from '@/components/Header/HeaderMobile/HeaderMobileNavigation';
@@ -17,30 +15,16 @@ import HeaderUserDropdown from '@/components/Header/HeaderUserDropdown';
 import { useAuthHandlers } from '@/hooks/mutations/mutation-handlers/useAuthHandlers';
 
 const UserAuthModal = () => {
-    const { isOpen, setIsOpen } = useDialogState();
-
     const { isSignUp, switchModals } = useModalState();
 
-    const { useSignUp, useSignIn } = useMutations();
-    const { handleSignOutSubmit } = useAuthHandlers();
-
-    const { mutate: signUpMutate } = useSignUp({
-        queryKey: ['user'],
+    const {
+        handleSignOutSubmit,
+        handleSignInSubmit,
+        handleSignUpSubmit,
+        isOpen,
         setIsOpen,
-    });
-
-    const { mutate: signInMutate, isError } = useSignIn({
-        queryKey: ['user'],
-        setIsOpen,
-    });
-
-    const handleSignUpSubmit = (userData: User) => {
-        signUpMutate(userData);
-    };
-
-    const handleSignInSubmit = (userData: UserLogin) => {
-        signInMutate(userData);
-    };
+        signInError,
+    } = useAuthHandlers();
 
     return (
         <div className='flex items-center justify-center gap-4'>
@@ -59,7 +43,7 @@ const UserAuthModal = () => {
                         {isSignUp ? (
                             <SignInForm
                                 handleSubmit={handleSignInSubmit}
-                                isError={isError}
+                                isError={signInError}
                             />
                         ) : (
                             <SignUpForm handleSubmit={handleSignUpSubmit} />
@@ -77,7 +61,7 @@ const UserAuthModal = () => {
                 handleSignOut={handleSignOutSubmit}
                 handleSignIn={handleSignInSubmit}
                 handleSignUp={handleSignUpSubmit}
-                isError={isError}
+                isError={signInError}
             />
         </div>
     );
