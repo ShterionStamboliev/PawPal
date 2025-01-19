@@ -52,10 +52,7 @@ const UserAuthModal = () => {
         <div className='flex items-center justify-center gap-4'>
             <div className='hidden md:flex'>
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                    <HeaderUserDropdown
-                        className='hidden'
-                        handleSignOut={handleSignOutSubmit}
-                    />
+                    <HeaderUserDropdown handleSignOut={handleSignOutSubmit} />
                     <DialogContent
                         className='bg-rose-200'
                         aria-describedby={undefined}

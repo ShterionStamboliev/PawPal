@@ -20,7 +20,7 @@ import SignInForm from '../../Forms/AuthForms/SignInForm';
 import SignUpForm from '../../Forms/AuthForms/SignUpForm';
 import { User, UserLogin } from '@/models/user';
 import { useState } from 'react';
-import HeaderUserAvatar from '../HeaderUserAvatar';
+import HeaderUserAvatar from './HeaderMobileUser';
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
 import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
 import HeaderAuthToggle from './HeaderAuthToggle';
