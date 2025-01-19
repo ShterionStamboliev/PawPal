@@ -10,38 +10,14 @@ import {
 } from '../ui/navigation-menu';
 import HeaderUser from '../Header/HeaderUser';
 import HeaderUserNavigation from '../Header/HeaderUserNavigation';
-import { useMutations } from '@/hooks/mutations/useMutationHook';
-import { useNavigate } from 'react-router';
-import { toast } from '@/hooks/use-toast';
+import { useAuthHandlers } from '@/hooks/fn-handlers/useAuthHandlers';
 
 type DashboardHeaderProps = {};
 
 const DashboardHeader = ({}: DashboardHeaderProps) => {
     const { isAuthenticated } = useAuth();
 
-    const navigate = useNavigate();
-
-    const { useSignOut } = useMutations();
-
-    const { mutate: signOutMutate } = useSignOut({
-        queryKey: ['user'],
-    });
-
-    const handleSignOutSubmit = () => {
-        signOutMutate(undefined, {
-            onSuccess: () => {
-                toast({
-                    title: 'Sign out successful',
-                    description: 'You will be redirected to the homepage now',
-                    variant: 'success',
-                    duration: 3000,
-                });
-                setTimeout(() => {
-                    navigate('/');
-                }, 3000);
-            },
-        });
-    };
+    const { handleSignOutSubmit } = useAuthHandlers();
 
     return (
         <header className='bg-rose-200/90 shadow-rose-300 shadow-sm fixed top-0 left-0 right-0 z-50'>

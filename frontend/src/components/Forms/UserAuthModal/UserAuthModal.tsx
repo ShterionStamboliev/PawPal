@@ -14,13 +14,15 @@ import HeaderMobileNavigation from '@/components/Header/HeaderMobile/HeaderMobil
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
 import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
 import HeaderUserDropdown from '@/components/Header/HeaderUserDropdown';
+import { useAuthHandlers } from '@/hooks/fn-handlers/useAuthHandlers';
 
 const UserAuthModal = () => {
     const { isOpen, setIsOpen } = useDialogState();
 
     const { isSignUp, switchModals } = useModalState();
 
-    const { useSignUp, useSignIn, useSignOut } = useMutations();
+    const { useSignUp, useSignIn } = useMutations();
+    const { handleSignOutSubmit } = useAuthHandlers();
 
     const { mutate: signUpMutate } = useSignUp({
         queryKey: ['user'],
@@ -32,20 +34,12 @@ const UserAuthModal = () => {
         setIsOpen,
     });
 
-    const { mutate: signOutMutate } = useSignOut({
-        queryKey: ['user'],
-    });
-
     const handleSignUpSubmit = (userData: User) => {
         signUpMutate(userData);
     };
 
     const handleSignInSubmit = (userData: UserLogin) => {
         signInMutate(userData);
-    };
-
-    const handleSignOutSubmit = () => {
-        signOutMutate();
     };
 
     return (

@@ -37,7 +37,6 @@ export const useMutations = () => {
     };
 
     const useSignIn = ({
-        queryKey,
         setIsOpen,
     }: MutationActionState): UseMutationResult<
         void,
@@ -48,9 +47,6 @@ export const useMutations = () => {
         return useMutation({
             mutationFn: (data: UserLogin) => login(data),
             onSuccess: () => {
-                client.invalidateQueries({
-                    queryKey,
-                });
                 setIsOpen && setIsOpen(false);
                 toast({
                     title: 'Sign in successful',
