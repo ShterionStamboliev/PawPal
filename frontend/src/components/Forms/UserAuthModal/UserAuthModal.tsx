@@ -11,10 +11,9 @@ import { User, UserLogin } from '@/models/user';
 import SignUpForm from '../AuthForms/SignUpForm';
 import SignInForm from '../AuthForms/SignInForm';
 import HeaderMobileNavigation from '@/components/Header/HeaderMobile/HeaderMobileNavigation';
-import HeaderUserAvatar from '@/components/Header/HeaderUserAvatar';
-import HeaderAuthButtons from '@/components/Header/HeaderAuthButtons';
 import DialogHeaderTitle from '@/common/Dialog/DialogHeaderTitle';
 import DialogAuthToggle from '@/common/Dialog/DialogAuthToggle';
+import HeaderUserDropdown from '@/components/Header/HeaderUserDropdown';
 
 const UserAuthModal = () => {
     const { isOpen, setIsOpen } = useDialogState();
@@ -51,10 +50,12 @@ const UserAuthModal = () => {
 
     return (
         <div className='flex items-center justify-center gap-4'>
-            <HeaderUserAvatar className='hidden' />
             <div className='hidden md:flex'>
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                    <HeaderAuthButtons handleSignOut={handleSignOutSubmit} />
+                    <HeaderUserDropdown
+                        className='hidden'
+                        handleSignOut={handleSignOutSubmit}
+                    />
                     <DialogContent
                         className='bg-rose-200'
                         aria-describedby={undefined}

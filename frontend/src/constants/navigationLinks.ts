@@ -17,3 +17,7 @@ export const footerServicesLinks: NavigationLink[] = [
     { name: 'Nutrition', path: '/nutrition' },
     { name: 'Grooming', path: '/grooming' },
 ];
+
+export const userNavigation: Partial<NavigationLink>[] = [
+    { name: 'Dashboard', path: '/dashboard' },
+];

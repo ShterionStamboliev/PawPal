@@ -1,6 +1,7 @@
+import PrimaryButton from '@/common/PrimaryButton';
 import { useAuth } from '@/context/AuthContext';
-import { cn } from '@/lib/utils';
-import { User } from 'lucide-react';
+import paw from '@/assets/cat-paw.png';
+import { DialogTrigger } from '../ui/dialog';
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -9,16 +10,20 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from '../ui/navigation-menu';
+import { cn } from '@/lib/utils';
 import { userNavigation } from '@/constants/navigationLinks';
 import { Link } from 'react-router';
-import PrimaryButton from '@/common/PrimaryButton';
 import { Separator } from '../ui/separator';
 
-type HeaderUserAvatarProps = {
+type HeaderUserDropdownProps = {
+    handleSignOut: () => void;
     className?: string;
 };
 
-const HeaderUserAvatar = ({ className }: HeaderUserAvatarProps) => {
+const HeaderUserDropdown = ({
+    handleSignOut,
+    className,
+}: HeaderUserDropdownProps) => {
     const { user, isAuthenticated } = useAuth();
 
     return (
@@ -73,8 +78,11 @@ const HeaderUserAvatar = ({ className }: HeaderUserAvatarProps) => {
                                             </NavigationMenuLink>
                                         </li>
                                     ))}
-                                    <Separator className='bg-gray-500' />
-                                    <PrimaryButton className='mt-4'>
+                                    <Separator className='bg-rose-500 mt-2' />
+                                    <PrimaryButton
+                                        onClick={handleSignOut}
+                                        className='mt-4 w-full'
+                                    >
                                         Sign out
                                     </PrimaryButton>
                                 </ul>
@@ -83,26 +91,13 @@ const HeaderUserAvatar = ({ className }: HeaderUserAvatarProps) => {
                     </NavigationMenuList>
                 </NavigationMenu>
             ) : (
-                <div
-                    className={cn(
-                        'relative w-10 h-10 bg-red-300 rounded-full',
-                        'md:inline-flex',
-                        className,
-                    )}
-                >
-                    <span
-                        className={cn(
-                            'absolute top-1 left-1 right-1 sm:left-3.5 text-rose-600',
-                            'md:inline-flex',
-                            className,
-                        )}
-                    >
-                        <User size={24} className='absolute right-1 top-1' />
-                    </span>
-                </div>
+                <DialogTrigger className='flex gap-2 py-2 px-4 rounded-lg bg-rose-500 text-white font-semibold hover:bg-rose-600 hover:text-white transition-colors ease-in-out duration-150'>
+                    <img src={paw} alt='Cat Paw' className='h-6 w-6' />
+                    Sign In
+                </DialogTrigger>
             )}
         </>
     );
 };
 
-export default HeaderUserAvatar;
+export default HeaderUserDropdown;
