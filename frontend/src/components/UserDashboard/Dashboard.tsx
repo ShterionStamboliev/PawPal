@@ -1,5 +1,6 @@
 import DashboardHeader from './DashboardHeader';
 import DashboardNavigation from './DashboardNavigation';
+import UserProfile from './UserProfile/UserProfile';
 
 const Dashboard = () => {
     return (
@@ -9,6 +10,7 @@ const Dashboard = () => {
                 <div className='mt-24'>
                     <DashboardNavigation />
                 </div>
+                <UserProfile />
             </main>
         </>
     );

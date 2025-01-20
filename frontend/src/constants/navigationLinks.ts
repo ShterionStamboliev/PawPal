@@ -19,7 +19,7 @@ export const footerServicesLinks: NavigationLink[] = [
 ];
 
 export const userNavigation: NavigationLink[] = [
-    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Dashboard', path: '/dashboard/profile' },
 ];
 
 export const dashboardNav: NavigationLink[] = [

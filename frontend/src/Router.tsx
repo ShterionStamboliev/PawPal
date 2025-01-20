@@ -7,6 +7,7 @@ function App() {
         <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard/profile' element={<Dashboard />} />
         </Routes>
     );
 }
