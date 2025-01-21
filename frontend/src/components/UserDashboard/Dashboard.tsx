@@ -1,5 +1,6 @@
 import DashboardHeader from './DashboardHeader';
 import DashboardNavigation from './DashboardNavigation';
+import UserPets from './UserProfile/UserPets';
 import UserProfile from './UserProfile/UserProfile';
 
 const Dashboard = () => {
@@ -10,7 +11,10 @@ const Dashboard = () => {
                 <div className='mt-24'>
                     <DashboardNavigation />
                 </div>
-                <UserProfile />
+                <div className='flex min-w-full'>
+                    <UserProfile />
+                    {/* <UserPets /> */}
+                </div>
             </main>
         </>
     );
