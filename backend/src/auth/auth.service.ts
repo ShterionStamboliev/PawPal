@@ -85,6 +85,12 @@ export class AuthService {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
+            pets: user.pets,
+            address: {
+                city: user.address.city,
+                phone: user.address.phone,
+            },
+            role: [...user.role],
         });
 
         res.cookie('token', token, {

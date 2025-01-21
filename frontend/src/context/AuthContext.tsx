@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { signIn, signOut, signUp } from '@/api/api';
-import { User, UserLogin } from '@/models/user';
+import { User, UserData, UserLogin } from '@/models/user';
 import { jwtDecode } from 'jwt-decode';
 import { getCookie } from '@/helpers/cookieParser';
 interface AuthContextType {
     isAuthenticated: boolean;
-    user: Partial<User> | null;
+    user: UserData | null;
     token: string | null;
     login: (data: UserLogin) => Promise<void>;
     register: (data: User) => Promise<void>;
@@ -20,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState<Partial<User> | null>(null);
+    const [user, setUser] = useState<UserData | null>(null);
     const [token, setToken] = useState<string | null>(null);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const login = async (data: UserLogin) => {
         await signIn(data);
-        const decodedUser: Partial<User> = jwtDecode(document.cookie);
+        const decodedUser: UserData = jwtDecode(document.cookie);
         setUser(decodedUser);
         setToken(getCookie());
         setIsAuthenticated(true);
