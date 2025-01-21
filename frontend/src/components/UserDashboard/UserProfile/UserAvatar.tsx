@@ -1,12 +1,12 @@
-import doc from '@/assets/doctor-2.jpg';
-type UserAvatarProps = {};
+import doc from '@/assets/doctor-3.jpg';
 
-const UserAvatar = ({}: UserAvatarProps) => {
+const UserAvatar = () => {
     return (
-        <div>
+        <div className='bg-rose-400 rounded-t-lg relative'>
+            <div className='aspect-video' />
             <img
-                className='aspect-square rounded-lg w-full h-full object-fill'
                 src={doc}
+                className='absolute object-cover bg-white p-0.5 rounded-full w-28 h-28 left-0 right-0 -bottom-14 mx-auto'
             />
         </div>
     );

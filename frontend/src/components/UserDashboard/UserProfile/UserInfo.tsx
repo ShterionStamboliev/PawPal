@@ -1,13 +1,11 @@
 import { useAuth } from '@/context/AuthContext';
 
-type UserInfoProps = {};
-
-const UserInfo = ({}: UserInfoProps) => {
+const UserInfo = () => {
     const { isAuthenticated, user } = useAuth();
     console.log(user);
 
     return (
-        <div className='border mt-4 flex flex-col'>
+        <div className='border mt-14 flex flex-col'>
             {isAuthenticated && (
                 <>
                     <div className='flex gap-2'>
