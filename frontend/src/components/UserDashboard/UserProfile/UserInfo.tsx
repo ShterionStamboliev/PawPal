@@ -2,10 +2,9 @@ import { useAuth } from '@/context/AuthContext';
 
 const UserInfo = () => {
     const { isAuthenticated, user } = useAuth();
-    console.log(user);
 
     return (
-        <div className='border mt-14 flex flex-col p-2'>
+        <div className='space-y-4 mt-14 flex flex-col p-2'>
             {isAuthenticated && (
                 <>
                     <div className='flex gap-2'>
@@ -16,10 +15,16 @@ const UserInfo = () => {
                             {user?.lastName}
                         </span>
                     </div>
-                    <div>test</div>
-                    <div>test</div>
-                    <div>test</div>
-                    <div>test</div>
+                    <div className='space-y-2'>
+                        <div className='w-2/3 flex justify-between'>
+                            <span className='text-gray-500/80'>Email:</span>
+                            <span>{user?.email}</span>
+                        </div>
+                        <div className='w-2/3 flex justify-between'>
+                            <span className='text-gray-500/80'>City:</span>
+                            <span>{user?.address.city}</span>
+                        </div>
+                    </div>
                 </>
             )}
         </div>
