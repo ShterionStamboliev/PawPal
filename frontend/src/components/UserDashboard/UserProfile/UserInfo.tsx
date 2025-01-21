@@ -5,7 +5,7 @@ const UserInfo = () => {
     console.log(user);
 
     return (
-        <div className='border mt-14 flex flex-col'>
+        <div className='border mt-14 flex flex-col p-2'>
             {isAuthenticated && (
                 <>
                     <div className='flex gap-2'>
