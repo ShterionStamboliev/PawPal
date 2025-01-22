@@ -11,9 +11,9 @@ const Dashboard = () => {
                 <div className='mt-24'>
                     <DashboardNavigation />
                 </div>
-                <div className='flex min-w-full'>
+                <div className='flex'>
                     <UserProfile />
-                    {/* <UserPets /> */}
+                    <UserPets />
                 </div>
             </main>
         </>

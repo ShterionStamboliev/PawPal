@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const logout = async () => {
         await signOut();
         setIsAuthenticated(false);
+        setUser(null);
         sessionStorage.removeItem('user');
     };
 
