@@ -4,27 +4,23 @@ import { NavLink } from 'react-router';
 
 const DashboardNavigation = () => {
     return (
-        <div className='max-w-[12rem]'>
-            <ul className='fixed flex flex-col border bg-white border-white shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)] rounded-lg gap-2 text-start pt-10 h-[calc(100vh-9.5rem)] min-w-[12rem] items-start font-manrope'>
+        <div className='w-1/5 lg:mr-10 pt-4'>
+            <ul className='grid gap-2 bg-white border border-white shadow-md rounded-lg text-start py-6 px-4 font-manrope'>
                 {dashboardNav.map((link, idx) => (
                     <li
                         key={idx}
-                        className='w-full h-8 flex rounded-lg items-center hover:bg-rose-400 transition-colors duration-200 ease-in-out'
+                        className='flex items-center gap-4 p-2 rounded-lg hover:bg-rose-400 transition-colors duration-200'
                     >
-                        <div className='flex gap-2 ml-10'>
-                            <div className='flex flex-col'>
-                                <User size={20} />
-                            </div>
-                        </div>
+                        <User size={20} className='text-gray-600' />
                         <NavLink
                             to={link.path}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'text-sm font-manrope tracking-wide w-full border-rose-700 border-r-2 text-rose-600 font-semibold'
-                                    : 'text-sm font-manrope tracking-wide w-full text-rose-900 hover:text-white text-gray-500/80 transition ease-in-out duration-150'
+                                    ? 'text-sm font-semibold tracking-wide text-rose-600 border-r-4 border-rose-700 w-full'
+                                    : 'text-sm tracking-wide text-gray-600 hover:text-white transition ease-in-out duration-150 w-full'
                             }
                         >
-                            <span className='pl-3'>{link.name}</span>
+                            {link.name}
                         </NavLink>
                     </li>
                 ))}
