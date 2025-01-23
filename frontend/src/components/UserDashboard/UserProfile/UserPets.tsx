@@ -2,7 +2,7 @@ type UserPetsProps = {};
 
 const UserPets = ({}: UserPetsProps) => {
     return (
-        <div className='border border-blue-600 bg-white'>
+        <div className='rounded-lg bg-white border-white shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
             This is the user pets section
         </div>
     );

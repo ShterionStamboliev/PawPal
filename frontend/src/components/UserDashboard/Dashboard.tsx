@@ -8,14 +8,14 @@ const Dashboard = () => {
     return (
         <>
             <DashboardHeader />
-            <main className='w-full px-4 pt-24 min-h-screen flex flex-col lg:flex-row overflow-x-hidden bg-gray-200/30'>
+            <main className='px-4 pt-28 min-h-screen grid gap-4 grid-cols-1 lg:grid-cols-6 bg-gray-200/30'>
                 <DashboardNavigation />
-                <div className='grid grid-cols-1 w-full gap-4 pt-4 lg:grid-cols-3 h-[calc(100vh-9.5rem)]'>
+                <div className='grid col-start-1 col-span-3 lg:col-span-2 2xl:col-span-1 lg:col-start-3 gap-4 h-[calc(100vh-9.5rem)]'>
                     <UserProfile />
-                    <div className='grid col-span-2 gap-4'>
-                        <UserPets />
-                        <UserPayments />
-                    </div>
+                </div>
+                <div className='grid gap-4 lg:col-span-2 col-span-3 h-[calc(100vh-9.5rem)]'>
+                    <UserPets />
+                    <UserPayments />
                 </div>
             </main>
         </>

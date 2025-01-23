@@ -4,12 +4,12 @@ import { NavLink } from 'react-router';
 
 const DashboardNavigation = () => {
     return (
-        <div className='w-1/5 lg:mr-10 pt-4'>
-            <ul className='grid gap-2 bg-white border border-white shadow-md rounded-lg text-start py-6 px-4 font-manrope'>
+        <div className='min-w-[15rem] lg:max-w-sm grid col-span-3 lg:col-span-2 lg:grid-rows-1 lg:h-[calc(100vh-9.5rem)] lg:w-1/6 lg:mr-10 shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)] rounded-lg'>
+            <ul className='bg-white border border-white space-y-2 shadow-md rounded-lg text-start py-6 pl-4 font-manrope'>
                 {dashboardNav.map((link, idx) => (
                     <li
                         key={idx}
-                        className='flex items-center gap-4 p-2 rounded-lg hover:bg-rose-400 transition-colors duration-200'
+                        className='flex items-center p-2 gap-4 rounded-lg hover:bg-rose-400 transition-colors duration-200'
                     >
                         <User size={20} className='text-gray-600' />
                         <NavLink

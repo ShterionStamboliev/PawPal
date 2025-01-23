@@ -4,7 +4,7 @@ const UserInfo = () => {
     const { isAuthenticated, user } = useAuth();
 
     return (
-        <div className='space-y-4 mt-14 flex flex-col p-2'>
+        <div className='space-y-6 mt-14 flex flex-col p-2'>
             {isAuthenticated && (
                 <>
                     <div className='flex flex-1 flex-wrap gap-2'>
@@ -15,7 +15,7 @@ const UserInfo = () => {
                             {user?.lastName}
                         </span>
                     </div>
-                    <div className='space-y-2'>
+                    <div className='space-y-4'>
                         <div className='flex flex-1 break-words flex-wrap justify-between'>
                             <span className='text-gray-500/80'>Email:</span>
                             <span>{user?.email}</span>
