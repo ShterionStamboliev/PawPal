@@ -51,6 +51,7 @@ export type User = z.infer<typeof UserSchema>;
 export type UserLogin = z.infer<typeof UserLoginSchema>;
 
 export interface UserData extends User {
+    sub?: string;
     pets: string[];
     role: string[];
 }

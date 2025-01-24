@@ -55,7 +55,6 @@ export class PetService {
 
         const pet = await this.petModel.findById(id);
 
-        console.log(pet);
         if (!pet) {
             throw new NotFoundException('Pet not found.');
         }

@@ -57,12 +57,6 @@ export class AuthService {
         res: Response,
     ): Promise<{
         message: string;
-        user: {
-            firstName: string;
-            lastName: string;
-            userEmail: string;
-            token: string;
-        };
     }> {
         const { email, password } = signInDto;
 
@@ -71,8 +65,6 @@ export class AuthService {
         if (!user) {
             throw new UnauthorizedException('Invalid email or password');
         }
-
-        const { firstName, lastName, email: userEmail } = user;
 
         const isValidPassword = await bcrypt.compare(password, user.password);
 
@@ -99,7 +91,6 @@ export class AuthService {
         });
 
         return {
-            user: { firstName, userEmail, lastName, token },
             message: 'Login successful',
         };
     }
