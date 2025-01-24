@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const login = async (data: UserLogin) => {
         await signIn(data);
         const decodedUser: UserData = jwtDecode(document.cookie);
-
         setUser(decodedUser);
         setToken(getCookie());
         setIsAuthenticated(true);

@@ -1,5 +1,6 @@
 import { User, UserLogin } from '@/models/user';
 import axios from 'axios';
+import { UserData as UserDataObj } from '@/models/user';
 
 type UserData = {
     user: {
@@ -33,4 +34,9 @@ export const signIn = async (
 
 export const signOut = async (): Promise<void> => {
     return await axiosApi.post('/auth/signout');
+};
+
+export const getUserData = async (user_id: string): Promise<UserDataObj> => {
+    const response = await axiosApi.get(`/users/${user_id}`);
+    return response.data;
 };
