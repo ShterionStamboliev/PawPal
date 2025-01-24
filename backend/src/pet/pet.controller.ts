@@ -47,8 +47,6 @@ export class PetController {
         @Body() createPetDto: CreatePetDto,
     ): Promise<Pet> {
         const owner = req.user._id;
-        console.log(req.user);
-
         return this.petService.createPet(owner, createPetDto);
     }
 
