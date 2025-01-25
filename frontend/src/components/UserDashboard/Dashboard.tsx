@@ -18,7 +18,7 @@ const Dashboard = () => {
             <DashboardHeader />
             <main className='px-4 pt-28 min-h-screen grid gap-4 grid-cols-1 grid-flow-row lg:grid-cols-6 bg-gray-200/30'>
                 <DashboardNavigation />
-                <div className='grid col-start-1 col-span-3 lg:col-span-2 2xl:col-span-1 lg:col-start-3 gap-4 h-[calc(100vh-9.5rem)]'>
+                <div className='grid col-start-1 col-span-3 lg:col-span-2 2xl:col-span-1 lg:col-start-3 gap-4 lg:h-[calc(100vh-9.5rem)]'>
                     <UserProfile userData={userData} />
                 </div>
                 <div className='grid gap-4 lg:col-span-2 2xl:pr-4 2xl:col-span-3 col-span-3 h-[calc(100vh-9.5rem)]'>
