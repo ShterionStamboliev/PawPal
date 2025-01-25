@@ -57,6 +57,7 @@ export class AuthService {
         res: Response,
     ): Promise<{
         message: string;
+        token: string;
     }> {
         const { email, password } = signInDto;
 
@@ -91,6 +92,7 @@ export class AuthService {
         });
 
         return {
+            token,
             message: 'Login successful',
         };
     }

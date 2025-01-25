@@ -1,5 +1,7 @@
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Pet } from '@/models/pet';
 import { UserData } from '@/models/user';
+import doc from '@/assets/doctor-2.jpg';
 
 type UserPetsProps = {
     userData: UserData | undefined;
@@ -11,50 +13,34 @@ const UserPets = ({ userData }: UserPetsProps) => {
             {userData?.pets.length === 0 ? (
                 <span>You don't have any pets.</span>
             ) : (
-                <span>
+                <div className='flex flex-col gap-4 p-2 2xl:flex-row 2xl:items-start 2xl:justify-start items-center justify-center'>
                     {userData?.pets.map((pet: Pet) => (
-                        <div key={pet._id}>
-                            <div>Name: {pet.name}</div>
-                            <div>Age: {pet.age}</div>
-                            <div>Breed: {pet.breed}</div>
-                        </div>
+                        <Card className='max-w-md border-none'>
+                            <div className='flex items-center justify-center'>
+                                <CardTitle className='flex w-2/4'>
+                                    <img
+                                        src={doc}
+                                        alt=''
+                                        className='object-cover rounded-full'
+                                    />
+                                </CardTitle>
+                            </div>
+                            <CardContent className='p-0 border border-red-500'>
+                                <div className='p-2 rounded-lg'>
+                                    <h2 className='text-lg sm:text-lg line-clamp-2 font-semibold mb-2'>
+                                        {pet.name}
+                                    </h2>
+                                </div>
+                                {/** TODO: Implement a View button to
+                                 * show a modal with more pet details
+                                 * such as name, age, vaccines etc. */}
+                            </CardContent>
+                        </Card>
                     ))}
-                </span>
+                </div>
             )}
         </div>
     );
 };
 
 export default UserPets;
-
-{
-    /**
-                <Card className='w-full max-w-md mx-auto overflow-hidden group border-none'>
-                <CardContent className='p-0 relative aspect-square'>
-                    <img
-                        src={service.image}
-                        alt=''
-                        className='w-full h-full object-fill transition-transform duration-300 group-hover:scale-105'
-                    />
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent' />
-                    <div className='absolute inset-0 flex flex-col justify-end text-white rounded-lg p-4'>
-                        <div className='bg-rose-700/80 p-2 rounded-lg mb-2'>
-                            <h2 className='text-xl sm:text-2xl line-clamp-2 font-bold mb-2 font-manrope'>
-                                {service.name}
-                            </h2>
-                            <p className='text-md font-manrope line-clamp-3 sm:line-clamp-3 overflow-hidden'>
-                                {service.description}
-                            </p>
-                        </div>
-                        <PrimaryButton
-                            variant='ghost'
-                            // onClick={onLearnMore}
-                        >
-                            Learn More
-                        </PrimaryButton>
-                    </div>
-                </CardContent>
-            </Card>
-    
-    */
-}
