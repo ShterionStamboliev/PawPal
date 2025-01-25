@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { Pet } from './pet';
 
 export const UserSchema = z.object({
     firstName: z.string().min(3, {
@@ -52,6 +53,6 @@ export type UserLogin = z.infer<typeof UserLoginSchema>;
 
 export interface UserData extends User {
     sub?: string;
-    pets: string[];
+    pets: Pet[];
     role: string[];
 }
