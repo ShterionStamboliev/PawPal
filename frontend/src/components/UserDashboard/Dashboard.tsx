@@ -21,10 +21,10 @@ const Dashboard = () => {
                 <div className='col-span-3 gap-4 xl:row-span-4 2xl:col-span-1 lg:row-span-4 2xl:row-span-4 lg:col-start-2 lg:col-span-2 2xl:col-start-2'>
                     <UserProfile userData={userData} />
                 </div>
-                <div className='col-span-3 xl:col-start-2 xl:col-span-4 2xl:col-start-2 2xl:col-span-3 xl:row-span-4 2xl:row-start-5 lg:row-span-4 lg:col-start-2 lg:col-span-5'>
+                <div className='col-span-3 xl:col-start-2 xl:col-span-5 2xl:col-start-2 2xl:col-span-3 xl:row-span-4 2xl:row-start-5 lg:row-span-4 lg:col-start-2 lg:col-span-5'>
                     <UserPets userData={userData} />
                 </div>
-                <div className='col-span-3  lg:row-start-1 lg:row-span-4 lg:col-start-4 lg:col-span-2 2xl:col-start-3 2xl:col-span-2'>
+                <div className='col-span-3 lg:row-start-1 lg:row-span-4 lg:col-start-4 lg:col-span-3 2xl:col-start-3 2xl:col-span-2'>
                     <UserPayments />
                 </div>
             </main>
