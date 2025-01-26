@@ -7,7 +7,7 @@ type UserProfileProps = {
 
 const UserProfile = ({ userData }: UserProfileProps) => {
     return (
-        <div className='xl:col-span-5 xl:col-start-1 2xl:col-start-1 lg:row-span-1 rounded-lg bg-white border-white shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
+        <div className='rounded-lg h-full bg-white border-white shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
             <UserAvatar />
             <div className='space-y-6 mt-14 flex flex-col p-2'>
                 <div className='flex flex-1 gap-2'>
