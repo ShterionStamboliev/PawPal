@@ -33,14 +33,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-{
-    /**
-<div className="grid grid-cols-4 grid-rows-10 gap-4">
-    <div className="col-span-2 col-start-2">1</div>
-    <div className="col-span-2 row-span-3 col-start-2 row-start-2">2</div>
-    <div className="col-span-2 row-span-3 col-start-2 row-start-5">3</div>
-    <div className="col-span-2 row-span-3 col-start-2 row-start-8">4</div>
-</div>
-*/
-}

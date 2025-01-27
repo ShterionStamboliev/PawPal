@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 
 const DashboardNavigation = () => {
     return (
-        <ul className='col-span-3 2xl:w-2/3 lg:col-span-1 lg:row-start-1 lg:row-span-3 bg-transparent space-y-2 shadow-md rounded-lg text-start py-6 pl-4 font-manrope'>
+        <ul className='col-span-3 2xl:w-2/3 lg:col-span-1 lg:row-start-1 lg:row-span-4 bg-transparent space-y-2 shadow-md rounded-lg text-start py-6 pl-4 font-manrope'>
             {dashboardNav.map((link, idx) => (
                 <li
                     key={idx}
