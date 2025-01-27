@@ -8,12 +8,12 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from '../ui/navigation-menu';
-import HeaderUser from '../Header/HeaderUser';
 import HeaderUserNavigation from '../Header/HeaderUserNavigation';
 import { useAuthHandlers } from '@/hooks/mutations/mutation-handlers/useAuthHandlers';
+import DashboardHeaderAvatar from './DashboardHeaderAvatar';
 
 const DashboardHeader = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, user } = useAuth();
 
     const { handleSignOutSubmit } = useAuthHandlers();
 
@@ -26,7 +26,7 @@ const DashboardHeader = () => {
                         <NavigationMenuList>
                             <NavigationMenuItem className='items-center justify-center'>
                                 <NavigationMenuTrigger className='bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent p-0'>
-                                    <HeaderUser className='hidden' />
+                                    <DashboardHeaderAvatar user={user} />
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <HeaderUserNavigation
