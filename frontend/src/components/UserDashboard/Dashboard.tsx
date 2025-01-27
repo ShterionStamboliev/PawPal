@@ -1,9 +1,9 @@
 import { useGetUserData } from '@/hooks/queries/user/useQueryHook';
 import DashboardHeader from './DashboardHeader';
-import DashboardNavigation from './DashboardNavigation';
 import UserPayments from './UserProfile/UserPayments';
 import UserPets from './UserProfile/UserPets';
 import UserProfile from './UserProfile/UserProfile';
+import DashboardSideNavigation from './DashboardSideNavigation';
 
 const Dashboard = () => {
     const { data: userData, isPending } = useGetUserData();
@@ -17,7 +17,7 @@ const Dashboard = () => {
         <>
             <DashboardHeader />
             <main className='grid grid-cols-1 gap-4 h-screen lg:grid-cols-5 lg:grid-rows-10 px-4 pt-28 bg-gray-200/30'>
-                <DashboardNavigation />
+                <DashboardSideNavigation />
                 <div className='col-span-3 gap-4 xl:row-span-4 2xl:col-span-1 lg:row-span-4 2xl:row-span-4 lg:col-start-2 lg:col-span-2 2xl:col-start-2'>
                     <UserProfile userData={userData} />
                 </div>
