@@ -1,5 +1,5 @@
+import { Pet } from '@/types/pet';
 import { z } from 'zod';
-import { Pet } from './pet';
 
 export const UserSchema = z.object({
     firstName: z.string().min(3, {

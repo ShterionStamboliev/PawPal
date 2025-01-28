@@ -1,8 +1,8 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Pet } from '@/models/pet';
 import { UserData } from '@/models/user';
 import dog from '@/assets/dog-1.jpg';
 import PrimaryButton from '@/common/PrimaryButton';
+import { Pet } from '@/types/pet';
 
 type UserPetsProps = {
     userData: UserData | undefined;
