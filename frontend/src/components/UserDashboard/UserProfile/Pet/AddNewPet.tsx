@@ -44,8 +44,6 @@ const AddNewPet = () => {
                         </DialogTitle>
                     </DialogHeader>
                     <NewPetForm handlePetSubmit={handlePetSubmit} />
-
-                    {/** ------Add form here------ */}
                 </DialogContent>
             </Dialog>
         </>
