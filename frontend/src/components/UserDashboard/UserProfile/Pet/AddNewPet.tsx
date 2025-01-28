@@ -7,12 +7,27 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import NewPetForm from './NewPetForm';
+import { usePetHook } from '@/hooks/forms/pet/usePetHook';
+import { useDialogState } from '@/hooks/useDialogState';
+import { Pet } from '@/models/pet';
 
 const AddNewPet = () => {
+    const { isOpen, setIsOpen } = useDialogState();
+    const { useCreatePet } = usePetHook();
+    const { mutate } = useCreatePet({
+        queryKey: ['userProfile'],
+        setIsOpen,
+    });
+
+    const handlePetSubmit = (petData: Pet) => {
+        console.log(petData);
+        mutate(petData);
+    };
+
     return (
         <>
-            <Dialog>
-                <DialogTrigger>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogTrigger asChild>
                     <PrimaryButton className='bg-transparent rounded-full h-16 w-16'>
                         <span className='text-white font-semibold text-3xl'>
                             +
@@ -28,7 +43,8 @@ const AddNewPet = () => {
                             Add new pet
                         </DialogTitle>
                     </DialogHeader>
-                    <NewPetForm />
+                    <NewPetForm handlePetSubmit={handlePetSubmit} />
+
                     {/** ------Add form here------ */}
                 </DialogContent>
             </Dialog>

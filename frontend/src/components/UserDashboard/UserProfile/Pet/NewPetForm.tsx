@@ -4,15 +4,21 @@ import { useCreatePet } from '@/hooks/forms/pet/usePetForms';
 import { Pet } from '@/models/pet';
 import { FormProvider } from 'react-hook-form';
 
-type NewPetFormProps = {};
+type NewPetFormProps = {
+    handlePetSubmit: (petData: Pet) => void;
+};
 
-const NewPetForm = ({}: NewPetFormProps) => {
+const NewPetForm = ({ handlePetSubmit }: NewPetFormProps) => {
     const { useCreateNewPet } = useCreatePet();
     const form = useCreateNewPet();
 
     return (
         <FormProvider {...form}>
-            <form className='space-y-6' id='add-pet'>
+            <form
+                onSubmit={form.handleSubmit(handlePetSubmit)}
+                className='space-y-6'
+                id='add-pet'
+            >
                 <FormInput<Pet>
                     fieldName='name'
                     inputPlaceholder='Pet name'

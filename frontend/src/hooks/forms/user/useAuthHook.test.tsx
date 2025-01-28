@@ -3,7 +3,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { toast } from '../../use-toast';
 import { useAuth } from '../../../context/AuthContext';
-import { useMutations } from './useAuthHook';
+import { useAuthHook } from './useAuthHook';
 
 vi.mock('../../context/AuthContext');
 vi.mock('../use-toast');
@@ -30,7 +30,7 @@ describe('useMutations', () => {
     });
 
     it('should call register on useSignUp mutationFn', async () => {
-        const { result } = renderHook(() => useMutations(), { wrapper });
+        const { result } = renderHook(() => useAuthHook(), { wrapper });
 
         const { useSignUp } = result.current;
 
@@ -61,7 +61,7 @@ describe('useMutations', () => {
             JSON.stringify({ firstName: 'John', lastName: 'Doe' }),
         );
 
-        const { result } = renderHook(() => useMutations(), { wrapper });
+        const { result } = renderHook(() => useAuthHook(), { wrapper });
 
         const { useSignIn } = result.current;
 
@@ -87,7 +87,7 @@ describe('useMutations', () => {
     });
 
     it('should call logout on useSignOut mutationFn success', async () => {
-        const { result } = renderHook(() => useMutations(), { wrapper });
+        const { result } = renderHook(() => useAuthHook(), { wrapper });
 
         const { useSignOut } = result.current;
 

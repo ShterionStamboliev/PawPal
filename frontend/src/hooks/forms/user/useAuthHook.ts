@@ -8,7 +8,7 @@ import {
 } from '@tanstack/react-query';
 import { toast } from '../../use-toast';
 
-interface MutationActionState {
+export interface MutationActionState {
     queryKey: QueryKey;
     setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
