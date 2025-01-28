@@ -2,7 +2,7 @@ import { User } from '@/models/user';
 import { FormProvider } from 'react-hook-form';
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
-import { useSignUp } from '@/hooks/forms/user/useAuth';
+import { useSignUp } from '@/hooks/forms/user/useAuthForms';
 
 type SignUpFormProps = {
     handleSubmit: (userData: User) => void;

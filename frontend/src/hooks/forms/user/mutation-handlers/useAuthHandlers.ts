@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router';
-import { useMutations } from '../useMutationHook';
-import { toast } from '../../use-toast';
+import { useAuthHook } from '../useAuthHook';
+import { toast } from '../../../use-toast';
 import { User, UserLogin } from '@/models/user';
 import { useDialogState } from '@/hooks/useDialogState';
 
 export const useAuthHandlers = () => {
-    const { useSignOut, useSignIn, useSignUp } = useMutations();
+    const { useSignOut, useSignIn, useSignUp } = useAuthHook();
     const { isOpen, setIsOpen } = useDialogState();
 
     const navigate = useNavigate();

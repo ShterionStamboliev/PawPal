@@ -6,14 +6,14 @@ import {
     UseMutationResult,
     useQueryClient,
 } from '@tanstack/react-query';
-import { toast } from '../use-toast';
+import { toast } from '../../use-toast';
 
 interface MutationActionState {
     queryKey: QueryKey;
     setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const useMutations = () => {
+export const useAuthHook = () => {
     const client = useQueryClient();
 
     const { login, register, logout } = useAuth();

@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { toast } from '../use-toast';
-import { useAuth } from '../../context/AuthContext';
-import { useMutations } from './useMutationHook';
+import { toast } from '../../use-toast';
+import { useAuth } from '../../../context/AuthContext';
+import { useMutations } from './useAuthHook';
 
 vi.mock('../../context/AuthContext');
 vi.mock('../use-toast');

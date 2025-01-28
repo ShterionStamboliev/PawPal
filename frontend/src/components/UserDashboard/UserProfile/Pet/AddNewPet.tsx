@@ -2,7 +2,6 @@ import PrimaryButton from '@/common/PrimaryButton';
 import {
     Dialog,
     DialogContent,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -31,9 +30,6 @@ const AddNewPet = () => {
                     </DialogHeader>
                     <NewPetForm />
                     {/** ------Add form here------ */}
-                    <DialogFooter>
-                        <PrimaryButton>Submit</PrimaryButton>
-                    </DialogFooter>
                 </DialogContent>
             </Dialog>
         </>

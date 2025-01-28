@@ -9,7 +9,7 @@ import {
     NavigationMenuTrigger,
 } from '../ui/navigation-menu';
 import HeaderUserNavigation from '../Header/HeaderUserNavigation';
-import { useAuthHandlers } from '@/hooks/mutations/mutation-handlers/useAuthHandlers';
+import { useAuthHandlers } from '@/hooks/forms/user/mutation-handlers/useAuthHandlers';
 import DashboardHeaderAvatar from './DashboardHeaderAvatar';
 
 const DashboardHeader = () => {

@@ -1,5 +1,6 @@
 import FormInput from '@/common/FormElements/FormInput';
-import { useCreatePet } from '@/hooks/forms/pet/usePet';
+import PrimaryButton from '@/common/PrimaryButton';
+import { useCreatePet } from '@/hooks/forms/pet/usePetForms';
 import { Pet } from '@/models/pet';
 import { FormProvider } from 'react-hook-form';
 
@@ -11,7 +12,7 @@ const NewPetForm = ({}: NewPetFormProps) => {
 
     return (
         <FormProvider {...form}>
-            <form>
+            <form className='space-y-6' id='add-pet'>
                 <FormInput<Pet>
                     fieldName='name'
                     inputPlaceholder='Pet name'
@@ -32,6 +33,13 @@ const NewPetForm = ({}: NewPetFormProps) => {
                     inputPlaceholder='Pet Image'
                     inputType='file'
                 />
+                <PrimaryButton
+                    type='submit'
+                    id='add-pet'
+                    className='w-full rounded-xl'
+                >
+                    Submit
+                </PrimaryButton>
             </form>
         </FormProvider>
     );
