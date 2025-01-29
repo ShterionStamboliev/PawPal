@@ -29,7 +29,7 @@ const UserPets = ({ userData }: UserPetsProps) => {
                                 </CardTitle>
                             </div>
                             <CardContent className='p-0'>
-                                <div className='p-2 rounded-lg opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
+                                <div className='p-2 rounded-lg opacity-20 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
                                     <h2 className='text-lg text-center sm:text-lg line-clamp-2 font-semibold mb-2'>
                                         {pet.name}
                                     </h2>
@@ -39,7 +39,7 @@ const UserPets = ({ userData }: UserPetsProps) => {
                                  * such as name, age, vaccines etc. */}
                             </CardContent>
                             <PrimaryButton
-                                className='w-full opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 rounded-t-none mt-2'
+                                className='w-full opacity-20 transition-opacity duration-200 ease-in-out group-hover:opacity-100 rounded-t-none mt-2'
                                 onClick={() => console.log(pet._id)}
                             >
                                 View

@@ -27,7 +27,7 @@ const AddPetDialog = () => {
         <>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                    <PrimaryButton className='bg-transparent rounded-full h-16 w-16'>
+                    <PrimaryButton className='opacity-20 transition-opacity ease-in-out duration-200 hover:opacity-100 bg-transparent rounded-full h-16 w-16'>
                         <span className='text-white font-semibold text-3xl'>
                             +
                         </span>
