@@ -4,7 +4,7 @@ import UserPayments from './UserProfile/UserPayments';
 import UserPets from './UserProfile/UserPets';
 import UserProfile from './UserProfile/UserProfile';
 import DashboardSideNavigation from './DashboardSideNavigation';
-import AddPetForm from './UserProfile/Pet/AddPetForm/AddPetForm';
+import AddPetForm from './UserProfile/Pet/AddPet/AddPetDialog';
 
 const Dashboard = () => {
     const { data: userData, isPending } = useGetUserData();

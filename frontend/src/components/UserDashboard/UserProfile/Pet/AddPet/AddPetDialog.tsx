@@ -6,12 +6,12 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import NewPetForm from '../NewPetForm';
 import { usePetHook } from '@/hooks/forms/pet/usePetHook';
 import { useDialogState } from '@/hooks/useDialogState';
 import { Pet } from '@/models/pet';
+import AddPetForm from './AddPetForm';
 
-const AddPetForm = () => {
+const AddPetDialog = () => {
     const { isOpen, setIsOpen } = useDialogState();
     const { useCreatePet } = usePetHook();
     const { mutate } = useCreatePet({
@@ -42,11 +42,11 @@ const AddPetForm = () => {
                             Add new pet
                         </DialogTitle>
                     </DialogHeader>
-                    <NewPetForm handlePetSubmit={handlePetSubmit} />
+                    <AddPetForm handlePetSubmit={handlePetSubmit} />
                 </DialogContent>
             </Dialog>
         </>
     );
 };
 
-export default AddPetForm;
+export default AddPetDialog;

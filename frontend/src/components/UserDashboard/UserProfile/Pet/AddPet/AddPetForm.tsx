@@ -4,11 +4,11 @@ import { useCreatePet } from '@/hooks/forms/pet/usePetForms';
 import { Pet } from '@/models/pet';
 import { FormProvider } from 'react-hook-form';
 
-type NewPetFormProps = {
+type AddPetFormProps = {
     handlePetSubmit: (petData: Pet) => void;
 };
 
-const NewPetForm = ({ handlePetSubmit }: NewPetFormProps) => {
+const AddPetForm = ({ handlePetSubmit }: AddPetFormProps) => {
     const { useCreateNewPet } = useCreatePet();
     const form = useCreateNewPet();
 
@@ -46,4 +46,4 @@ const NewPetForm = ({ handlePetSubmit }: NewPetFormProps) => {
     );
 };
 
-export default NewPetForm;
+export default AddPetForm;
