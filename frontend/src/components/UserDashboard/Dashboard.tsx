@@ -4,7 +4,7 @@ import UserPayments from './UserProfile/UserPayments';
 import UserPets from './UserProfile/UserPets';
 import UserProfile from './UserProfile/UserProfile';
 import DashboardSideNavigation from './DashboardSideNavigation';
-import AddNewPet from './UserProfile/Pet/AddNewPet';
+import AddPetForm from './UserProfile/Pet/AddPetForm/AddPetForm';
 
 const Dashboard = () => {
     const { data: userData, isPending } = useGetUserData();
@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <UserProfile userData={userData} />
                 </div>
                 <div className='lg:col-start-1 flex justify-end'>
-                    <AddNewPet />
+                    <AddPetForm />
                 </div>
                 <div className='col-span-3 xl:col-start-2 xl:col-span-5 2xl:col-start-2 2xl:col-span-3 xl:row-span-4 2xl:row-start-5 lg:row-span-4 lg:col-start-2 lg:col-span-5'>
                     <UserPets userData={userData} />
