@@ -14,6 +14,7 @@ export const useCreatePet = () => {
 export const useEditPet = () => {
     const { useEditForm } = useCreateDynamicForms<Pet>({
         schema: PetSchema,
+        defaultValues: PetCreateDefaults,
     });
 
     return {
