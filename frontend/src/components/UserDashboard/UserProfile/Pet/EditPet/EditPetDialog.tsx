@@ -6,28 +6,18 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { usePetHook } from '@/hooks/forms/pet/usePetHook';
 import { useDialogState } from '@/hooks/useDialogState';
-import { Pet } from '@/models/pet';
-import AddPetForm from './AddPetForm';
 
-const AddPetDialog = () => {
+type EditPetDialogProps = {};
+
+const EditPetDialog = ({}: EditPetDialogProps) => {
     const { isOpen, setIsOpen } = useDialogState();
-    const { useCreatePet } = usePetHook();
-    const { mutate } = useCreatePet({
-        queryKey: ['userProfile'],
-        setIsOpen,
-    });
-
-    const handlePetSubmit = (petData: Pet) => {
-        mutate(petData);
-    };
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <PrimaryButton className='opacity-20 transition-opacity ease-in-out duration-200 hover:opacity-100 bg-transparent rounded-full h-16 w-16'>
-                    <span className='text-white font-semibold text-3xl'>+</span>
+                <PrimaryButton className='w-full rounded-t-none opacity-20 transition-opacity ease-in-out duration-200 hover:opacity-100 bg-transparent'>
+                    <span className='text-white font-semibold '>View</span>
                 </PrimaryButton>
             </DialogTrigger>
             <DialogContent className='bg-rose-200' aria-describedby={undefined}>
@@ -36,10 +26,10 @@ const AddPetDialog = () => {
                         Add new pet
                     </DialogTitle>
                 </DialogHeader>
-                <AddPetForm handlePetSubmit={handlePetSubmit} />
+                {/** Edit pet form here */}
             </DialogContent>
         </Dialog>
     );
 };
 
-export default AddPetDialog;
+export default EditPetDialog;

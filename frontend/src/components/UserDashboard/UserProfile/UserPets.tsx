@@ -3,6 +3,7 @@ import { UserData } from '@/models/user';
 import dog from '@/assets/dog-1.jpg';
 import PrimaryButton from '@/common/PrimaryButton';
 import { Pet } from '@/types/pet';
+import EditPetDialog from './Pet/EditPet/EditPetDialog';
 
 type UserPetsProps = {
     userData: UserData | undefined;
@@ -19,7 +20,7 @@ const UserPets = ({ userData }: UserPetsProps) => {
                 <div className='flex flex-col gap-4 p-2 lg:flex-row 2xl:flex-row 2xl:items-start 2xl:justify-start items-center justify-center'>
                     {userData?.pets.map((pet: Pet) => (
                         <Card className='group border-none bg-gray-100 lg:w-2/4 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
-                            <div className='flex '>
+                            <div className='flex'>
                                 <CardTitle className='flex justify-center'>
                                     <img
                                         src={dog}
@@ -38,12 +39,7 @@ const UserPets = ({ userData }: UserPetsProps) => {
                                  * show a modal with more pet details
                                  * such as name, age, vaccines etc. */}
                             </CardContent>
-                            <PrimaryButton
-                                className='w-full opacity-20 transition-opacity duration-200 ease-in-out group-hover:opacity-100 rounded-t-none mt-2'
-                                onClick={() => console.log(pet._id)}
-                            >
-                                View
-                            </PrimaryButton>
+                            <EditPetDialog />
                         </Card>
                     ))}
                 </div>
