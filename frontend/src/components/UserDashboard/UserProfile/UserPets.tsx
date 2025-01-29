@@ -1,7 +1,6 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { UserData } from '@/models/user';
 import dog from '@/assets/dog-1.jpg';
-import PrimaryButton from '@/common/PrimaryButton';
 import { Pet } from '@/types/pet';
 import EditPetDialog from './Pet/EditPet/EditPetDialog';
 
@@ -39,7 +38,7 @@ const UserPets = ({ userData }: UserPetsProps) => {
                                  * show a modal with more pet details
                                  * such as name, age, vaccines etc. */}
                             </CardContent>
-                            <EditPetDialog />
+                            <EditPetDialog petId={pet._id} />
                         </Card>
                     ))}
                 </div>

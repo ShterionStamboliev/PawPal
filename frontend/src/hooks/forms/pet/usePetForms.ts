@@ -10,3 +10,13 @@ export const useCreatePet = () => {
         useCreateNewPet: useCreateForm,
     };
 };
+
+export const useEditPet = () => {
+    const { useEditForm } = useCreateDynamicForms<Pet>({
+        schema: PetSchema,
+    });
+
+    return {
+        useEditPetForm: useEditForm,
+    };
+};

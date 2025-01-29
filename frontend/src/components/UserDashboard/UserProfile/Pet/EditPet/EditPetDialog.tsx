@@ -7,26 +7,29 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import { useDialogState } from '@/hooks/useDialogState';
+import EditPetForm from './EditPetForm';
 
-type EditPetDialogProps = {};
+type EditPetDialogProps = {
+    petId: string;
+};
 
-const EditPetDialog = ({}: EditPetDialogProps) => {
+const EditPetDialog = ({ petId }: EditPetDialogProps) => {
     const { isOpen, setIsOpen } = useDialogState();
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <PrimaryButton className='w-full rounded-t-none opacity-20 transition-opacity ease-in-out duration-200 hover:opacity-100 bg-transparent'>
+                <PrimaryButton className='w-full rounded-t-none opacity-20 transition-opacity ease-in-out duration-200 group-hover:opacity-100 bg-transparent'>
                     <span className='text-white font-semibold '>View</span>
                 </PrimaryButton>
             </DialogTrigger>
             <DialogContent className='bg-rose-200' aria-describedby={undefined}>
                 <DialogHeader>
                     <DialogTitle className='flex flex-col items-center gap-1 justify-center text-3xl mb-6'>
-                        Add new pet
+                        Edit pet information
                     </DialogTitle>
                 </DialogHeader>
-                {/** Edit pet form here */}
+                <EditPetForm petId={petId} />
             </DialogContent>
         </Dialog>
     );
