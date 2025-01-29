@@ -18,7 +18,10 @@ const UserPets = ({ userData }: UserPetsProps) => {
             ) : (
                 <div className='flex flex-col gap-4 p-2 lg:flex-row 2xl:flex-row 2xl:items-start 2xl:justify-start items-center justify-center'>
                     {userData?.pets.map((pet: Pet) => (
-                        <Card className='group border-none bg-gray-100 lg:w-2/4 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
+                        <Card
+                            key={pet._id}
+                            className='group border-none bg-gray-100 lg:w-2/4 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'
+                        >
                             <div className='flex'>
                                 <CardTitle className='flex justify-center'>
                                     <img

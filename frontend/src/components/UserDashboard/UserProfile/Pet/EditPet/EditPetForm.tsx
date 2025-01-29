@@ -17,7 +17,7 @@ const EditPetForm = ({ petId }: EditPetFormProps) => {
         findDataById<Pet>(data, petId, (pet) => pet._id),
     );
 
-    const form = useEditPetForm(pet ?? {});
+    const form = useEditPetForm(pet as Pet);
 
     return (
         <FormProvider {...form}>
