@@ -13,6 +13,7 @@
     "dependencies": {
         "@hookform/resolvers": "^3.10.0",
         "@radix-ui/react-aspect-ratio": "^1.1.1",
+        "@radix-ui/react-avatar": "^1.1.2",
         "@radix-ui/react-dialog": "^1.1.4",
         "@radix-ui/react-label": "^2.1.1",
         "@radix-ui/react-navigation-menu": "^1.2.3",
@@ -33,6 +34,7 @@
         "motion": "^11.15.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-dropzone": "^14.3.5",
         "react-hook-form": "^7.54.2",
         "react-router": "^7.1.1",
         "tailwind-merge": "^2.6.0",
@@ -42,10 +44,6 @@
     "devDependencies": {
         "@eslint/js": "^9.17.0",
         "@tanstack/eslint-plugin-query": "^5.62.16",
-        "@testing-library/jest-dom": "^6.6.3",
-        "@testing-library/react": "^16.2.0",
-        "@testing-library/react-hooks": "^8.0.1",
-        "@testing-library/user-event": "^14.6.0",
         "@types/node": "^22.10.7",
         "@types/react": "^18.3.18",
         "@types/react-dom": "^18.3.5",

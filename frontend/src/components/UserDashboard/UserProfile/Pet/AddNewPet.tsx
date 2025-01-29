@@ -20,7 +20,6 @@ const AddNewPet = () => {
     });
 
     const handlePetSubmit = (petData: Pet) => {
-        console.log(petData);
         mutate(petData);
     };
 

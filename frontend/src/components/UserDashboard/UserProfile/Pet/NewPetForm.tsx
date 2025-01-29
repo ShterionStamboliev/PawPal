@@ -34,11 +34,6 @@ const NewPetForm = ({ handlePetSubmit }: NewPetFormProps) => {
                     inputPlaceholder='Pet breed'
                     inputType='text'
                 />
-                <FormInput<Pet>
-                    fieldName='image'
-                    inputPlaceholder='Pet Image'
-                    inputType='file'
-                />
                 <PrimaryButton
                     type='submit'
                     id='add-pet'

@@ -12,7 +12,9 @@ const UserPets = ({ userData }: UserPetsProps) => {
     return (
         <div className='rounded-lg overflow-hidden bg-white shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'>
             {userData?.pets.length === 0 ? (
-                <span>You don't have any pets.</span>
+                <div className='h-40'>
+                    <span>You don't have any added pets yet.</span>
+                </div>
             ) : (
                 <div className='flex flex-col gap-4 p-2 lg:flex-row 2xl:flex-row 2xl:items-start 2xl:justify-start items-center justify-center'>
                     {userData?.pets.map((pet: Pet) => (

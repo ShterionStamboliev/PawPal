@@ -1,5 +1,13 @@
 import { z } from 'zod';
 
+// const MAX_FILE_SIZE = 5 * 1024 * 1024;
+// const ACCEPTED_IMAGE_TYPES = [
+//     'image/jpeg',
+//     'image/jpg',
+//     'image/png',
+//     'image/webp',
+// ];
+
 export const PetSchema = z.object({
     name: z.string().min(2, {
         message: 'Pet name must be 2 or more characters',
@@ -13,7 +21,7 @@ export const PetSchema = z.object({
     breed: z.string().min(1, {
         message: 'Pet breed cannot be empty',
     }),
-    image: z.string().optional(),
+    image: z.string(),
 });
 
 export const PetCreateDefaults: z.infer<typeof PetSchema> = {
