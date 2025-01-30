@@ -9,8 +9,7 @@ type SignUpFormProps = {
 };
 
 const SignUpForm = ({ handleSubmit }: SignUpFormProps) => {
-    const { useSignUpUser } = useSignUp();
-    const form = useSignUpUser();
+    const form = useSignUp();
 
     return (
         <FormProvider {...form}>

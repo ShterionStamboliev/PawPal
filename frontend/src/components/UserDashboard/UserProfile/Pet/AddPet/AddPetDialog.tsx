@@ -25,7 +25,7 @@ const AddPetDialog = () => {
                         Add new pet
                     </DialogTitle>
                 </DialogHeader>
-                <AddPetForm handlePetSubmit={handleCreatePet} />
+                <AddPetForm handleCreatePet={handleCreatePet} />
             </DialogContent>
         </Dialog>
     );

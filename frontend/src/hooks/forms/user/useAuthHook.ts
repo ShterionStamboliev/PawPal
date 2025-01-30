@@ -69,7 +69,7 @@ export const useAuthHook = () => {
         return useMutation({
             mutationFn: logout,
             onSuccess: () => {
-                client.invalidateQueries({
+                client.removeQueries({
                     queryKey,
                 });
             },

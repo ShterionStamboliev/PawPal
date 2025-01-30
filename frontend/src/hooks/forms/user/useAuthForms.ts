@@ -13,9 +13,9 @@ export const useSignIn = () => {
         schema: UserLoginSchema,
         defaultValues: UserLoginDefaults,
     });
-    return {
-        useSignInUser: useCreateForm,
-    };
+
+    const form = useCreateForm();
+    return form;
 };
 
 export const useSignUp = () => {
@@ -23,7 +23,7 @@ export const useSignUp = () => {
         schema: UserSchema,
         defaultValues: UserRegisterDefaults,
     });
-    return {
-        useSignUpUser: useCreateForm,
-    };
+
+    const form = useCreateForm();
+    return form;
 };

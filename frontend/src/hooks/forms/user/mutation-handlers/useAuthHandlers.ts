@@ -13,16 +13,16 @@ export const useAuthHandlers = () => {
     const pathname = useLocation();
 
     const { mutate: signOutMutate } = useSignOut({
-        queryKey: ['user'],
+        queryKey: ['userProfile'],
     });
 
     const { mutate: signInMutate, isError: signInError } = useSignIn({
-        queryKey: ['user'],
+        queryKey: ['userProfile'],
         setIsOpen,
     });
 
     const { mutate: signUpMutate } = useSignUp({
-        queryKey: ['user'],
+        queryKey: ['userProfile'],
         setIsOpen,
     });
 

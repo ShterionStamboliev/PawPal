@@ -10,8 +10,7 @@ type SignInFormProps = {
 };
 
 const SignInForm = ({ handleSubmit, isError }: SignInFormProps) => {
-    const { useSignInUser } = useSignIn();
-    const form = useSignInUser();
+    const form = useSignIn();
 
     return (
         <FormProvider {...form}>

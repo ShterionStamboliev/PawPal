@@ -6,9 +6,9 @@ export const useCreatePet = () => {
         schema: PetSchema,
         defaultValues: PetCreateDefaults,
     });
-    return {
-        useCreateNewPet: useCreateForm,
-    };
+
+    const form = useCreateForm();
+    return form;
 };
 
 export const useEditPet = () => {
