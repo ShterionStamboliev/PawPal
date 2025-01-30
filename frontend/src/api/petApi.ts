@@ -10,3 +10,7 @@ export const addNewPet = async (petData: Pet): Promise<void> => {
 export const deletePet = async (petId: string): Promise<void> => {
     return await axiosApi.delete(`/pets/delete/${petId}`);
 };
+
+export const updatePet = async (petData: Pet, petId: string): Promise<void> => {
+    return await axiosApi.put(`/pets/${petId}`, petData);
+};

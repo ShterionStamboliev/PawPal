@@ -33,7 +33,7 @@ const DeletePetDialog = ({ petId }: DeletePetDialogProps) => {
         <AlertDialog>
             <AlertDialogTrigger>
                 <X
-                    size={25}
+                    size={20}
                     className='absolute opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 bg-red-600 -right-2 -top-2 rounded-full'
                 />
             </AlertDialogTrigger>
