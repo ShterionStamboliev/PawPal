@@ -41,8 +41,8 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
             </DialogTrigger>
             <DialogContent className='bg-rose-200' aria-describedby={undefined}>
                 <DialogHeader>
-                    <DialogTitle className='flex flex-col items-center gap-1 justify-center text-3xl mb-6'>
-                        Edit pet information
+                    <DialogTitle className='flex flex-col items-center gap-1 justify-center text-2xl mb-6'>
+                        Edit pet
                     </DialogTitle>
                 </DialogHeader>
                 <EditPetForm
