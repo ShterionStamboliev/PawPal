@@ -18,14 +18,18 @@ type EditPetDialogProps = {
 const EditPetDialog = ({ petId }: EditPetDialogProps) => {
     const { isOpen, setIsOpen } = useDialogState();
     const { useEditPet } = usePetHook();
-    const { mutate } = useEditPet({
+    const { mutate, isPending } = useEditPet({
         queryKey: ['userProfile'],
         _id: petId,
         setIsOpen,
     });
 
     const handlePetEdit = (petData: Pet) => {
-        mutate(petData);
+        new Promise((resolve) =>
+            setTimeout(() => {
+                resolve(mutate(petData));
+            }, 3000),
+        );
     };
 
     return (
@@ -41,7 +45,11 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                         Edit pet information
                     </DialogTitle>
                 </DialogHeader>
-                <EditPetForm handlePetEdit={handlePetEdit} petId={petId} />
+                <EditPetForm
+                    isPending={isPending}
+                    handlePetEdit={handlePetEdit}
+                    petId={petId}
+                />
             </DialogContent>
         </Dialog>
     );

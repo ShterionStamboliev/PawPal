@@ -16,12 +16,14 @@ type PrimaryButtonProps = {
     className?: string;
     type?: 'submit';
     id?: string;
+    disabled?: boolean;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
     (props, ref) => {
-        const { children, variant, className, type, id, onClick } = props;
+        const { children, variant, className, disabled, type, id, onClick } =
+            props;
         return (
             <Button
                 ref={ref}
@@ -32,6 +34,7 @@ const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
                 )}
                 type={type}
                 id={id}
+                disabled={disabled}
                 onClick={onClick}
             >
                 {children}

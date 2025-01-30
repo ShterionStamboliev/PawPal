@@ -11,9 +11,10 @@ import { FormProvider } from 'react-hook-form';
 type EditPetFormProps = {
     handlePetEdit: (petData: PetSchema) => void;
     petId: string;
+    isPending: boolean;
 };
 
-const EditPetForm = ({ petId, handlePetEdit }: EditPetFormProps) => {
+const EditPetForm = ({ petId, handlePetEdit, isPending }: EditPetFormProps) => {
     const { useEditPetForm } = useEditPet();
 
     const pet = useCachedData<Pet | undefined>(['userProfile'], (data) =>
@@ -48,6 +49,7 @@ const EditPetForm = ({ petId, handlePetEdit }: EditPetFormProps) => {
                     type='submit'
                     id='edit-pet'
                     className='w-full rounded-xl'
+                    disabled={!form.formState.isDirty || isPending}
                 >
                     Submit
                 </PrimaryButton>
