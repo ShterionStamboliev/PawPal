@@ -2,8 +2,8 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { UserData } from '@/models/user';
 import dog from '@/assets/dog-1.jpg';
 import { Pet } from '@/types/pet';
-import EditPetDialog from './Pet/EditPet/EditPetDialog';
-import DeletePetDialog from './Pet/EditPet/DeletePetDialog';
+import EditPetDialog from '../Pet/EditPet/EditPetDialog';
+import DeletePetDialog from '../Pet/EditPet/DeletePetDialog';
 
 type UserPetsProps = {
     userData: UserData | undefined;
