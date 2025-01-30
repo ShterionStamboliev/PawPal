@@ -8,6 +8,8 @@ import {
 } from '@/components/ui/dialog';
 import { useDialogState } from '@/hooks/useDialogState';
 import EditPetForm from './EditPetForm';
+import { usePetHook } from '@/hooks/forms/pet/usePetHook';
+import { Pet } from '@/models/pet';
 
 type EditPetDialogProps = {
     petId: string;
@@ -15,6 +17,16 @@ type EditPetDialogProps = {
 
 const EditPetDialog = ({ petId }: EditPetDialogProps) => {
     const { isOpen, setIsOpen } = useDialogState();
+    const { useEditPet } = usePetHook();
+    const { mutate } = useEditPet({
+        queryKey: ['userProfile'],
+        _id: petId,
+        setIsOpen,
+    });
+
+    const handlePetEdit = (petData: Pet) => {
+        mutate(petData);
+    };
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -29,7 +41,7 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                         Edit pet information
                     </DialogTitle>
                 </DialogHeader>
-                <EditPetForm petId={petId} />
+                <EditPetForm handlePetEdit={handlePetEdit} petId={petId} />
             </DialogContent>
         </Dialog>
     );

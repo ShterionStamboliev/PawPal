@@ -4,13 +4,16 @@ import { findDataById } from '@/helpers/findById';
 import { useEditPet } from '@/hooks/forms/pet/usePetForms';
 import { useCachedData } from '@/hooks/queries/useCachedData';
 import { Pet } from '@/types/pet';
+import { Pet as PetSchema } from '@/models/pet';
+
 import { FormProvider } from 'react-hook-form';
 
 type EditPetFormProps = {
+    handlePetEdit: (petData: PetSchema) => void;
     petId: string;
 };
 
-const EditPetForm = ({ petId }: EditPetFormProps) => {
+const EditPetForm = ({ petId, handlePetEdit }: EditPetFormProps) => {
     const { useEditPetForm } = useEditPet();
 
     const pet = useCachedData<Pet | undefined>(['userProfile'], (data) =>
@@ -21,7 +24,11 @@ const EditPetForm = ({ petId }: EditPetFormProps) => {
 
     return (
         <FormProvider {...form}>
-            <form className='space-y-6' id='edit-pet'>
+            <form
+                onSubmit={form.handleSubmit(handlePetEdit)}
+                className='space-y-6'
+                id='edit-pet'
+            >
                 <FormInput<Pet>
                     fieldName='name'
                     inputPlaceholder='Pet name'
