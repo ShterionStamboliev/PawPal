@@ -6,22 +6,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { usePetHook } from '@/hooks/forms/pet/usePetHook';
-import { useDialogState } from '@/hooks/useDialogState';
-import { Pet } from '@/models/pet';
 import AddPetForm from './AddPetForm';
+import { usePetHandlers } from '@/hooks/forms/pet/mutation-handlers/usePetHandlers';
 
 const AddPetDialog = () => {
-    const { isOpen, setIsOpen } = useDialogState();
-    const { useCreatePet } = usePetHook();
-    const { mutate } = useCreatePet({
-        queryKey: ['userProfile'],
-        setIsOpen,
-    });
-
-    const handlePetSubmit = (petData: Pet) => {
-        mutate(petData);
-    };
+    const { handleCreatePet, isOpen, setIsOpen } = usePetHandlers();
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -36,7 +25,7 @@ const AddPetDialog = () => {
                         Add new pet
                     </DialogTitle>
                 </DialogHeader>
-                <AddPetForm handlePetSubmit={handlePetSubmit} />
+                <AddPetForm handlePetSubmit={handleCreatePet} />
             </DialogContent>
         </Dialog>
     );
