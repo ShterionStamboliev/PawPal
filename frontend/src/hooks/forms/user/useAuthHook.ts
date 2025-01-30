@@ -13,6 +13,10 @@ export interface MutationActionState {
     setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+export interface MutationPetAction extends MutationActionState {
+    _id?: string;
+}
+
 export const useAuthHook = () => {
     const client = useQueryClient();
 

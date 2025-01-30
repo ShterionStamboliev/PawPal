@@ -3,6 +3,7 @@ import { UserData } from '@/models/user';
 import dog from '@/assets/dog-1.jpg';
 import { Pet } from '@/types/pet';
 import EditPetDialog from './Pet/EditPet/EditPetDialog';
+import DeletePetDialog from './Pet/EditPet/DeletePetDialog';
 
 type UserPetsProps = {
     userData: UserData | undefined;
@@ -22,13 +23,14 @@ const UserPets = ({ userData }: UserPetsProps) => {
                             key={pet._id}
                             className='group border-none bg-gray-100 lg:w-2/4 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'
                         >
-                            <div className='flex'>
+                            <div className='flex relative'>
                                 <CardTitle className='flex justify-center'>
                                     <img
                                         src={dog}
                                         alt='Pet'
                                         className='object-cover rounded-t-xl'
                                     />
+                                    <DeletePetDialog petId={pet._id} />
                                 </CardTitle>
                             </div>
                             <CardContent className='p-0'>

@@ -3,9 +3,9 @@ import {
     UseMutationResult,
     useQueryClient,
 } from '@tanstack/react-query';
-import { MutationActionState } from '../user/useAuthHook';
+import { MutationActionState, MutationPetAction } from '../user/useAuthHook';
+import { addNewPet, deletePet } from '@/api/petApi';
 import { Pet } from '@/models/pet';
-import { addNewPet } from '@/api/petApi';
 
 export const usePetHook = () => {
     const client = useQueryClient();
@@ -26,7 +26,21 @@ export const usePetHook = () => {
         });
     };
 
+    const useDeletePet = ({ queryKey, _id, setIsOpen }: MutationPetAction) => {
+        return useMutation({
+            mutationFn: () => deletePet(_id as string),
+            onSuccess: () => {
+                client.invalidateQueries({ queryKey });
+                setIsOpen && setIsOpen(false);
+            },
+            onError: (error: Error) => {
+                return error.message;
+            },
+        });
+    };
+
     return {
         useCreatePet,
+        useDeletePet,
     };
 };

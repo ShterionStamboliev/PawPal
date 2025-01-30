@@ -7,13 +7,13 @@ export const usePetHandlers = () => {
 
     const { isOpen, setIsOpen } = useDialogState();
 
-    const { mutate, isError } = useCreatePet({
+    const { mutate: createMutation, isError } = useCreatePet({
         queryKey: ['userProfile'],
         setIsOpen,
     });
 
     const handleCreatePet = (petData: Pet) => {
-        mutate(petData);
+        createMutation(petData);
     };
 
     return {
