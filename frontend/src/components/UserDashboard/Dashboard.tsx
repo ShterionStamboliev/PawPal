@@ -10,7 +10,7 @@ const Dashboard = () => {
     const { data: userData, isPending } = useGetUserData();
 
     if (isPending) {
-        return <p>Loading...</p>;
+        return <p>Loading</p>;
     }
     console.log(userData);
 
