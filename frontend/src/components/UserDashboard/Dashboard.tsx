@@ -12,7 +12,6 @@ const Dashboard = () => {
     if (isPending) {
         return <p>Loading</p>;
     }
-    console.log(userData);
 
     return (
         <>
