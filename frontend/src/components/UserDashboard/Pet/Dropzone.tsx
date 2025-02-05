@@ -31,7 +31,7 @@ const DropzoneInput = ({ name }: DropzoneInputProps) => {
                             render={({ field }) => {
                                 const onDrop = (acceptedFiles: File[]) => {
                                     const file = acceptedFiles[0].name;
-                                    console.log(file);
+                                    // console.log(file);
 
                                     if (file) {
                                         setPreview(
