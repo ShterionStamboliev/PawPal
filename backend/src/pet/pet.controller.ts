@@ -74,7 +74,7 @@ export class PetController {
         @UploadedFile() file: Express.Multer.File,
     ) {
         const uploadResult = await this.cloudinaryService.uploadFile(id, file);
-
+        console.log('Upload result', uploadResult);
         const updatedPet = await this.petService.updatePetById(id, {
             image: uploadResult.secure_url,
         });

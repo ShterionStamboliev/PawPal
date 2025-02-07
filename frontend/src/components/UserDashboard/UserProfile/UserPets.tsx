@@ -4,7 +4,6 @@ import dog from '@/assets/dog-1.jpg';
 import { Pet } from '@/types/pet';
 import EditPetDialog from '../Pet/EditPet/EditPetDialog';
 import DeletePetDialog from '../Pet/EditPet/DeletePetDialog';
-import { Pen } from 'lucide-react';
 
 type UserPetsProps = {
     userData: UserData | undefined;
@@ -26,7 +25,6 @@ const UserPets = ({ userData }: UserPetsProps) => {
                         >
                             <div className='flex relative'>
                                 <CardTitle className='flex justify-center'>
-                                    <Pen />
                                     {pet.image ? (
                                         <img
                                             src={pet.image}
