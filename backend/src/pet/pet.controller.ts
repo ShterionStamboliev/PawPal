@@ -42,12 +42,9 @@ export class PetController {
     @Post('create')
     @Roles(Role.User, Role.Admin)
     @UseGuards(AuthGuard())
-    async createPet(
-        @Req() req,
-        @Body() createPetDto: CreatePetDto,
-    ): Promise<Pet> {
+    async createPet(@Body() createPetDto: CreatePetDto, @Req() req) {
         const owner = req.user._id;
-        return this.petService.createPet(owner, createPetDto);
+        return await this.petService.createPet(owner, createPetDto);
     }
 
     @Put(':id')

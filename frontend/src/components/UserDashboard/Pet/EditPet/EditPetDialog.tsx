@@ -2,6 +2,7 @@ import PrimaryButton from '@/common/PrimaryButton';
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -10,6 +11,7 @@ import { useDialogState } from '@/hooks/useDialogState';
 import EditPetForm from './EditPetForm';
 import { usePetHook } from '@/hooks/forms/pet/usePetHook';
 import { Pet } from '@/models/pet';
+import dog from '@/assets/dog-1.jpg';
 
 type EditPetDialogProps = {
     petId: string;
@@ -44,6 +46,13 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                     <DialogTitle className='flex flex-col items-center gap-1 justify-center text-2xl mb-6'>
                         Edit pet
                     </DialogTitle>
+                    <DialogDescription>
+                        <img
+                            src={dog}
+                            alt='Pet'
+                            className='object-cover rounded-t-xl'
+                        />
+                    </DialogDescription>
                 </DialogHeader>
                 <EditPetForm
                     isPending={isPending}

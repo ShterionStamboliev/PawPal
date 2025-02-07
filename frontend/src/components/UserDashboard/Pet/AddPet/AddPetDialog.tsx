@@ -22,7 +22,7 @@ const AddPetDialog = () => {
             <DialogContent className='bg-rose-200' aria-describedby={undefined}>
                 <DialogHeader>
                     <DialogTitle className='flex flex-col items-center gap-1 justify-center text-3xl mb-6'>
-                        Add new pet.
+                        Add new pet
                     </DialogTitle>
                 </DialogHeader>
                 <AddPetForm handleCreatePet={handleCreatePet} />
