@@ -10,7 +10,7 @@ type AboutImageProps = {
 const AboutImage = ({ controls, imageVariants }: AboutImageProps) => {
     return (
         <motion.div
-            className='w-full md:w-auto lg:max-w-[35rem] mb-10'
+            className='w-full px-4 lg:max-w-md mb-10'
             initial='hidden'
             animate={controls}
             variants={imageVariants}
