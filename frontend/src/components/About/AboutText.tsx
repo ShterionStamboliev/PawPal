@@ -15,7 +15,7 @@ const AboutText = ({
 }: AboutTextProps) => {
     return (
         <motion.div
-            className='flex flex-col space-y-4 px-10 md:space-y-6 max-w-2xl'
+            className='flex flex-col md:items-center md:justify-center space-y-4 px-10 md:space-y-6 max-w-2xl'
             initial='hidden'
             animate={controls}
             variants={containerVariants}
@@ -27,7 +27,7 @@ const AboutText = ({
                 About PawPal
             </motion.h3>
             <motion.p
-                className='text-base md:text-lg font-manrope text-rose-950'
+                className='text-base md:text-lg md:items-center md:justify-center font-manrope text-rose-950'
                 variants={itemVariants}
             >
                 PawPal is a specialized medical facility that deals with the
