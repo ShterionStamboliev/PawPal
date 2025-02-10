@@ -16,7 +16,7 @@ const TeamHeader = ({
 }: TeamHeaderProps) => {
     return (
         <motion.div
-            className='my-8 flex px-10 sm:items-center sm:justify-center w-full max-w-6xl'
+            className='my-8 flex px-10 md:items-center md:justify-center w-full max-w-6xl'
             initial='hidden'
             animate={controls}
             variants={containerVariants}
