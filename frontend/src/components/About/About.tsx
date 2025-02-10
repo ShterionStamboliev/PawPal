@@ -19,7 +19,7 @@ const About = () => {
                 containerVariants={containerVariants}
                 itemVariants={itemVariants}
             />
-            <div className='container flex flex-col xl:flex-row items-center md:items-start gap-8 md:gap-12'>
+            <div className='container flex flex-col xl:flex-row items-start gap-8 md:gap-12'>
                 <AboutText
                     controls={controls}
                     containerVariants={containerVariants}

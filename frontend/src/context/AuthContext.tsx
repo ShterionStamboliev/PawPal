@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { signIn, signOut, signUp } from '@/api/api';
+import { signIn, signOut, signUp } from '@/api/userApi';
 import { User, UserData, UserLogin } from '@/models/user';
 import { jwtDecode } from 'jwt-decode';
 import { getCookie } from '@/helpers/cookieParser';
@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const login = async (data: UserLogin) => {
         await signIn(data);
         const decodedUser: UserData = jwtDecode(document.cookie);
-
         setUser(decodedUser);
         setToken(getCookie());
         setIsAuthenticated(true);

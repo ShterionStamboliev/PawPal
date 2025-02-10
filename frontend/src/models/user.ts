@@ -1,3 +1,4 @@
+import { Pet } from '@/types/pet';
 import { z } from 'zod';
 
 export const UserSchema = z.object({
@@ -52,6 +53,6 @@ export type UserLogin = z.infer<typeof UserLoginSchema>;
 
 export interface UserData extends User {
     sub?: string;
-    pets: string[];
+    pets: Pet[];
     role: string[];
 }

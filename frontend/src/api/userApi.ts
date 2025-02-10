@@ -1,5 +1,6 @@
 import { User, UserLogin } from '@/models/user';
-import axios from 'axios';
+import { UserData as UserDataObj } from '@/models/user';
+import { axiosApi } from './axiosApiConfig';
 
 type UserData = {
     user: {
@@ -14,13 +15,6 @@ type UserDataResponse = {
     data: UserData;
 };
 
-const API = import.meta.env.VITE_BACKEND_API;
-
-const axiosApi = axios.create({
-    baseURL: API,
-    withCredentials: true,
-});
-
 export const signUp = async (userData: User): Promise<void> => {
     return await axiosApi.post('/auth/signup', userData);
 };
@@ -33,4 +27,9 @@ export const signIn = async (
 
 export const signOut = async (): Promise<void> => {
     return await axiosApi.post('/auth/signout');
+};
+
+export const getUserData = async (user_id: string): Promise<UserDataObj> => {
+    const response = await axiosApi.get(`/users/${user_id}`);
+    return response.data;
 };

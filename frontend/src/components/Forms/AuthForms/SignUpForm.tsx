@@ -2,15 +2,14 @@ import { User } from '@/models/user';
 import { FormProvider } from 'react-hook-form';
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
-import { useSignUp } from '@/hooks/forms/user/useAuth';
+import { useSignUp } from '@/hooks/forms/user/useAuthForms';
 
 type SignUpFormProps = {
     handleSubmit: (userData: User) => void;
 };
 
 const SignUpForm = ({ handleSubmit }: SignUpFormProps) => {
-    const { useSignUpUser } = useSignUp();
-    const form = useSignUpUser();
+    const form = useSignUp();
 
     return (
         <FormProvider {...form}>

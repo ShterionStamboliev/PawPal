@@ -2,7 +2,7 @@ import doc from '@/assets/doctor-3.jpg';
 
 const UserAvatar = () => {
     return (
-        <div className='bg-rose-400 rounded-t-lg relative'>
+        <div className='bg-rose-400 rounded-t-lg relative max-h-44'>
             <div className='aspect-video'>
                 <img
                     src={doc}

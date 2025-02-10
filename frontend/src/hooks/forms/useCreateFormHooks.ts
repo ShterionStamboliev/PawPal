@@ -1,4 +1,4 @@
-import { FieldValues } from 'react-hook-form';
+import { DefaultValues, FieldValues } from 'react-hook-form';
 import { FormSchemaOptions, useFormSchema } from '@/hooks/forms/useFormSchema';
 
 export interface CreateFormOptions<T extends FieldValues>
@@ -19,8 +19,7 @@ export const useCreateFormHooks = <T extends FieldValues>({
     const useEditForm = (formData: Partial<T>) => {
         return useFormSchema<T>({
             schema: schema!,
-            defaultValues: { ...defaultValues! },
-            ...formData,
+            defaultValues: formData as DefaultValues<T>,
             mode: 'onSubmit',
         });
     };

@@ -24,5 +24,4 @@ export const userNavigation: NavigationLink[] = [
 
 export const dashboardNav: NavigationLink[] = [
     { name: 'Profile', path: '/dashboard/profile' },
-    { name: 'My Pets', path: '/dashboard/my-pets' },
 ];

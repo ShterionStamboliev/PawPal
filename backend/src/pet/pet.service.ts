@@ -30,7 +30,7 @@ export class PetService {
         }
 
         const createPet = new this.petModel(createPetDto);
-
+        console.log('Created pet:', createPet);
         const savedPet = await createPet.save();
 
         await owner.updateOne({

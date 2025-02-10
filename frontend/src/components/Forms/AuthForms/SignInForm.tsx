@@ -1,6 +1,6 @@
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
-import { useSignIn } from '@/hooks/forms/user/useAuth';
+import { useSignIn } from '@/hooks/forms/user/useAuthForms';
 import { UserLogin } from '@/models/user';
 import { FormProvider } from 'react-hook-form';
 
@@ -10,8 +10,7 @@ type SignInFormProps = {
 };
 
 const SignInForm = ({ handleSubmit, isError }: SignInFormProps) => {
-    const { useSignInUser } = useSignIn();
-    const form = useSignInUser();
+    const form = useSignIn();
 
     return (
         <FormProvider {...form}>

@@ -10,7 +10,7 @@ type AboutImageProps = {
 const AboutImage = ({ controls, imageVariants }: AboutImageProps) => {
     return (
         <motion.div
-            className='w-full md:w-auto lg:max-w-[35rem] mb-10'
+            className='flex w-full lg:items-center lg:justify-center px-4 mb-10'
             initial='hidden'
             animate={controls}
             variants={imageVariants}
@@ -18,7 +18,7 @@ const AboutImage = ({ controls, imageVariants }: AboutImageProps) => {
             <img
                 src={vetImage}
                 alt='Veterinarian with a dog'
-                className='rounded-lg aspect-square w-full h-auto object-cover'
+                className='rounded-lg aspect-square lg:w-2/3 h-auto object-cover'
             />
         </motion.div>
     );
