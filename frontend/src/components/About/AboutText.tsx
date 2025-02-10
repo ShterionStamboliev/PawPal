@@ -15,7 +15,7 @@ const AboutText = ({
 }: AboutTextProps) => {
     return (
         <motion.div
-            className='flex flex-col md:items-center md:justify-center space-y-4 px-10 md:space-y-6 max-w-2xl'
+            className='flex flex-col  space-y-4 px-10 md:space-y-6 max-w-2xl'
             initial='hidden'
             animate={controls}
             variants={containerVariants}
