@@ -4,7 +4,7 @@ import {
     useQueryClient,
 } from '@tanstack/react-query';
 import { MutationActionState, MutationPetAction } from '../user/useAuthHook';
-import { addNewPet, deletePet, updatePet } from '@/api/petApi';
+import { addNewPet, deletePet, petImageUpload, updatePet } from '@/api/petApi';
 import { Pet } from '@/models/pet';
 
 export const usePetHook = () => {
@@ -52,9 +52,22 @@ export const usePetHook = () => {
         });
     };
 
+    const useUploadPetImage = (petId: string) => {
+        return useMutation({
+            mutationFn: (file: File) => petImageUpload(petId, file),
+            onSuccess: () => {
+                client.invalidateQueries({ queryKey: ['userProfile'] });
+            },
+            onError: (error: Error) => {
+                return error.message;
+            },
+        });
+    };
+
     return {
         useCreatePet,
         useDeletePet,
         useEditPet,
+        useUploadPetImage,
     };
 };
