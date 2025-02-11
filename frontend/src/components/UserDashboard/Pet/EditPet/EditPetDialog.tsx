@@ -10,8 +10,11 @@ import {
 import { useDialogState } from '@/hooks/useDialogState';
 import EditPetForm from './EditPetForm';
 import { usePetHook } from '@/hooks/forms/pet/usePetHook';
-import { Pet } from '@/models/pet';
-import dog from '@/assets/dog-1.jpg';
+import { Pet } from '@/types/pet';
+import { Pet as PetSchema } from '@/models/pet';
+import { useCachedData } from '@/hooks/queries/useCachedData';
+import { findDataById } from '@/helpers/findById';
+import dog_paw from '@/assets/dog_paw.png';
 
 type EditPetDialogProps = {
     petId: string;
@@ -26,7 +29,11 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
         setIsOpen,
     });
 
-    const handlePetEdit = (petData: Pet) => {
+    const pet = useCachedData<Pet | undefined>(['userProfile'], (data) =>
+        findDataById<Pet>(data, petId, (pet) => pet._id),
+    );
+
+    const handlePetEdit = (petData: PetSchema) => {
         new Promise((resolve) =>
             setTimeout(() => {
                 resolve(mutate(petData));
@@ -38,7 +45,7 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <PrimaryButton className='w-full rounded-t-none opacity-20 transition-opacity ease-in-out duration-200 group-hover:opacity-100 bg-transparent'>
-                    <span className='text-white font-semibold '>View</span>
+                    <span className='text-white font-semibold'>View</span>
                 </PrimaryButton>
             </DialogTrigger>
             <DialogContent className='bg-rose-200' aria-describedby={undefined}>
@@ -47,17 +54,25 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                         Edit pet
                     </DialogTitle>
                     <DialogDescription>
-                        <img
-                            src={dog}
-                            alt='Pet'
-                            className='object-cover rounded-t-xl'
-                        />
+                        {pet?.image ? (
+                            <img
+                                src={pet?.image}
+                                alt='Pet'
+                                className='block w-[50%] mx-auto'
+                            />
+                        ) : (
+                            <img
+                                src={dog_paw}
+                                className='block w-[50%] mx-auto'
+                            />
+                        )}
                     </DialogDescription>
                 </DialogHeader>
                 <EditPetForm
                     isPending={isPending}
                     handlePetEdit={handlePetEdit}
                     petId={petId}
+                    pet={pet as Pet}
                 />
             </DialogContent>
         </Dialog>
