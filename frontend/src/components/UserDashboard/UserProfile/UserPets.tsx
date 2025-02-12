@@ -1,6 +1,6 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { UserData } from '@/models/user';
-import dog from '@/assets/dog-1.jpg';
+import dog from '@/assets/dog_paw.png';
 import { Pet } from '@/types/pet';
 import EditPetDialog from '../Pet/EditPet/EditPetDialog';
 import DeletePetDialog from '../Pet/EditPet/DeletePetDialog';
@@ -21,21 +21,21 @@ const UserPets = ({ userData }: UserPetsProps) => {
                     {userData?.pets.map((pet: Pet) => (
                         <Card
                             key={pet._id}
-                            className='group border-none bg-gray-100 lg:w-2/4 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'
+                            className='group border-none bg-gray-100 max-w-xs shadow-none transition-shadow duration-200 hover:shadow-[_0px_5px_10px_1px_rgba(0,0,0,0.3)]'
                         >
                             <div className='flex relative'>
-                                <CardTitle className='flex justify-center'>
+                                <CardTitle className='flex h-[20rem] rounded-lg mx-auto'>
                                     {pet.image ? (
                                         <img
                                             src={pet.image}
                                             alt='Pet'
-                                            className='object-cover rounded-t-xl'
+                                            className='block m-4 rounded-lg'
                                         />
                                     ) : (
                                         <img
                                             src={dog}
                                             alt='Pet'
-                                            className='object-cover rounded-t-xl'
+                                            className='block m-4 rounded-lg'
                                         />
                                     )}
                                     <DeletePetDialog petId={pet._id} />
