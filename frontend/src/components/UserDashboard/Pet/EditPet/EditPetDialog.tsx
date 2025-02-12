@@ -43,7 +43,7 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                             <img
                                 src={pet?.image}
                                 alt='Pet'
-                                className='block w-[50%] mx-auto'
+                                className='block w-[50%] m-4 rounded-lg mx-auto'
                             />
                         ) : (
                             <img
