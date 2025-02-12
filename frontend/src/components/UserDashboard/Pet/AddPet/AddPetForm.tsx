@@ -2,14 +2,14 @@ import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
 import { useCreatePet } from '@/hooks/forms/pet/usePetForms';
 import { Pet } from '@/models/pet';
-import { FormProvider } from 'react-hook-form';
+import { FormProvider, SubmitHandler } from 'react-hook-form';
 
 type AddPetFormProps = {
-    handleCreatePet: (petData: Pet) => void;
+    handleCreatePet: SubmitHandler<Pet>;
 };
 
 const AddPetForm = ({ handleCreatePet }: AddPetFormProps) => {
-    const form = useCreatePet();
+    const { form, isDirty, isSubmitting } = useCreatePet();
 
     return (
         <FormProvider {...form}>
@@ -37,6 +37,7 @@ const AddPetForm = ({ handleCreatePet }: AddPetFormProps) => {
                     type='submit'
                     id='add-pet'
                     className='w-full rounded-xl'
+                    disabled={!isDirty || isSubmitting}
                 >
                     Submit
                 </PrimaryButton>
