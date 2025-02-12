@@ -7,7 +7,11 @@ export const usePetHandlers = (petId?: string) => {
 
     const { isOpen, setIsOpen } = useDialogState();
 
-    const { mutate: createMutation, isError } = useCreatePet({
+    const {
+        mutate: createMutation,
+        isPending: isPetCreationPending,
+        isError,
+    } = useCreatePet({
         queryKey: ['userProfile'],
         setIsOpen,
     });
@@ -18,7 +22,8 @@ export const usePetHandlers = (petId?: string) => {
         setIsOpen,
     });
 
-    const handleCreatePet = (petData: Pet) => {
+    const handleCreatePet = async (petData: Pet) => {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         createMutation(petData);
     };
 
@@ -30,6 +35,7 @@ export const usePetHandlers = (petId?: string) => {
         handleCreatePet,
         handleEditPet,
         isPetEditPending,
+        isPetCreationPending,
         isError,
         isOpen,
         setIsOpen,
