@@ -10,12 +10,7 @@ import AddPetForm from './AddPetForm';
 import { usePetHandlers } from '@/hooks/forms/pet/mutation-handlers/usePetHandlers';
 
 const AddPetDialog = () => {
-    const { handleCreatePet, isPetCreationPending, isOpen, setIsOpen } =
-        usePetHandlers();
-
-    if (isPetCreationPending) {
-        return <div>Loading...</div>;
-    }
+    const { handleCreatePet, isOpen, setIsOpen } = usePetHandlers();
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
