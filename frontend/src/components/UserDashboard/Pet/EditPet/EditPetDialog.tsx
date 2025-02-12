@@ -7,39 +7,24 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { useDialogState } from '@/hooks/useDialogState';
 import EditPetForm from './EditPetForm';
-import { usePetHook } from '@/hooks/forms/pet/usePetHook';
 import { Pet } from '@/types/pet';
-import { Pet as PetSchema } from '@/models/pet';
 import { useCachedData } from '@/hooks/queries/useCachedData';
 import { findDataById } from '@/helpers/findById';
 import dog_paw from '@/assets/dog_paw.png';
+import { usePetHandlers } from '@/hooks/forms/pet/mutation-handlers/usePetHandlers';
 
 type EditPetDialogProps = {
     petId: string;
 };
 
 const EditPetDialog = ({ petId }: EditPetDialogProps) => {
-    const { isOpen, setIsOpen } = useDialogState();
-    const { useEditPet } = usePetHook();
-    const { mutate, isPending } = useEditPet({
-        queryKey: ['userProfile'],
-        _id: petId,
-        setIsOpen,
-    });
+    const { handleEditPet, isPetEditPending, isOpen, setIsOpen } =
+        usePetHandlers(petId);
 
     const pet = useCachedData<Pet | undefined>(['userProfile'], (data) =>
         findDataById<Pet>(data, petId, (pet) => pet._id),
     );
-
-    const handlePetEdit = (petData: PetSchema) => {
-        new Promise((resolve) =>
-            setTimeout(() => {
-                resolve(mutate(petData));
-            }, 3000),
-        );
-    };
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -69,8 +54,8 @@ const EditPetDialog = ({ petId }: EditPetDialogProps) => {
                     </DialogDescription>
                 </DialogHeader>
                 <EditPetForm
-                    isPending={isPending}
-                    handlePetEdit={handlePetEdit}
+                    isPending={isPetEditPending}
+                    handlePetEdit={handleEditPet}
                     petId={petId}
                     pet={pet as Pet}
                 />
