@@ -1,24 +1,25 @@
 import FormInput from '@/common/FormElements/FormInput';
 import PrimaryButton from '@/common/PrimaryButton';
-import { findDataById } from '@/helpers/findById';
 import { useEditPet } from '@/hooks/forms/pet/usePetForms';
-import { useCachedData } from '@/hooks/queries/useCachedData';
 import { Pet } from '@/types/pet';
 import { Pet as PetSchema } from '@/models/pet';
 import { FormProvider } from 'react-hook-form';
+import DropzoneInput from '../Dropzone';
 
 type EditPetFormProps = {
     handlePetEdit: (petData: PetSchema) => void;
+    pet: Pet;
     petId: string;
     isPending: boolean;
 };
 
-const EditPetForm = ({ petId, handlePetEdit, isPending }: EditPetFormProps) => {
+const EditPetForm = ({
+    pet,
+    petId,
+    handlePetEdit,
+    isPending,
+}: EditPetFormProps) => {
     const { useEditPetForm } = useEditPet();
-
-    const pet = useCachedData<Pet | undefined>(['userProfile'], (data) =>
-        findDataById<Pet>(data, petId, (pet) => pet._id),
-    );
 
     const form = useEditPetForm(pet as Pet);
 
@@ -44,6 +45,7 @@ const EditPetForm = ({ petId, handlePetEdit, isPending }: EditPetFormProps) => {
                     inputPlaceholder='Pet breed'
                     inputType='text'
                 />
+                <DropzoneInput name='image' petId={petId} />
                 <PrimaryButton
                     type='submit'
                     id='edit-pet'

@@ -8,7 +8,9 @@ export const useCreatePet = () => {
     });
 
     const form = useCreateForm();
-    return form;
+    const { isDirty, isSubmitting } = form.formState;
+
+    return { form, isDirty, isSubmitting };
 };
 
 export const useEditPet = () => {

@@ -15,6 +15,7 @@ export interface MutationActionState {
 
 export interface MutationPetAction extends MutationActionState {
     _id?: string;
+    file?: File;
 }
 
 export const useAuthHook = () => {

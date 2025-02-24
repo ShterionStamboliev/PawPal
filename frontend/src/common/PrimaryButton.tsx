@@ -30,7 +30,9 @@ const PrimaryButton = React.forwardRef<HTMLButtonElement, PrimaryButtonProps>(
                 variant={variant}
                 className={cn(
                     className,
-                    'flex items-center gap-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 hover:text-white',
+                    `flex items-center gap-2 bg-rose-500 text-white font-semibold font-manrope hover:bg-rose-600 hover:text-white ${
+                        disabled ? 'opacity-50 cursor-not-allowed' : ''
+                    }`,
                 )}
                 type={type}
                 id={id}
